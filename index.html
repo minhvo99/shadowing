@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Shadowing Studio</title>
+    <link rel="preconnect" href="https://www.youtube.com" />
+    <script>
+      // Apply the saved color scheme before first paint (MUI stores it under "mui-mode").
+      try {
+        var m = localStorage.getItem('mui-mode') || 'light'
+        if (m === 'system') m = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+        document.documentElement.classList.add(m)
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

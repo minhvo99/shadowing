@@ -1,0 +1,25 @@
+/* View transition recipes (see vercel-react-view-transitions skill). */
+
+::view-transition-old(.nav-forward) { animation: 180ms ease-in both vt-fade-out, 260ms cubic-bezier(.2,.8,.2,1) both vt-to-left; }
+::view-transition-new(.nav-forward) { animation: 220ms ease-out 60ms both vt-fade-in, 260ms cubic-bezier(.2,.8,.2,1) both vt-from-right; }
+::view-transition-old(.nav-back) { animation: 180ms ease-in both vt-fade-out, 260ms cubic-bezier(.2,.8,.2,1) both vt-to-right; }
+::view-transition-new(.nav-back) { animation: 220ms ease-out 60ms both vt-fade-in, 260ms cubic-bezier(.2,.8,.2,1) both vt-from-left; }
+
+::view-transition-group(.morph) { animation-duration: 320ms; animation-timing-function: cubic-bezier(.2,.8,.2,1); }
+::view-transition-image-pair(.morph) { isolation: isolate; }
+
+::view-transition-old(.fade-out) { animation: 150ms ease-in both vt-fade-out; }
+::view-transition-new(.fade-in) { animation: 200ms ease-out both vt-fade-in; }
+
+@keyframes vt-fade-in { from { opacity: 0; } }
+@keyframes vt-fade-out { to { opacity: 0; } }
+@keyframes vt-from-right { from { transform: translateX(48px); } }
+@keyframes vt-to-left { to { transform: translateX(-48px); } }
+@keyframes vt-from-left { from { transform: translateX(-48px); } }
+@keyframes vt-to-right { to { transform: translateX(48px); } }
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) { animation: none !important; }
+}

@@ -130,6 +130,12 @@ export function toSentences(cues: Cue[], maxSeconds = 7): Cue[] {
   return out
 }
 
+/** Sentence shown at time `t` during continuous playback: a gap between two sentences splits at its midpoint. */
+export function sentenceAt(lines: Cue[], t: number): number {
+  for (let i = 0; i + 1 < lines.length; i++) if (t < (lines[i].end + lines[i + 1].start) / 2) return i
+  return Math.max(0, lines.length - 1)
+}
+
 export function wordKey(token: string): string {
   return token.toLowerCase().replace(/’/g, "'").replace(/^[^a-z']+|[^a-z']+$/g, '')
 }

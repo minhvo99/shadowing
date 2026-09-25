@@ -1,3 +1,4 @@
+import OpenInNewRounded from '@mui/icons-material/OpenInNewRounded'
 import Button from '@mui/material/Button'
 import Dialog from '@mui/material/Dialog'
 import DialogActions from '@mui/material/DialogActions'
@@ -40,6 +41,10 @@ export function SubtitleImport({ video, onSaved }: { video: Video; onSaved?: () 
             if (c.length) use(c)
           }}
         />
+      </Button>
+      {/* DownSub has no public API, so we hand the user over with the video pre-filled (subtitle.to/<url> trick). */}
+      <Button size="large" href={`https://subtitle.to/https://www.youtube.com/watch?v=${video.id}`} target="_blank" rel="noopener" endIcon={<OpenInNewRounded />}>
+        {t.getFromDownsub}
       </Button>
       {fileError ? <Typography color="secondary.main" sx={{ width: '100%' }}>{t.subsInvalid}</Typography> : null}
 

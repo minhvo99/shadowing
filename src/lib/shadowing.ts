@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import type { Settings } from '../settings'
-import { withWordTimes, type Cue } from './text'
+import { sentenceAt, withWordTimes, type Cue } from './text'
 import { PLAYING, type YTPlayer } from './youtube-player'
 
 type Options = {
@@ -13,47 +13,38 @@ type Options = {
 }
 
 /**
- * Drives sentence-by-sentence playback on top of the YouTube player:
- * play a sentence → (listen mode) pause `gap` seconds to speak → repeat `repeat` times if looping → next.
+ * Sentence-aware playback on top of the YouTube player. By default it just plays and the current
+ * sentence follows the video. At each sentence end, in priority order:
+ *   loop → replay it (after `delay`) · autoPause → stop, play goes to the next · delay → pause, then continue.
  */
 export function useShadowing({ player, lines, idx, setIdx, settings, onSentenceDone }: Options) {
-  const [waiting, setWaiting] = useState(false)
-  const count = useRef(0)
+  const [waiting, setWaiting] = useState(false) // delay countdown
+  const [atEnd, setAtEnd] = useState(false) // stopped by auto-pause
   const timer = useRef<number | undefined>(undefined)
+  const pending = useRef<(() => void) | null>(null)
+  const handled = useRef(-1) // sentence whose end we already acted on
+  const grace = useRef({ until: 0, target: 0 }) // ignore ticks until a seek lands
   // Latest values for the polling loop, without restarting it every render.
   const latest = useRef({ lines, idx, settings, setIdx, onSentenceDone })
   latest.current = { lines, idx, settings, setIdx, onSentenceDone }
 
-  const playLine = useCallback(
+  const select = (i: number) => {
+    latest.current.idx = i // the polling loop must see it before React re-renders
+    latest.current.setIdx(i)
+  }
+
+  const seek = useCallback(
     (i: number) => {
-      const { lines, setIdx } = latest.current
+      const { lines } = latest.current
       if (!player || i < 0 || i >= lines.length) return
       clearTimeout(timer.current)
+      pending.current = null
       setWaiting(false)
-      count.current = 0
-      latest.current.idx = i // the polling loop must see it before React re-renders
-      setIdx(i)
+      setAtEnd(false)
+      handled.current = -1
+      grace.current = { until: Date.now() + 600, target: lines[i].start }
+      select(i)
       player.seekTo(lines[i].start, true)
-      player.playVideo()
-    },
-    [player],
-  )
-
-  const advance = useCallback(
-    (again: boolean) => {
-      const { lines, idx, setIdx } = latest.current
-      if (!player) return
-      setWaiting(false)
-      const next = again ? idx : idx + 1
-      if (next >= lines.length) return player.pauseVideo()
-      if (!again) {
-        count.current = 0
-        latest.current.idx = next
-        setIdx(next)
-        // Contiguous sentences: keep playing instead of seeking (avoids a buffering hiccup).
-        if (Math.abs(lines[next].start - player.getCurrentTime()) < 0.4) return player.playVideo()
-      }
-      player.seekTo(lines[next].start, true)
       player.playVideo()
     },
     [player],
@@ -61,62 +52,73 @@ export function useShadowing({ player, lines, idx, setIdx, settings, onSentenceD
 
   useEffect(() => {
     if (!player) return
-    const id = window.setInterval(() => {
-      const { lines, idx, settings, setIdx, onSentenceDone } = latest.current
-      if (!lines.length || player.getPlayerState() !== PLAYING) return
-      const t = player.getCurrentTime()
-      const line = lines[idx]
-
-      // The user scrubbed in YouTube's own controls: follow along.
-      if (t < line.start - 0.75 || t > line.end + 0.75) {
-        const found = lines.findLastIndex((l) => l.start <= t + 0.05)
-        if (found !== -1 && found !== idx) {
-          count.current = 0
-          latest.current.idx = found
-          setIdx(found)
-        }
-        return
-      }
-      if (t < line.end - 0.05) return
-
-      count.current += 1
-      const again = settings.loop && count.current < settings.repeat
-      if (!again) onSentenceDone(idx)
-
-      // Speak-along and karaoke play straight through; only listen/blind stop for you to speak.
-      if (settings.mode === 'along' || settings.mode === 'karaoke' || settings.gap === 0) return advance(again)
+    const wait = (then: () => void) => {
       player.pauseVideo()
       setWaiting(true)
-      timer.current = window.setTimeout(() => advance(again), settings.gap * 1000)
-    }, 80)
+      pending.current = then
+      timer.current = window.setTimeout(() => {
+        pending.current = null
+        setWaiting(false)
+        then()
+      }, latest.current.settings.delay * 1000)
+    }
+
+    const id = window.setInterval(() => {
+      const { lines, idx, settings, onSentenceDone } = latest.current
+      if (!lines.length || player.getPlayerState() !== PLAYING) return
+      const t = player.getCurrentTime()
+      if (Date.now() < grace.current.until && Math.abs(t - grace.current.target) > 0.2) return
+
+      const line = lines[idx]
+      if (handled.current !== idx && t >= line.start - 0.05 && t >= line.end - 0.04) {
+        handled.current = idx
+        onSentenceDone(idx)
+        if (settings.loop) return settings.delay ? wait(() => seek(idx)) : seek(idx)
+        if (settings.autoPause) {
+          player.pauseVideo()
+          setAtEnd(true)
+          return
+        }
+        if (settings.delay) return wait(() => seek(idx + 1))
+      }
+      if (settings.loop) return
+      const i = sentenceAt(lines, t)
+      if (i !== idx) select(i)
+    }, 50)
     return () => {
       clearInterval(id)
       clearTimeout(timer.current)
     }
-  }, [player, advance])
+  }, [player, seek])
 
   useEffect(() => {
     player?.setPlaybackRate(settings.speed)
   }, [player, settings.speed])
 
+  /** Space / play button. */
   const toggle = useCallback(
     (playing: boolean) => {
-      const { lines, idx, settings } = latest.current
+      const { lines, idx } = latest.current
       if (!player) return
-      if (waiting) {
+      if (pending.current) {
+        // Skip the rest of the delay.
         clearTimeout(timer.current)
-        return advance(settings.loop && count.current < settings.repeat)
+        const then = pending.current
+        pending.current = null
+        setWaiting(false)
+        return then()
       }
       if (playing) return player.pauseVideo()
+      if (atEnd) return seek(idx + 1)
       const t = player.getCurrentTime()
       // Outside the current sentence (fresh load, or it just finished): start it from the top.
-      if (lines[idx] && (t < lines[idx].start - 0.3 || t >= lines[idx].end - 0.1)) return playLine(idx)
+      if (lines[idx] && (t < lines[idx].start - 0.3 || t >= lines[idx].end - 0.1)) return seek(idx)
       player.playVideo()
     },
-    [player, waiting, advance, playLine],
+    [player, atEnd, seek],
   )
 
-  return { playLine, toggle, waiting }
+  return { playLine: seek, toggle, waiting, atEnd }
 }
 
 export type Karaoke = { word: number; dur: number; running: boolean }

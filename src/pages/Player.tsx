@@ -1,6 +1,7 @@
 import ArrowBack from '@mui/icons-material/ArrowBack'
 import MicRounded from '@mui/icons-material/MicRounded'
 import PauseRounded from '@mui/icons-material/PauseRounded'
+import PauseCircleOutlineRounded from '@mui/icons-material/PauseCircleOutlineRounded'
 import PlayArrowRounded from '@mui/icons-material/PlayArrowRounded'
 import RepeatRounded from '@mui/icons-material/RepeatRounded'
 import SkipNextRounded from '@mui/icons-material/SkipNextRounded'
@@ -83,7 +84,7 @@ function Session({ video }: { video: Video }) {
   const lines = video.lines
   const line = lines[idx]
 
-  const { playLine, toggle, waiting } = useShadowing({
+  const { playLine, toggle, waiting, atEnd } = useShadowing({
     player,
     lines,
     idx,
@@ -124,6 +125,7 @@ function Session({ video }: { video: Video }) {
         ArrowLeft: () => k.playLine(k.idx - 1),
         ArrowRight: () => k.playLine(k.idx + 1),
         l: () => update({ loop: !k.settings.loop }),
+        p: () => update({ autoPause: !k.settings.autoPause }),
         r: () => k.recorder.toggle(),
         n: () => {
           setTab('notes')
@@ -140,8 +142,8 @@ function Session({ video }: { video: Video }) {
     return () => window.removeEventListener('keydown', onKey)
   }, [update])
 
-  const blind = settings.mode === 'blind'
-  const karaoke = useKaraoke(player, line, settings.mode === 'karaoke', playing && !waiting, settings.speed)
+  const blind = settings.view === 'blind'
+  const karaoke = useKaraoke(player, line, settings.view === 'karaoke', playing && !waiting, settings.speed)
 
   return (
     <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', lg: 'minmax(0, 1fr) 460px' }, gap: 3.5, alignItems: 'start' }}>
@@ -158,9 +160,9 @@ function Session({ video }: { video: Video }) {
                 )}
               </Box>
             ) : null}
-            {waiting ? (
-              <Box sx={{ position: 'absolute', top: 16, right: 16, display: 'flex', alignItems: 'center', gap: 1, px: 1.5, py: 0.75, borderRadius: 999, bgcolor: 'secondary.main', color: 'secondary.contrastText', fontWeight: 600, fontSize: 14 }}>
-                <MicRounded fontSize="small" /> {t.gap}…
+            {waiting || atEnd ? (
+              <Box role="status" sx={{ position: 'absolute', top: 16, right: 16, display: 'flex', alignItems: 'center', gap: 1, px: 1.5, py: 0.75, borderRadius: 999, bgcolor: 'secondary.main', color: 'secondary.contrastText', fontWeight: 600, fontSize: 14 }}>
+                <MicRounded fontSize="small" /> {waiting ? t.yourTurn : t.pausedAtEnd}
               </Box>
             ) : null}
           </Box>
@@ -197,7 +199,7 @@ function Session({ video }: { video: Video }) {
           <DictionaryPanel word={word} recent={recent} onWord={lookUp} video={video} idx={idx} />
         )}
         <Box sx={{ px: 2.5, py: 1.5, borderTop: 1, borderColor: 'divider', display: 'flex', gap: 1.75, flexWrap: 'wrap', fontSize: 12, color: 'text.secondary' }}>
-          {([['Space', t.keys.play], ['← →', t.keys.nav], ['L', t.keys.loop], ['R', t.keys.rec], ['N', t.keys.note]] as const).map(([k, label]) => (
+          {([['Space', t.keys.play], ['← →', t.keys.nav], ['L', t.keys.loop], ['P', t.keys.pause], ['R', t.keys.rec], ['N', t.keys.note]] as const).map(([k, label]) => (
             <span key={k}>
               <Box component="kbd" sx={{ fontFamily: MONO, border: 1, borderColor: 'divider', borderRadius: 1, px: 0.75, color: 'text.primary' }}>{k}</Box> {label}
             </span>
@@ -227,7 +229,7 @@ function Timeline({ lines, idx, done, onPick }: { lines: Video['lines']; idx: nu
       </Box>
       <Box sx={{ display: 'flex', justifyContent: 'space-between', mt: 1, fontFamily: MONO, fontSize: 12, color: 'text.secondary' }}>
         <span>
-          {t.sentence} {idx + 1} / {lines.length} · {t.looping} {formatTime(lines[idx].start)}–{formatTime(lines[idx].end)}
+          {t.sentence} {idx + 1} / {lines.length} · {formatTime(lines[idx].start)}–{formatTime(lines[idx].end)}
         </span>
         <span>{formatTime(lines[lines.length - 1].end)}</span>
       </Box>
@@ -235,17 +237,15 @@ function Timeline({ lines, idx, done, onPick }: { lines: Video['lines']; idx: nu
   )
 }
 
-function Stepper({ label, value, onChange, min, max, format }: { label: string; value: number; onChange: (v: number) => void; min: number; max: number; format: (v: number) => string }) {
-  const btn = { width: 44, height: 44, borderRadius: 2.5, bgcolor: 'background.default', color: 'text.primary', fontSize: 18 }
-  return (
-    <Box role="group" aria-label={label} sx={{ display: 'flex', alignItems: 'center', gap: 0.5, fontSize: 14 }}>
-      <Box component="span" sx={{ color: 'text.secondary', fontWeight: 500, mr: 0.5 }}>{label}</Box>
-      <ButtonBase aria-label={`${label} −`} disabled={value <= min} onClick={() => onChange(value - 1)} sx={btn}>−</ButtonBase>
-      <Box component="output" sx={{ minWidth: 36, textAlign: 'center', fontFamily: MONO, fontSize: 15 }}>{format(value)}</Box>
-      <ButtonBase aria-label={`${label} +`} disabled={value >= max} onClick={() => onChange(value + 1)} sx={btn}>+</ButtonBase>
-    </Box>
-  )
-}
+const toggleSx = (on: boolean) => ({
+  gap: 1,
+  px: 1.75,
+  fontWeight: 600,
+  border: '1.5px solid',
+  borderColor: on ? 'primary.main' : 'divider',
+  borderRadius: 3,
+  '&.Mui-selected, &.Mui-selected:hover': { bgcolor: 'accentSoft', color: 'text.primary' },
+})
 
 function Controls({ idx, total, playing, onToggle, onPlayLine }: { idx: number; total: number; playing: boolean; onToggle: () => void; onPlayLine: (i: number) => void }) {
   const t = useT()
@@ -262,16 +262,20 @@ function Controls({ idx, total, playing, onToggle, onPlayLine }: { idx: number; 
         <IconButton aria-label={t.next} disabled={idx >= total - 1} onClick={() => onPlayLine(idx + 1)} sx={outlined}><SkipNextRounded /></IconButton>
       </Box>
       <Divider orientation="vertical" flexItem />
-      <ToggleButton
-        value="loop"
-        selected={s.loop}
-        onChange={() => update({ loop: !s.loop })}
-        sx={{ gap: 1, px: 1.75, fontWeight: 600, border: '1.5px solid', borderColor: s.loop ? 'primary.main' : 'divider', borderRadius: 3, '&.Mui-selected': { bgcolor: 'accentSoft', color: 'text.primary' } }}
-      >
+      <ToggleButton value="loop" selected={s.loop} onChange={() => update({ loop: !s.loop })} sx={toggleSx(s.loop)}>
         <RepeatRounded fontSize="small" /> {t.loop}
       </ToggleButton>
-      <Stepper label={t.repeat} value={s.repeat} min={1} max={10} onChange={(v) => update({ repeat: v })} format={(v) => `×${v}`} />
-      <Stepper label={t.gap} value={s.gap} min={0} max={8} onChange={(v) => update({ gap: v })} format={(v) => (v ? `${v}s` : t.off)} />
+      <ToggleButton value="autoPause" selected={s.autoPause} onChange={() => update({ autoPause: !s.autoPause })} sx={toggleSx(s.autoPause)}>
+        <PauseCircleOutlineRounded fontSize="small" /> {t.autoPause}
+      </ToggleButton>
+      <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+        <Box component="span" sx={{ color: 'text.secondary', fontWeight: 500, fontSize: 14 }}>{t.gap}</Box>
+        <ToggleButtonGroup exclusive size="small" value={s.delay} aria-label={t.gap} onChange={(_, v: number | null) => v !== null && update({ delay: v })}>
+          {[0, 1, 1.5, 2, 3].map((v) => (
+            <ToggleButton key={v} value={v} sx={{ fontFamily: MONO, px: 1.25 }}>{v ? `${v}s` : t.off}</ToggleButton>
+          ))}
+        </ToggleButtonGroup>
+      </Box>
       <Box sx={{ flexGrow: 1 }} />
       <ToggleButtonGroup exclusive size="small" value={s.speed} aria-label={t.speed} onChange={(_, v: number | null) => v && update({ speed: v })}>
         {[0.5, 0.75, 1, 1.25].map((v) => (

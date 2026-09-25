@@ -1,5 +1,5 @@
 import { expect, test } from 'vitest'
-import { clampEnds, decodeEntities, formatTime, parseSrv3, parseSubtitleFile, parseTranscriptText, parseYouTubeId, toCsv, toSentences, withWordTimes, wordKey } from './text'
+import { clampEnds, decodeEntities, formatTime, parseSrv3, parseSubtitleFile, parseTranscriptText, parseYouTubeId, sentenceAt, toCsv, toSentences, withWordTimes, wordKey } from './text'
 
 test('parseYouTubeId accepts every link shape and bare ids', () => {
   const id = 'aB3xY9kLm2Q'
@@ -106,4 +106,13 @@ test('small helpers', () => {
   expect(wordKey('“That’ll,')).toBe("that'll")
   expect(wordKey('please?')).toBe('please')
   expect(toCsv([['a "b"', 'c']])).toBe('"a ""b""","c"')
+})
+
+test('sentenceAt follows the video; a silent gap belongs half to each side', () => {
+  const lines = [
+    { start: 2, end: 4, text: 'a' },
+    { start: 4, end: 6, text: 'b' },
+    { start: 8, end: 10, text: 'c' },
+  ]
+  expect([0, 3, 4.1, 6.9, 7.1, 20].map((t) => sentenceAt(lines, t))).toEqual([0, 0, 1, 1, 2, 2])
 })

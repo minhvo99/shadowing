@@ -19,7 +19,7 @@ import type { Video } from '../lib/db'
 import type { Karaoke } from '../lib/shadowing'
 import { formatTime, maskText, wordKey } from '../lib/text'
 import { useDictionary, useNoteActions, useNotes, useWordActions, useWords } from '../queries'
-import { useSettings, useUpdateSettings, type Mode } from '../settings'
+import { useSettings, useUpdateSettings, type View } from '../settings'
 import { MONO } from '../theme'
 
 const label = { fontSize: 12, fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'text.secondary' } as const
@@ -85,12 +85,12 @@ export function Words({ text, selected, onPick, sx, overlay, karaoke }: { text: 
 
 export function TranscriptPanel({ lines, idx, done, word, karaoke, onPick, onWord }: { lines: Video['lines']; idx: number; done: number[]; word: string | null; karaoke?: Karaoke; onPick: (i: number) => void; onWord: (w: string) => void }) {
   const t = useT()
-  const { mode } = useSettings()
+  const { view } = useSettings()
   const update = useUpdateSettings()
   const list = useRef<HTMLDivElement>(null)
   const active = useRef<HTMLDivElement>(null)
   const doneSet = new Set(done)
-  const blind = mode === 'blind'
+  const blind = view === 'blind'
 
   // Keep the current sentence in view without scrolling the whole page.
   useEffect(() => {
@@ -102,11 +102,10 @@ export function TranscriptPanel({ lines, idx, done, word, karaoke, onPick, onWor
   return (
     <>
       <Box sx={{ px: 2, pt: 1.75, pb: 1, display: 'flex', flexDirection: 'column', gap: 1.25 }}>
-        <ToggleButtonGroup exclusive fullWidth size="small" value={mode} aria-label={t.modeLabel} onChange={(_, v: Mode | null) => v && update({ mode: v })}>
-          <ToggleButton value="listen">{t.mListen}</ToggleButton>
-          <ToggleButton value="along">{t.mAlong}</ToggleButton>
-          <ToggleButton value="blind">{t.mBlind}</ToggleButton>
+        <ToggleButtonGroup exclusive fullWidth size="small" value={view} aria-label={t.modeLabel} onChange={(_, v: View | null) => v && update({ view: v })}>
+          <ToggleButton value="text">{t.mText}</ToggleButton>
           <ToggleButton value="karaoke">{t.mKaraoke}</ToggleButton>
+          <ToggleButton value="blind">{t.mBlind}</ToggleButton>
         </ToggleButtonGroup>
         <Typography sx={{ fontSize: 12, color: 'text.secondary' }}>{t.tapHint}</Typography>
       </Box>

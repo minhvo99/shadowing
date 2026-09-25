@@ -72,6 +72,23 @@ export function parseSubtitleFile(src: string): Cue[] {
   return cues
 }
 
+const STAMP = /^((?:\d{1,2}:)?\d{1,2}:\d{2})(?:\s+(.*))?$/
+
+// Text copied from YouTube's "Show transcript" panel: a timestamp line (or prefix) starts each segment.
+// ponytail: text before the first timestamp is dropped; chapter headings between segments stick to the previous one.
+export function parseTranscriptText(src: string): Cue[] {
+  const cues: Cue[] = []
+  for (const raw of src.split('\n')) {
+    const line = raw.trim()
+    const m = line.match(STAMP)
+    if (m) cues.push({ start: toSeconds(m[1]), end: 0, text: m[2] ?? '' })
+    else if (line && cues.length) cues[cues.length - 1].text += ` ${line}`
+  }
+  return cues
+    .map((c, i) => ({ start: c.start, end: cues[i + 1]?.start ?? c.start + 5, text: clean(c.text) }))
+    .filter((c) => c.text)
+}
+
 const SENTENCE_END = /[.?!…]["'”’)\]]?$/
 
 // Auto-captions roll: each cue's `dur` runs into the next cue. End every cue where the next begins.

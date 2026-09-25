@@ -22,15 +22,16 @@ import Typography from '@mui/material/Typography'
 import { useQuery } from '@tanstack/react-query'
 import { useEffect, useRef, useState, ViewTransition } from 'react'
 import { useParams, useSearchParams } from 'react-router'
+import { SubtitleImport } from '../components/SubtitleImport'
 import { DictionaryPanel, NotesPanel, TranscriptPanel, Words } from '../components/PlayerPanels'
 import { useT } from '../i18n'
 import type { Video } from '../lib/db'
 import { useRecorder, waveform } from '../lib/recorder'
 import { useKaraoke, useShadowing } from '../lib/shadowing'
-import { formatTime, parseSubtitleFile, toSentences, wordKey } from '../lib/text'
+import { formatTime, wordKey } from '../lib/text'
 import { useYouTubePlayer } from '../lib/youtube-player'
 import { PageTransition, TypedLink } from '../nav'
-import { useNotes, usePatchVideo, useRecording, useSaveRecording, useSaveVideo, useVideo, withSubtitles } from '../queries'
+import { useNotes, usePatchVideo, useRecording, useSaveRecording, useVideo } from '../queries'
 import { useSettings, useUpdateSettings } from '../settings'
 import { MONO } from '../theme'
 
@@ -338,29 +339,11 @@ function RecordPanel({ video, idx, recording, onToggleRec, onReplay }: { video: 
 
 function NoSubtitles({ video }: { video: Video }) {
   const t = useT()
-  const save = useSaveVideo()
-  const [error, setError] = useState(false)
   return (
-    <Paper sx={{ borderRadius: 4, p: 3, display: 'flex', flexDirection: 'column', gap: 1.5, alignItems: 'flex-start' }}>
-      <Typography sx={{ fontWeight: 700, fontSize: 18 }}>{t.noSubsTitle}</Typography>
-      <Typography color="text.secondary">{t.noSubsBody}</Typography>
-      {error ? <Typography color="secondary.main">{t.subsInvalid}</Typography> : null}
-      <Button component="label" variant="contained">
-        {t.uploadSubs}
-        <input
-          hidden
-          type="file"
-          accept=".srt,.vtt,text/vtt"
-          onChange={async (e) => {
-            const file = e.target.files?.[0]
-            e.target.value = ''
-            if (!file) return
-            const cues = parseSubtitleFile(await file.text())
-            setError(!cues.length)
-            if (cues.length) save.mutate(withSubtitles(video, toSentences(cues)))
-          }}
-        />
-      </Button>
+    <Paper sx={{ borderRadius: 4, p: 3, display: 'flex', flexWrap: 'wrap', gap: 1.5, alignItems: 'center' }}>
+      <Typography sx={{ fontWeight: 700, fontSize: 18, width: '100%' }}>{t.noSubsTitle}</Typography>
+      <Typography color="text.secondary" sx={{ width: '100%' }}>{t.noSubsBody}</Typography>
+      <SubtitleImport video={video} />
     </Paper>
   )
 }

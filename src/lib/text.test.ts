@@ -1,5 +1,5 @@
 import { expect, test } from 'vitest'
-import { clampEnds, decodeEntities, formatTime, parseSrv3, parseSubtitleFile, parseYouTubeId, toCsv, toSentences, withWordTimes, wordKey } from './text'
+import { clampEnds, decodeEntities, formatTime, parseSrv3, parseSubtitleFile, parseTranscriptText, parseYouTubeId, toCsv, toSentences, withWordTimes, wordKey } from './text'
 
 test('parseYouTubeId accepts every link shape and bare ids', () => {
   const id = 'aB3xY9kLm2Q'
@@ -72,6 +72,22 @@ test('auto-caption cues overlap; a sentence must end where the next one starts',
     { start: 0, end: 3, text: 'a' },
     { start: 3, end: 6, text: 'b' },
   ])
+})
+
+test('parses a transcript copied from YouTube "Show transcript"', () => {
+  // Desktop copy: timestamp and text on separate lines, plus chapter headings and blank lines.
+  const copied = 'Intro\n0:00\nhi everyone\n\n0:03\ntoday we talk\n1:02:05\nlast line'
+  expect(parseTranscriptText(copied)).toEqual([
+    { start: 0, end: 3, text: 'hi everyone' },
+    { start: 3, end: 3725, text: 'today we talk' },
+    { start: 3725, end: 3730, text: 'last line' },
+  ])
+  // Some browsers copy each row onto one line; multi-line text joins up.
+  expect(parseTranscriptText('0:01 hello there\n0:04 how are\nyou')).toEqual([
+    { start: 1, end: 4, text: 'hello there' },
+    { start: 4, end: 9, text: 'how are you' },
+  ])
+  expect(parseTranscriptText('no timestamps here')).toEqual([])
 })
 
 test('parses srt and vtt', () => {

@@ -21,9 +21,10 @@ import { startTransition, useMemo, useState, ViewTransition } from 'react'
 import { useT, type Strings } from '../i18n'
 import { exportBackup, type Video } from '../lib/db'
 import { download } from '../lib/download'
-import { formatTime, parseSubtitleFile, parseYouTubeId, thumb, toSentences } from '../lib/text'
+import { SubtitleImport } from '../components/SubtitleImport'
+import { formatTime, parseYouTubeId, thumb } from '../lib/text'
 import { PageTransition, TypedLink, useNavigateWithType } from '../nav'
-import { useDeleteVideo, useImportBackup, useLibrary, useNotes, useSaveVideo, useVideo, useWords, withSubtitles } from '../queries'
+import { useDeleteVideo, useImportBackup, useLibrary, useNotes, useSaveVideo, useVideo, useWords } from '../queries'
 import { useSettings } from '../settings'
 import { MONO } from '../theme'
 
@@ -89,7 +90,7 @@ export function Library() {
           </Typography>
 
           {id ? (
-            <PreviewCard id={id} shared={!inLibrary} onError={setToast} />
+            <PreviewCard id={id} shared={!inLibrary} />
           ) : empty ? (
             <Box sx={{ p: 2.5, border: '1.5px dashed', borderColor: 'divider', borderRadius: 4, color: 'text.secondary' }}>{t.emptyHint}</Box>
           ) : (
@@ -113,7 +114,7 @@ function captionsLabel(t: Strings, c: Video['captions']) {
   return { manual: t.captionsManual, auto: t.captionsAuto, none: t.captionsNone, file: t.captionsFile }[c]
 }
 
-function PreviewCard({ id, shared, onError }: { id: string; shared: boolean; onError: (m: string) => void }) {
+function PreviewCard({ id, shared }: { id: string; shared: boolean }) {
   const t = useT()
   const { data: video, isPending, error } = useVideo(id)
   const save = useSaveVideo()
@@ -163,22 +164,7 @@ function PreviewCard({ id, shared, onError }: { id: string; shared: boolean; onE
               >
                 {saved ? t.added : t.add}
               </Button>
-              <Button component="label" size="large">
-                {t.ownSubs}
-                <input
-                  hidden
-                  type="file"
-                  accept=".srt,.vtt,text/vtt"
-                  onChange={async (e) => {
-                    const file = e.target.files?.[0]
-                    e.target.value = ''
-                    if (!file) return
-                    const cues = parseSubtitleFile(await file.text())
-                    if (!cues.length) return onError(t.subsInvalid)
-                    save.mutate(withSubtitles(video, toSentences(cues)), { onSuccess: () => go(`/watch/${id}`, 'nav-forward') })
-                  }}
-                />
-              </Button>
+              {video.captions === 'none' ? <SubtitleImport video={video} onSaved={() => go(`/watch/${id}`, 'nav-forward')} /> : null}
             </Box>
           </>
         )}

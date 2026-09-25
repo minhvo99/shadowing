@@ -1,4 +1,4 @@
-import { parseSrv3, toSentences, type Cue } from '../src/lib/text'
+import { parseSrv3, toSentences, type Cue } from '../src/lib/text.js'
 
 export type VideoData = {
   id: string

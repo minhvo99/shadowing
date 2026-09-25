@@ -1,9 +1,15 @@
-import { fetch, ProxyAgent } from 'undici'
 import { parseSrv3, toSentences, type Cue } from '../src/lib/text.js'
 
-// YouTube bot-checks datacenter IPs (Vercel). Set YT_PROXY_URL=http://user:pass@host:port to a
-// *residential* proxy and every YouTube request goes through it. Unset: direct (fine locally).
-const proxy = process.env.YT_PROXY_URL ? new ProxyAgent(process.env.YT_PROXY_URL) : undefined
+// YouTube bot-checks datacenter IPs (Vercel). Set YT_PROXY_URL to a *residential* proxy and every
+// YouTube request goes through it. Unset: direct (fine locally).
+// Accepts http://user:pass@host:port, user:pass@host:port, host:port and host:port:user:pass.
+export function proxyUrl(raw?: string): string | undefined {
+  const s = raw?.trim()
+  if (!s) return undefined
+  if (/^https?:\/\//.test(s)) return s
+  const m = s.match(/^([^:@\s]+):(\d+):([^:\s]+):(\S+)$/)
+  return m ? `http://${encodeURIComponent(m[3])}:${encodeURIComponent(m[4])}@${m[1]}:${m[2]}` : `http://${s}`
+}
 
 export type VideoData = {
   id: string
@@ -22,6 +28,11 @@ const UA = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (
 // caption URLs that don't need a proof-of-origin token.
 // ponytail: unofficial endpoint, YouTube may block datacenter IPs; the UI falls back to .srt/.vtt upload.
 export async function fetchVideo(id: string): Promise<VideoData> {
+  // Loaded here, not at module top, so a bad proxy URL or runtime problem becomes a JSON error instead of a crash.
+  const { fetch, ProxyAgent } = await import('undici')
+  const url = proxyUrl(process.env.YT_PROXY_URL)
+  const proxy = url ? new ProxyAgent(url) : undefined
+
   // No API key or watch-page fetch needed: saves ~1.3 MB of (paid) proxy traffic per video.
   const res = await fetch('https://www.youtube.com/youtubei/v1/player?prettyPrint=false', {
     method: 'POST',

@@ -55,6 +55,7 @@ const vi = {
   gap: 'Nghỉ để nói',
   off: 'Tắt',
   autoPause: 'Tự dừng cuối câu',
+  overlay: 'Phụ đề trên video',
   yourTurn: 'Đến lượt bạn nói',
   pausedAtEnd: 'Đã dừng cuối câu · Space để sang câu tiếp',
   speed: 'Tốc độ',
@@ -107,7 +108,7 @@ const vi = {
   pickWord: 'Bấm vào một từ trong phụ đề để tra.',
   notFound: 'Không có trong từ điển tiếng Anh.',
   lookupFailed: 'Không tra được, thử lại sau.',
-  keys: { play: 'phát/dừng', nav: 'đổi câu', loop: 'lặp', pause: 'tự dừng', rec: 'ghi âm', note: 'ghi chú' },
+  keys: { play: 'phát/dừng', nav: 'đổi câu', loop: 'lặp', pause: 'tự dừng', overlay: 'phụ đề', rec: 'ghi âm', note: 'ghi chú' },
 
   nbTitle: 'Sổ tay',
   tWords: 'Từ vựng',
@@ -182,6 +183,7 @@ const en: Strings = {
   gap: 'Pause to speak',
   off: 'Off',
   autoPause: 'Auto-pause',
+  overlay: 'Subtitles on video',
   yourTurn: 'Your turn to speak',
   pausedAtEnd: 'Paused at sentence end · Space for the next one',
   speed: 'Speed',
@@ -234,7 +236,7 @@ const en: Strings = {
   pickWord: 'Tap a word in the subtitles to look it up.',
   notFound: 'Not in the English dictionary.',
   lookupFailed: 'Lookup failed, try again later.',
-  keys: { play: 'play/pause', nav: 'sentence', loop: 'loop', pause: 'auto-pause', rec: 'record', note: 'note' },
+  keys: { play: 'play/pause', nav: 'sentence', loop: 'loop', pause: 'auto-pause', overlay: 'subtitles', rec: 'record', note: 'note' },
 
   nbTitle: 'Notebook',
   tWords: 'Words',

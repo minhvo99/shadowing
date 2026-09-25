@@ -15,6 +15,8 @@ export type Settings = {
   /** Seconds of silence after each sentence, to speak it back. 0 = off. */
   delay: number
   view: View
+  /** Subtitles drawn over the video. */
+  overlay: boolean
 }
 
 const STORAGE_KEY = 'shadowing:settings'
@@ -26,6 +28,7 @@ const DEFAULTS: Settings = {
   autoPause: false,
   delay: 0,
   view: 'karaoke',
+  overlay: true,
 }
 
 // localStorage (sync) so the first paint already has the right language.

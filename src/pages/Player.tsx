@@ -7,6 +7,8 @@ import RepeatRounded from '@mui/icons-material/RepeatRounded'
 import SkipNextRounded from '@mui/icons-material/SkipNextRounded'
 import SkipPreviousRounded from '@mui/icons-material/SkipPreviousRounded'
 import StopRounded from '@mui/icons-material/StopRounded'
+import SubtitlesOffOutlined from '@mui/icons-material/SubtitlesOffOutlined'
+import SubtitlesOutlined from '@mui/icons-material/SubtitlesOutlined'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import ButtonBase from '@mui/material/ButtonBase'
@@ -126,6 +128,7 @@ function Session({ video }: { video: Video }) {
         ArrowRight: () => k.playLine(k.idx + 1),
         l: () => update({ loop: !k.settings.loop }),
         p: () => update({ autoPause: !k.settings.autoPause }),
+        c: () => update({ overlay: !k.settings.overlay }),
         r: () => k.recorder.toggle(),
         n: () => {
           setTab('notes')
@@ -149,14 +152,15 @@ function Session({ video }: { video: Video }) {
     <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', lg: 'minmax(0, 1fr) 460px' }, gap: 3.5, alignItems: 'start' }}>
       <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2.25, minWidth: 0 }}>
         <ViewTransition name={`video-${video.id}`} share="morph">
-          <Box sx={{ position: 'relative', aspectRatio: '16 / 9', borderRadius: 4, overflow: 'hidden', bgcolor: '#0A0A09' }}>
+          <Box sx={{ position: 'relative', aspectRatio: '16 / 9', borderRadius: 4, overflow: 'hidden', bgcolor: '#0A0A09', containerType: 'inline-size' }}>
             <Box ref={containerRef} sx={{ position: 'absolute', inset: 0, '& iframe': { width: '100%', height: '100%', border: 0 } }} />
-            {line ? (
-              <Box sx={{ position: 'absolute', left: '50%', bottom: { xs: 12, md: 56 }, transform: 'translateX(-50%)', maxWidth: '86%', px: 1.75, py: 1, borderRadius: 2.5, bgcolor: 'rgba(0,0,0,.8)', color: '#fff', textAlign: 'center', pointerEvents: 'auto' }}>
+            {line && settings.overlay ? (
+              // Sized to the video (cqw) and kept above YouTube's control bar.
+              <Box sx={{ position: 'absolute', left: '50%', bottom: '14%', transform: 'translateX(-50%)', width: 'max-content', maxWidth: '82%', px: 1.25, py: 0.5, borderRadius: 2, bgcolor: 'rgba(0,0,0,.72)', color: '#fff', textAlign: 'center', fontSize: 'clamp(12px, 2.3cqw, 19px)', lineHeight: 1.35 }}>
                 {blind ? (
-                  <Typography sx={{ color: '#BDB8AE', fontWeight: 500 }}>{t.subHidden}</Typography>
+                  <Typography sx={{ color: '#BDB8AE', fontWeight: 500, fontSize: 'inherit' }}>{t.subHidden}</Typography>
                 ) : (
-                  <Words text={line.text} selected={word} onPick={lookUp} karaoke={karaoke} sx={{ fontSize: { xs: 16, md: 22 }, fontWeight: 500 }} overlay />
+                  <Words text={line.text} selected={word} onPick={lookUp} karaoke={karaoke} sx={{ fontSize: 'inherit', fontWeight: 500 }} overlay />
                 )}
               </Box>
             ) : null}
@@ -199,7 +203,7 @@ function Session({ video }: { video: Video }) {
           <DictionaryPanel word={word} recent={recent} onWord={lookUp} video={video} idx={idx} />
         )}
         <Box sx={{ px: 2.5, py: 1.5, borderTop: 1, borderColor: 'divider', display: 'flex', gap: 1.75, flexWrap: 'wrap', fontSize: 12, color: 'text.secondary' }}>
-          {([['Space', t.keys.play], ['← →', t.keys.nav], ['L', t.keys.loop], ['P', t.keys.pause], ['R', t.keys.rec], ['N', t.keys.note]] as const).map(([k, label]) => (
+          {([['Space', t.keys.play], ['← →', t.keys.nav], ['L', t.keys.loop], ['P', t.keys.pause], ['C', t.keys.overlay], ['R', t.keys.rec], ['N', t.keys.note]] as const).map(([k, label]) => (
             <span key={k}>
               <Box component="kbd" sx={{ fontFamily: MONO, border: 1, borderColor: 'divider', borderRadius: 1, px: 0.75, color: 'text.primary' }}>{k}</Box> {label}
             </span>
@@ -264,6 +268,9 @@ function Controls({ idx, total, playing, onToggle, onPlayLine }: { idx: number; 
       <Divider orientation="vertical" flexItem />
       <ToggleButton value="loop" selected={s.loop} onChange={() => update({ loop: !s.loop })} sx={toggleSx(s.loop)}>
         <RepeatRounded fontSize="small" /> {t.loop}
+      </ToggleButton>
+      <ToggleButton value="overlay" selected={s.overlay} onChange={() => update({ overlay: !s.overlay })} sx={toggleSx(s.overlay)}>
+        {s.overlay ? <SubtitlesOutlined fontSize="small" /> : <SubtitlesOffOutlined fontSize="small" />} {t.overlay}
       </ToggleButton>
       <ToggleButton value="autoPause" selected={s.autoPause} onChange={() => update({ autoPause: !s.autoPause })} sx={toggleSx(s.autoPause)}>
         <PauseCircleOutlineRounded fontSize="small" /> {t.autoPause}

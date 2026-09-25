@@ -1,5 +1,7 @@
 # Shadowing Studio
 
+[English](README.en.md) · **Tiếng Việt**
+
 Luyện shadowing tiếng Anh với video YouTube: dán link → luyện từng câu (lặp, nghỉ để nói, đổi tốc độ, ghi âm so sánh) → tra từ, ghi chú, lưu sổ tay. Giao diện tiếng Việt / tiếng Anh, sáng / tối.
 
 React 19 · React Router · TanStack Query · MUI · Vite. Deploy lên Vercel, không cần server hay database.
@@ -17,6 +19,14 @@ pnpm build
 
 Import repo vào Vercel (framework: Vite). `api/video.ts` tự thành serverless function; `vercel.json` rewrite mọi route còn lại về SPA.
 
+## Proxy cho YouTube (tuỳ chọn)
+
+Trên Vercel, YouTube chặn IP máy chủ ("Sign in to confirm you're not a bot"). Không có proxy thì người dùng dán transcript / tải file phụ đề. Muốn lấy phụ đề tự động:
+
+1. Chuẩn bị một HTTP proxy **dùng IP dân cư** (proxy datacenter/VPS cũng bị chặn y như Vercel). Tự dựng trên máy ở nhà hoặc dùng dịch vụ residential proxy đều được.
+2. Vercel → Project → Settings → Environment Variables: `YT_PROXY_URL` = `http://user:pass@host:port`.
+3. Redeploy. Mọi request tới YouTube của `api/video.ts` sẽ đi qua proxy; mỗi video ~175 KB, kết quả được CDN cache 1 ngày.
+
 ## Dữ liệu
 
 - Lưu trong IndexedDB của trình duyệt (`src/lib/db.ts`): video + phụ đề + tiến độ, ghi chú, từ đã lưu, bản ghi âm.
@@ -27,7 +37,7 @@ Import repo vào Vercel (framework: Vite). `api/video.ts` tự thành serverless
 
 | Việc | Nguồn | Ghi chú |
 |---|---|---|
-| Tiêu đề + phụ đề | `api/video.ts` gọi YouTube (innertube, không chính thức) | YouTube có thể chặn IP máy chủ; khi đó dùng nút tải file `.srt/.vtt` |
+| Tiêu đề + phụ đề | `api/video.ts` gọi YouTube (innertube, không chính thức) | Bị chặn trên Vercel nếu không có proxy; khi đó tiêu đề lấy qua oEmbed, phụ đề do người dùng dán transcript hoặc tải `.srt/.vtt` |
 | Phát video | YouTube IFrame Player API | |
 | Định nghĩa, IPA, audio | dictionaryapi.dev, dự phòng Wiktionary | Không có audio thì dùng giọng đọc của trình duyệt |
 | Nghĩa tiếng Việt | MyMemory (dịch máy) | Giới hạn miễn phí ~5000 ký tự/ngày/IP; người dùng sửa được trước khi lưu |

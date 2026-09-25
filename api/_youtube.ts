@@ -1,4 +1,9 @@
+import { fetch, ProxyAgent } from 'undici'
 import { parseSrv3, toSentences, type Cue } from '../src/lib/text.js'
+
+// YouTube bot-checks datacenter IPs (Vercel). Set YT_PROXY_URL=http://user:pass@host:port to a
+// *residential* proxy and every YouTube request goes through it. Unset: direct (fine locally).
+const proxy = process.env.YT_PROXY_URL ? new ProxyAgent(process.env.YT_PROXY_URL) : undefined
 
 export type VideoData = {
   id: string
@@ -17,16 +22,14 @@ const UA = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (
 // caption URLs that don't need a proof-of-origin token.
 // ponytail: unofficial endpoint, YouTube may block datacenter IPs; the UI falls back to .srt/.vtt upload.
 export async function fetchVideo(id: string): Promise<VideoData> {
-  const html = await (await fetch(`https://www.youtube.com/watch?v=${id}&hl=en`, { headers: { 'User-Agent': UA, 'Accept-Language': 'en-US' } })).text()
-  const key = html.match(/"INNERTUBE_API_KEY":"([^"]+)"/)?.[1]
-  if (!key) throw new Error('YouTube page could not be read')
-
-  const res = await fetch(`https://www.youtube.com/youtubei/v1/player?key=${key}`, {
+  // No API key or watch-page fetch needed: saves ~1.3 MB of (paid) proxy traffic per video.
+  const res = await fetch('https://www.youtube.com/youtubei/v1/player?prettyPrint=false', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ context: { client: { clientName: 'ANDROID', clientVersion: '20.10.38' } }, videoId: id }),
+    dispatcher: proxy,
   })
-  const player = await res.json()
+  const player = (await res.json()) as any
   if (player.playabilityStatus?.status !== 'OK') {
     throw new Error(player.playabilityStatus?.reason ?? 'Video unavailable')
   }
@@ -39,7 +42,7 @@ export async function fetchVideo(id: string): Promise<VideoData> {
   let lines: Cue[] = []
   if (track) {
     // srv3 carries per-word timings for auto captions (used by karaoke mode).
-    const xml = await (await fetch(`${track.baseUrl.replace(/&fmt=[^&]+/, '')}&fmt=srv3`, { headers: { 'User-Agent': UA } })).text()
+    const xml = await (await fetch(`${track.baseUrl.replace(/&fmt=[^&]+/, '')}&fmt=srv3`, { headers: { 'User-Agent': UA }, dispatcher: proxy })).text()
     lines = toSentences(parseSrv3(xml))
   }
 

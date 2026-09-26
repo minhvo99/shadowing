@@ -7,13 +7,13 @@ import DialogTitle from '@mui/material/DialogTitle'
 import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
 import { useState } from 'react'
-import { useT } from '../i18n'
-import type { Video } from '../lib/db'
-import { parseSubtitleFile, parseTranscriptText, toSentences, type Cue } from '../lib/text'
-import { useSaveVideo, withSubtitles } from '../queries'
+import { useT } from '@hooks'
+import type { Video } from '@libs/db'
+import { parseSubtitleFile, parseTranscriptText, toSentences, type Cue } from '@libs/text'
+import { useSaveVideo, withSubtitles } from '@services/videoAPI'
 
 /** Bring your own subtitles when YouTube won't hand them to us: paste the transcript, or upload .srt/.vtt. */
-export function SubtitleImport({ video, onSaved }: { video: Video; onSaved?: () => void }) {
+function SubtitleImport({ video, onSaved }: { video: Video; onSaved?: () => void }) {
   const t = useT()
   const save = useSaveVideo()
   const [open, setOpen] = useState(false)
@@ -73,3 +73,5 @@ export function SubtitleImport({ video, onSaved }: { video: Video; onSaved?: () 
     </>
   )
 }
+
+export default SubtitleImport

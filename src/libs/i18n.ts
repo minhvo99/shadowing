@@ -1,5 +1,3 @@
-import { useSettings } from './settings'
-
 const vi = {
   library: 'Thư viện',
   notebook: 'Sổ tay',
@@ -254,8 +252,4 @@ const en: Strings = {
   notFoundPage: 'Page not found',
 }
 
-const STRINGS = { vi, en }
-
-export function useT(): Strings {
-  return STRINGS[useSettings().lang]
-}
+export const STRINGS = { vi, en }

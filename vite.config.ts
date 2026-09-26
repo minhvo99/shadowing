@@ -1,3 +1,4 @@
+import { fileURLToPath } from 'node:url'
 import react from '@vitejs/plugin-react'
 import { defineConfig, type Plugin } from 'vite'
 
@@ -15,4 +16,19 @@ const devApi = (): Plugin => ({
   },
 })
 
-export default defineConfig({ plugins: [react(), devApi()] })
+const src = (dir: string) => fileURLToPath(new URL(`./src/${dir}`, import.meta.url))
+
+export default defineConfig({
+  plugins: [react(), devApi()],
+  resolve: {
+    alias: {
+      '@components': src('components'),
+      '@configs': src('configs'),
+      '@hooks': src('hooks'),
+      '@libs': src('libs'),
+      '@pages': src('pages'),
+      '@services': src('services'),
+      '@utils': src('utils'),
+    },
+  },
+})

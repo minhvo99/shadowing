@@ -1,7 +1,11 @@
 {
   "compilerOptions": {
     "target": "ES2022",
-    "lib": ["ES2024", "DOM", "DOM.Iterable"],
+    "lib": [
+      "ES2024",
+      "DOM",
+      "DOM.Iterable"
+    ],
     "module": "ESNext",
     "moduleResolution": "bundler",
     "jsx": "react-jsx",
@@ -11,7 +15,37 @@
     "isolatedModules": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "types": ["vite/client", "node"]
+    "types": [
+      "vite/client",
+      "node"
+    ],
+    "paths": {
+      "@components/*": [
+        "./src/components/*"
+      ],
+      "@configs/*": [
+        "./src/configs/*"
+      ],
+      "@libs/*": [
+        "./src/libs/*"
+      ],
+      "@pages/*": [
+        "./src/pages/*"
+      ],
+      "@services/*": [
+        "./src/services/*"
+      ],
+      "@utils/*": [
+        "./src/utils/*"
+      ],
+      "@hooks": [
+        "./src/hooks/index.ts"
+      ]
+    }
   },
-  "include": ["src", "api", "vite.config.ts"]
+  "include": [
+    "src",
+    "api",
+    "vite.config.ts"
+  ]
 }

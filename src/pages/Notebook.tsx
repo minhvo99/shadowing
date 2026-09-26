@@ -12,17 +12,18 @@ import Tabs from '@mui/material/Tabs'
 import Typography from '@mui/material/Typography'
 import { useDeferredValue, useMemo, useState } from 'react'
 import { Link } from 'react-router'
-import { pronounce } from '../components/PlayerPanels'
-import { useT } from '../i18n'
-import { download } from '../lib/download'
-import { formatTime, thumb, toCsv } from '../lib/text'
-import { PageTransition } from '../nav'
-import { useLibrary, useNoteActions, useNotes, useWordActions, useWords } from '../queries'
-import { MONO } from '../theme'
+import PageTransition from '@components/PageTransition'
+import { useT } from '@hooks'
+import { MONO } from '@libs/constants'
+import { formatTime, thumb, toCsv } from '@libs/text'
+import { useNoteActions, useNotes, useWordActions, useWords } from '@services/notebookAPI'
+import { useLibrary } from '@services/videoAPI'
+import { download } from '@utils/download'
+import { pronounce } from '@utils/pronounce'
 
 const watchUrl = (videoId: string, idx: number) => `/watch/${videoId}?s=${idx}`
 
-export default function Notebook() {
+function Notebook() {
   const t = useT()
   const [tab, setTab] = useState<'words' | 'notes'>('words')
   const [filter, setFilter] = useState('')
@@ -145,3 +146,5 @@ export default function Notebook() {
 function Empty({ text }: { text: string }) {
   return <Box sx={{ mt: 3, p: 4, border: '1.5px dashed', borderColor: 'divider', borderRadius: 3.5, color: 'text.secondary' }}>{text}</Box>
 }
+
+export default Notebook

@@ -7,9 +7,9 @@ import ToggleButton from '@mui/material/ToggleButton'
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup'
 import Tooltip from '@mui/material/Tooltip'
 import { NavLink } from 'react-router'
-import { useT } from '../i18n'
-import { useSettings, useUpdateSettings, type Lang } from '../settings'
-import { MONO } from '../theme'
+import { useT } from '@hooks'
+import { MONO } from '@libs/constants'
+import { useSettings, useUpdateSettings, type Lang } from '@services/settingAPI'
 
 function Logo() {
   return (
@@ -32,7 +32,7 @@ const linkSx = {
   '&.active': { color: 'text.primary', borderBottomColor: 'currentColor' },
 } as const
 
-export function Header() {
+function Header() {
   const t = useT()
   const { lang } = useSettings()
   const update = useUpdateSettings()
@@ -66,3 +66,5 @@ export function Header() {
     </Box>
   )
 }
+
+export default Header

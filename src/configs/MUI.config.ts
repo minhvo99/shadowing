@@ -11,9 +11,7 @@ declare module '@mui/material/styles' {
   }
 }
 
-export const MONO = '"JetBrains Mono", ui-monospace, monospace'
-
-export const theme = createTheme({
+const theme = createTheme({
   cssVariables: { colorSchemeSelector: 'class' },
   colorSchemes: {
     light: {
@@ -64,3 +62,5 @@ export const theme = createTheme({
     },
   },
 })
+
+export default theme

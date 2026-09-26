@@ -1,4 +1,4 @@
-import { parseSrv3, toSentences, type Cue } from '../src/lib/text.js'
+import { parseSrv3, toSentences, type Cue } from '../src/libs/text.js'
 
 // YouTube bot-checks datacenter IPs (Vercel). Set YT_PROXY_URL to a *residential* proxy and every
 // YouTube request goes through it. Unset: direct (fine locally).

@@ -1,4 +1,4 @@
-import { parseYouTubeId } from '../src/lib/text.js'
+import { parseYouTubeId } from '../src/libs/text.js'
 import { fetchVideo } from './_youtube.js'
 
 // GET /api/video?id=<youtube id> → title, duration and English captions merged into sentences.

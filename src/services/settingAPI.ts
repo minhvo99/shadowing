@@ -1,5 +1,6 @@
 import { useQuery, useQueryClient } from '@tanstack/react-query'
-import { keys } from './queries'
+import { SETTINGS_STORAGE_KEY as STORAGE_KEY } from '@libs/constants'
+import { keys } from './rootApi'
 
 export type Lang = 'vi' | 'en'
 export type View = 'text' | 'karaoke' | 'blind'
@@ -19,7 +20,6 @@ export type Settings = {
   overlay: boolean
 }
 
-const STORAGE_KEY = 'shadowing:settings'
 const DEFAULTS: Settings = {
   v: 2,
   lang: navigator.language.startsWith('vi') ? 'vi' : 'en',

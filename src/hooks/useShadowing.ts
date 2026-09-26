@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import type { Settings } from '../settings'
-import { sentenceAt, withWordTimes, type Cue } from './text'
-import { PLAYING, type YTPlayer } from './youtube-player'
+import { sentenceAt, withWordTimes, type Cue } from '@libs/text'
+import type { Settings } from '@services/settingAPI'
+import { PLAYING, type YTPlayer } from './useYouTubePlayer'
 
 type Options = {
   player: YTPlayer | null

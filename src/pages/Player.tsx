@@ -1,44 +1,33 @@
+import Controls from '@components/Player/Controls'
+import DictionaryPanel from '@components/Player/DictionaryPanel'
+import NoSubtitles from '@components/Player/NoSubtitles'
+import NotesPanel from '@components/Player/NotesPanel'
+import RecordPanel from '@components/Player/RecordPanel'
+import Timeline from '@components/Player/Timeline'
+import TranscriptPanel from '@components/Player/TranscriptPanel'
+import Words from '@components/Player/Words'
+import PageTransition from '@components/PageTransition'
+import TypedLink from '@components/TypedLink'
+import { useKaraoke, useRecorder, useShadowing, useT, useYouTubePlayer } from '@hooks'
+import { MONO } from '@libs/constants'
+import type { Video } from '@libs/db'
+import { formatTime, wordKey } from '@libs/text'
 import ArrowBack from '@mui/icons-material/ArrowBack'
 import MicRounded from '@mui/icons-material/MicRounded'
-import PauseRounded from '@mui/icons-material/PauseRounded'
-import PauseCircleOutlineRounded from '@mui/icons-material/PauseCircleOutlineRounded'
-import PlayArrowRounded from '@mui/icons-material/PlayArrowRounded'
-import RepeatRounded from '@mui/icons-material/RepeatRounded'
-import SkipNextRounded from '@mui/icons-material/SkipNextRounded'
-import SkipPreviousRounded from '@mui/icons-material/SkipPreviousRounded'
-import StopRounded from '@mui/icons-material/StopRounded'
-import SubtitlesOffOutlined from '@mui/icons-material/SubtitlesOffOutlined'
-import SubtitlesOutlined from '@mui/icons-material/SubtitlesOutlined'
 import Box from '@mui/material/Box'
-import Button from '@mui/material/Button'
-import ButtonBase from '@mui/material/ButtonBase'
 import CircularProgress from '@mui/material/CircularProgress'
-import Divider from '@mui/material/Divider'
-import IconButton from '@mui/material/IconButton'
 import Paper from '@mui/material/Paper'
 import Snackbar from '@mui/material/Snackbar'
 import Tab from '@mui/material/Tab'
 import Tabs from '@mui/material/Tabs'
-import ToggleButton from '@mui/material/ToggleButton'
-import ToggleButtonGroup from '@mui/material/ToggleButtonGroup'
 import Typography from '@mui/material/Typography'
-import { useQuery } from '@tanstack/react-query'
+import { useNotes } from '@services/notebookAPI'
+import { useSettings, useUpdateSettings } from '@services/settingAPI'
+import { usePatchVideo, useSaveRecording, useVideo } from '@services/videoAPI'
 import { useEffect, useRef, useState, ViewTransition } from 'react'
 import { useParams, useSearchParams } from 'react-router'
-import { SubtitleImport } from '../components/SubtitleImport'
-import { DictionaryPanel, NotesPanel, TranscriptPanel, Words } from '../components/PlayerPanels'
-import { useT } from '../i18n'
-import type { Video } from '../lib/db'
-import { useRecorder, waveform } from '../lib/recorder'
-import { useKaraoke, useShadowing } from '../lib/shadowing'
-import { formatTime, wordKey } from '../lib/text'
-import { useYouTubePlayer } from '../lib/youtube-player'
-import { PageTransition, TypedLink } from '../nav'
-import { useNotes, usePatchVideo, useRecording, useSaveRecording, useVideo } from '../queries'
-import { useSettings, useUpdateSettings } from '../settings'
-import { MONO } from '../theme'
 
-export default function PlayerPage() {
+const PlayerPage = () => {
   const { id = '' } = useParams()
   const t = useT()
   const { data: video, error } = useVideo(id)
@@ -215,146 +204,4 @@ function Session({ video }: { video: Video }) {
   )
 }
 
-function Timeline({ lines, idx, done, onPick }: { lines: Video['lines']; idx: number; done: number[]; onPick: (i: number) => void }) {
-  const t = useT()
-  const doneSet = new Set(done)
-  return (
-    <Box>
-      <Box role="group" aria-label={t.sentence} sx={{ display: 'flex', gap: lines.length > 60 ? '1px' : '3px', height: 12 }}>
-        {lines.map((l, i) => (
-          <ButtonBase
-            key={i}
-            aria-label={`${t.sentence} ${i + 1}`}
-            aria-current={i === idx}
-            onClick={() => onPick(i)}
-            sx={{ flex: `${Math.max(0.3, l.end - l.start)} 1 0`, borderRadius: '3px', bgcolor: i === idx ? 'primary.main' : doneSet.has(i) ? 'primary.main' : 'divider', opacity: i !== idx && doneSet.has(i) ? 0.4 : 1 }}
-          />
-        ))}
-      </Box>
-      <Box sx={{ display: 'flex', justifyContent: 'space-between', mt: 1, fontFamily: MONO, fontSize: 12, color: 'text.secondary' }}>
-        <span>
-          {t.sentence} {idx + 1} / {lines.length} · {formatTime(lines[idx].start)}–{formatTime(lines[idx].end)}
-        </span>
-        <span>{formatTime(lines[lines.length - 1].end)}</span>
-      </Box>
-    </Box>
-  )
-}
-
-const toggleSx = (on: boolean) => ({
-  gap: 1,
-  px: 1.75,
-  fontWeight: 600,
-  border: '1.5px solid',
-  borderColor: on ? 'primary.main' : 'divider',
-  borderRadius: 3,
-  '&.Mui-selected, &.Mui-selected:hover': { bgcolor: 'accentSoft', color: 'text.primary' },
-})
-
-function Controls({ idx, total, playing, onToggle, onPlayLine }: { idx: number; total: number; playing: boolean; onToggle: () => void; onPlayLine: (i: number) => void }) {
-  const t = useT()
-  const s = useSettings()
-  const update = useUpdateSettings()
-  const outlined = { border: 1.5, borderColor: 'divider', borderRadius: 3 }
-  return (
-    <Paper sx={{ borderRadius: 4, px: 2.5, py: 2, display: 'flex', alignItems: 'center', gap: 2.5, flexWrap: 'wrap' }}>
-      <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-        <IconButton aria-label={t.prev} disabled={idx === 0} onClick={() => onPlayLine(idx - 1)} sx={outlined}><SkipPreviousRounded /></IconButton>
-        <IconButton aria-label={playing ? t.pause : t.play} onClick={onToggle} sx={{ width: 56, height: 56, bgcolor: 'primary.main', color: 'primary.contrastText', '&:hover': { bgcolor: 'primary.dark' } }}>
-          {playing ? <PauseRounded /> : <PlayArrowRounded />}
-        </IconButton>
-        <IconButton aria-label={t.next} disabled={idx >= total - 1} onClick={() => onPlayLine(idx + 1)} sx={outlined}><SkipNextRounded /></IconButton>
-      </Box>
-      <Divider orientation="vertical" flexItem />
-      <ToggleButton value="loop" selected={s.loop} onChange={() => update({ loop: !s.loop })} sx={toggleSx(s.loop)}>
-        <RepeatRounded fontSize="small" /> {t.loop}
-      </ToggleButton>
-      <ToggleButton value="overlay" selected={s.overlay} onChange={() => update({ overlay: !s.overlay })} sx={toggleSx(s.overlay)}>
-        {s.overlay ? <SubtitlesOutlined fontSize="small" /> : <SubtitlesOffOutlined fontSize="small" />} {t.overlay}
-      </ToggleButton>
-      <ToggleButton value="autoPause" selected={s.autoPause} onChange={() => update({ autoPause: !s.autoPause })} sx={toggleSx(s.autoPause)}>
-        <PauseCircleOutlineRounded fontSize="small" /> {t.autoPause}
-      </ToggleButton>
-      <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-        <Box component="span" sx={{ color: 'text.secondary', fontWeight: 500, fontSize: 14 }}>{t.gap}</Box>
-        <ToggleButtonGroup exclusive size="small" value={s.delay} aria-label={t.gap} onChange={(_, v: number | null) => v !== null && update({ delay: v })}>
-          {[0, 1, 1.5, 2, 3].map((v) => (
-            <ToggleButton key={v} value={v} sx={{ fontFamily: MONO, px: 1.25 }}>{v ? `${v}s` : t.off}</ToggleButton>
-          ))}
-        </ToggleButtonGroup>
-      </Box>
-      <Box sx={{ flexGrow: 1 }} />
-      <ToggleButtonGroup exclusive size="small" value={s.speed} aria-label={t.speed} onChange={(_, v: number | null) => v && update({ speed: v })}>
-        {[0.5, 0.75, 1, 1.25].map((v) => (
-          <ToggleButton key={v} value={v} sx={{ fontFamily: MONO, px: 1.5 }}>{v}×</ToggleButton>
-        ))}
-      </ToggleButtonGroup>
-    </Paper>
-  )
-}
-
-function RecordPanel({ video, idx, recording, onToggleRec, onReplay }: { video: Video; idx: number; recording: boolean; onToggleRec: () => void; onReplay: () => void }) {
-  const t = useT()
-  const blob = useRecording(video.id, idx).data
-  const bars = useQuery({
-    queryKey: ['waveform', video.id, idx, blob?.size],
-    enabled: !!blob,
-    queryFn: () => waveform(blob!),
-  }).data
-
-  return (
-    <Paper sx={{ borderRadius: 4, px: 2.5, py: 2.25, display: 'flex', flexDirection: 'column', gap: 1.75 }}>
-      <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
-        <Typography sx={{ fontWeight: 700, flexGrow: 1 }}>{t.recTitle}</Typography>
-        <Button
-          variant="contained"
-          color={recording ? 'inherit' : 'secondary'}
-          onClick={onToggleRec}
-          aria-pressed={recording}
-          startIcon={recording ? <StopRounded /> : <MicRounded />}
-          sx={{ borderRadius: 999, px: 2, ...(recording && { bgcolor: 'text.primary', color: 'background.default' }) }}
-        >
-          {recording ? t.stop : t.rec}
-        </Button>
-      </Box>
-      <Box sx={{ display: 'grid', gridTemplateColumns: '110px minmax(0, 1fr) 44px', gap: '10px 14px', alignItems: 'center' }}>
-        <Typography sx={{ fontSize: 13, fontWeight: 600, color: 'text.secondary' }}>{t.original}</Typography>
-        <Typography sx={{ fontSize: 14, fontStyle: 'italic', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{video.lines[idx]?.text}</Typography>
-        <IconButton aria-label={t.playOriginal} onClick={onReplay} sx={{ border: 1.5, borderColor: 'divider' }}><PlayArrowRounded fontSize="small" /></IconButton>
-
-        <Typography sx={{ fontSize: 13, fontWeight: 600, color: 'text.secondary' }}>{t.you}</Typography>
-        <Box sx={{ height: 44, display: 'flex', alignItems: 'center', gap: '3px' }}>
-          {bars ? (
-            bars.map((b, i) => <Box key={i} sx={{ flexGrow: 1, height: `${Math.max(8, b * 100)}%`, borderRadius: '2px', bgcolor: 'secondary.main' }} />)
-          ) : (
-            <Typography variant="body2" color="text.secondary">{t.noRecording}</Typography>
-          )}
-        </Box>
-        <IconButton
-          aria-label={t.playMine}
-          disabled={!blob}
-          onClick={() => {
-            const url = URL.createObjectURL(blob!)
-            const a = new Audio(url)
-            a.onended = () => URL.revokeObjectURL(url)
-            a.play()
-          }}
-          sx={{ border: 1.5, borderColor: 'divider' }}
-        >
-          <PlayArrowRounded fontSize="small" />
-        </IconButton>
-      </Box>
-    </Paper>
-  )
-}
-
-function NoSubtitles({ video }: { video: Video }) {
-  const t = useT()
-  return (
-    <Paper sx={{ borderRadius: 4, p: 3, display: 'flex', flexWrap: 'wrap', gap: 1.5, alignItems: 'center' }}>
-      <Typography sx={{ fontWeight: 700, fontSize: 18, width: '100%' }}>{t.noSubsTitle}</Typography>
-      <Typography color="text.secondary" sx={{ width: '100%' }}>{t.noSubsBody}</Typography>
-      <SubtitleImport video={video} />
-    </Paper>
-  )
-}
+export default PlayerPage

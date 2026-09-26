@@ -59,15 +59,18 @@ const Catalog = () => {
           </Paper>
         </header>
 
-        <div className="flex items-center gap-4 border-b border-line">
+        {/* Phones: tabs take the full row and swipe sideways; the view switcher wraps below. */}
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-3 sm:flex-nowrap sm:border-b sm:border-line">
           {/* Columns view has its own level column on wide screens. */}
           <Tabs
             value={level}
             onChange={(_, v: Level) => setLevel(v)}
             aria-label={t('levelLabel')}
+            variant="scrollable"
+            scrollButtons={false}
             textColor="inherit"
             slotProps={{ indicator: { sx: { bgcolor: 'text.primary' } } }}
-            className={`grow ${view === 'columns' ? 'md:invisible' : ''}`}
+            className={`min-w-0 grow basis-full border-b border-line sm:basis-0 sm:border-b-0 ${view === 'columns' ? 'md:invisible' : ''}`}
           >
             {LEVELS.map(({ level: l }) => (
               <Tab key={l} value={l} label={<LevelLabel level={l} />} />

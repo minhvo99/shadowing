@@ -64,7 +64,17 @@ function Header() {
       <Box
         component="nav"
         aria-label={t('navLabel')}
-        sx={{ display: 'flex', gap: { xs: 1.5, md: 4 }, alignSelf: 'stretch', fontSize: 15, fontWeight: 500, minWidth: 0, overflowX: 'auto' }}
+        sx={{
+          display: 'flex',
+          gap: { xs: 1.5, md: 4 },
+          alignSelf: 'stretch',
+          fontSize: 15,
+          fontWeight: 500,
+          minWidth: 0,
+          overflowX: 'auto',
+          scrollbarWidth: 'none',
+          '&::-webkit-scrollbar': { display: 'none' },
+        }}
       >
         <Box component={NavLink} to="/" end sx={linkSx}>
           {t('library')}

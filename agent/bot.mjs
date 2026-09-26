@@ -110,6 +110,7 @@ for (;;) {
       if (!CHAT) await tg('sendMessage', { chat_id: msg.chat.id, text: `TELEGRAM_CHAT_ID=${msg.chat.id}` })
       continue
     }
+    if (msg.text.startsWith('/')) continue // Telegram commands like /start aren't requests
     await handle(msg.text)
   }
 }

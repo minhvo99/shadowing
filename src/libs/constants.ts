@@ -12,6 +12,7 @@ export const SETTINGS_STORAGE_KEY = 'shadowing:settings'
 export const LEVELS = [
   { level: 'A1', dir: 'A1-english-listening-practice' },
   { level: 'A2', dir: 'A2-english-listening-practice' },
+  { level: 'B1', dir: 'B1-english-listening-practice' },
 ] as const
 
 export type Level = (typeof LEVELS)[number]['level']

@@ -13,18 +13,18 @@ import Typography from '@mui/material/Typography'
 import { useDeferredValue, useMemo, useState } from 'react'
 import { Link } from 'react-router'
 import PageTransition from '@components/PageTransition'
-import { useT } from '@hooks'
 import { MONO } from '@libs/constants'
 import { formatTime, thumb, toCsv } from '@libs/text'
 import { useNoteActions, useNotes, useWordActions, useWords } from '@services/notebookAPI'
 import { useLibrary } from '@services/videoAPI'
 import { download } from '@utils/download'
 import { pronounce } from '@utils/pronounce'
+import { useTranslation } from 'react-i18next'
 
 const watchUrl = (videoId: string, idx: number) => `/watch/${videoId}?s=${idx}`
 
 function Notebook() {
-  const t = useT()
+  const { t } = useTranslation()
   const [tab, setTab] = useState<'words' | 'notes'>('words')
   const [filter, setFilter] = useState('')
   const q = useDeferredValue(filter.trim().toLowerCase())
@@ -45,12 +45,12 @@ function Notebook() {
       <Box component="main" sx={{ px: { xs: 2, md: 10 }, pt: 6, pb: 7, maxWidth: 1440, mx: 'auto' }}>
         <Box sx={{ display: 'flex', alignItems: 'flex-end', gap: 2, flexWrap: 'wrap' }}>
           <Box sx={{ flex: '1 1 400px' }}>
-            <Typography variant="h1" sx={{ fontSize: 40 }}>{t.nbTitle}</Typography>
-            <Typography color="text.secondary" sx={{ mt: 1, maxWidth: 640, lineHeight: 1.5 }}>{t.nbSub}</Typography>
+            <Typography variant="h1" sx={{ fontSize: 40 }}>{t('nbTitle')}</Typography>
+            <Typography color="text.secondary" sx={{ mt: 1, maxWidth: 640, lineHeight: 1.5 }}>{t('nbSub')}</Typography>
           </Box>
           <Paper component="label" sx={{ width: 320, maxWidth: '100%', height: 48, display: 'flex', alignItems: 'center', gap: 1.25, px: 1.75, border: 1.5, borderColor: 'divider' }}>
             <FilterListRounded sx={{ color: 'text.secondary' }} fontSize="small" />
-            <InputBase value={filter} onChange={(e) => setFilter(e.target.value)} placeholder={t.filter} inputProps={{ 'aria-label': t.filter }} sx={{ flexGrow: 1 }} />
+            <InputBase value={filter} onChange={(e) => setFilter(e.target.value)} placeholder={t('filter')} inputProps={{ 'aria-label': t('filter') }} sx={{ flexGrow: 1 }} />
           </Paper>
           <Button
             variant="outlined"
@@ -65,22 +65,22 @@ function Notebook() {
             }
             sx={{ height: 48 }}
           >
-            {t.exportCsv}
+            {t('exportCsv')}
           </Button>
         </Box>
 
         <Tabs value={tab} onChange={(_, v) => setTab(v)} textColor="inherit" slotProps={{ indicator: { sx: { bgcolor: 'text.primary' } } }} sx={{ mt: 3.5, borderBottom: 1, borderColor: 'divider' }}>
-          <Tab value="words" label={`${t.tWords} · ${words.length}`} />
-          <Tab value="notes" label={`${t.tNotes} · ${notes.length}`} />
+          <Tab value="words" label={`${t('tWords')} · ${words.length}`} />
+          <Tab value="notes" label={`${t('tNotes')} · ${notes.length}`} />
         </Tabs>
 
         {tab === 'words' ? (
           shownWords.length ? (
-            <Box role="table" aria-label={t.nbTitle}>
+            <Box role="table" aria-label={t('nbTitle')}>
               <Box role="row" sx={{ display: { xs: 'none', md: 'grid' }, gridTemplateColumns: '240px minmax(0,1fr) 340px 100px', gap: 3, px: 2, py: 1.75, fontSize: 12, fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'text.secondary' }}>
-                <span role="columnheader">{t.colWord}</span>
-                <span role="columnheader">{t.colMeaning}</span>
-                <span role="columnheader">{t.colSource}</span>
+                <span role="columnheader">{t('colWord')}</span>
+                <span role="columnheader">{t('colMeaning')}</span>
+                <span role="columnheader">{t('colSource')}</span>
                 <span />
               </Box>
               {shownWords.map((w) => (
@@ -100,14 +100,14 @@ function Notebook() {
                     </Typography>
                   </Box>
                   <Box role="cell" sx={{ display: 'flex', gap: 0.5, justifyContent: 'flex-end', gridRow: { xs: 1, md: 'auto' }, gridColumn: { xs: 2, md: 'auto' } }}>
-                    <IconButton aria-label={`${t.hear} ${w.word}`} onClick={() => pronounce(w.word, undefined, 'en-US')} sx={{ bgcolor: 'sunken' }}><VolumeUpOutlined fontSize="small" /></IconButton>
-                    <IconButton aria-label={`${t.remove} ${w.word}`} onClick={() => wordActions.remove(w.word)} sx={{ color: 'text.secondary' }}><DeleteOutline fontSize="small" /></IconButton>
+                    <IconButton aria-label={`${t('hear')} ${w.word}`} onClick={() => pronounce(w.word, undefined, 'en-US')} sx={{ bgcolor: 'sunken' }}><VolumeUpOutlined fontSize="small" /></IconButton>
+                    <IconButton aria-label={`${t('remove')} ${w.word}`} onClick={() => wordActions.remove(w.word)} sx={{ color: 'text.secondary' }}><DeleteOutline fontSize="small" /></IconButton>
                   </Box>
                 </Box>
               ))}
             </Box>
           ) : (
-            <Empty text={words.length ? t.noMatch : t.noWords} />
+            <Empty text={words.length ? t('noMatch') : t('noWords')} />
           )
         ) : groups.length ? (
           <Box sx={{ pt: 3.5, display: 'grid', gridTemplateColumns: { xs: '1fr', md: 'repeat(2, minmax(0, 1fr))' }, gap: 3, alignItems: 'start' }}>
@@ -117,7 +117,7 @@ function Notebook() {
                   <Box component="img" src={thumb(g.videoId)} alt="" sx={{ width: 96, aspectRatio: '16 / 9', objectFit: 'cover', borderRadius: 2, flexShrink: 0 }} />
                   <Box>
                     <Box component={Link} to={`/watch/${g.videoId}`} sx={{ fontWeight: 700, color: 'text.primary', textDecoration: 'none', lineHeight: 1.35 }}>{titles.get(g.videoId) ?? g.videoId}</Box>
-                    <Typography sx={{ fontSize: 13, color: 'text.secondary' }}>{g.items.length} {t.notes}</Typography>
+                    <Typography sx={{ fontSize: 13, color: 'text.secondary' }}>{g.items.length} {t('notes')}</Typography>
                   </Box>
                 </Box>
                 {g.items.map((n) => (
@@ -129,14 +129,14 @@ function Notebook() {
                       <Typography sx={{ fontSize: 13, color: 'text.secondary', fontStyle: 'italic' }}>“{n.sentence}”</Typography>
                       <Typography sx={{ fontSize: 14, lineHeight: 1.55, mt: 0.75, whiteSpace: 'pre-wrap' }}>{n.text}</Typography>
                     </Box>
-                    <IconButton aria-label={t.deleteNote} onClick={() => noteActions.remove(n.id)} sx={{ color: 'text.secondary' }}><DeleteOutline fontSize="small" /></IconButton>
+                    <IconButton aria-label={t('deleteNote')} onClick={() => noteActions.remove(n.id)} sx={{ color: 'text.secondary' }}><DeleteOutline fontSize="small" /></IconButton>
                   </Box>
                 ))}
               </Paper>
             ))}
           </Box>
         ) : (
-          <Empty text={notes.length ? t.noMatch : t.noNotesAll} />
+          <Empty text={notes.length ? t('noMatch') : t('noNotesAll')} />
         )}
       </Box>
     </PageTransition>

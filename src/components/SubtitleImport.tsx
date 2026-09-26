@@ -7,14 +7,14 @@ import DialogTitle from '@mui/material/DialogTitle'
 import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
 import { useState } from 'react'
-import { useT } from '@hooks'
 import type { Video } from '@libs/db'
 import { parseSubtitleFile, parseTranscriptText, toSentences, type Cue } from '@libs/text'
 import { useSaveVideo, withSubtitles } from '@services/videoAPI'
+import { useTranslation } from 'react-i18next'
 
 /** Bring your own subtitles when YouTube won't hand them to us: paste the transcript, or upload .srt/.vtt. */
 function SubtitleImport({ video, onSaved }: { video: Video; onSaved?: () => void }) {
-  const t = useT()
+  const { t } = useTranslation()
   const save = useSaveVideo()
   const [open, setOpen] = useState(false)
   const [text, setText] = useState('')
@@ -25,9 +25,9 @@ function SubtitleImport({ video, onSaved }: { video: Video; onSaved?: () => void
 
   return (
     <>
-      <Button variant="contained" size="large" onClick={() => setOpen(true)}>{t.pasteTranscript}</Button>
+      <Button variant="contained" size="large" onClick={() => setOpen(true)}>{t('pasteTranscript')}</Button>
       <Button component="label" size="large">
-        {t.uploadSubs}
+        {t('uploadSubs')}
         <input
           hidden
           type="file"
@@ -43,15 +43,15 @@ function SubtitleImport({ video, onSaved }: { video: Video; onSaved?: () => void
         />
       </Button>
       {/* DownSub has no public API, so we hand the user over with the video pre-filled (subtitle.to/<url> trick). */}
-      <Button size="large" href={`https://subtitle.to/https://www.youtube.com/watch?v=${video.id}`} target="_blank" rel="noopener" endIcon={<OpenInNewRounded />}>
-        {t.getFromDownsub}
+      <Button size="large" href={`${import.meta.env.VITE_SUBTITLE_DOWNLOADER_URL}https://www.youtube.com/watch?v=${video.id}`} target="_blank" rel="noopener" endIcon={<OpenInNewRounded />}>
+        {t('getFromDownsub')}
       </Button>
-      {fileError ? <Typography color="secondary.main" sx={{ width: '100%' }}>{t.subsInvalid}</Typography> : null}
+      {fileError ? <Typography color="secondary.main" sx={{ width: '100%' }}>{t('subsInvalid')}</Typography> : null}
 
       <Dialog open={open} onClose={() => setOpen(false)} fullWidth maxWidth="sm">
-        <DialogTitle>{t.pasteTranscript}</DialogTitle>
+        <DialogTitle>{t('pasteTranscript')}</DialogTitle>
         <DialogContent sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-          <Typography color="text.secondary">{t.pasteSteps}</Typography>
+          <Typography color="text.secondary">{t('pasteSteps')}</Typography>
           <TextField
             autoFocus
             multiline
@@ -60,14 +60,14 @@ function SubtitleImport({ video, onSaved }: { video: Video; onSaved?: () => void
             value={text}
             onChange={(e) => setText(e.target.value)}
             placeholder={'0:00\nHi everyone…\n0:03\n…'}
-            slotProps={{ htmlInput: { 'aria-label': t.pasteTranscript } }}
-            helperText={text.trim() ? (cues.length ? `${cues.length} ${t.pasteFound}` : t.pasteNone) : ' '}
+            slotProps={{ htmlInput: { 'aria-label': t('pasteTranscript') } }}
+            helperText={text.trim() ? (cues.length ? `${cues.length} ${t('pasteFound')}` : t('pasteNone')) : ' '}
             error={!!text.trim() && !cues.length}
           />
         </DialogContent>
         <DialogActions sx={{ px: 3, pb: 2.5 }}>
-          <Button color="inherit" onClick={() => setOpen(false)}>{t.cancel}</Button>
-          <Button variant="contained" disabled={!cues.length || save.isPending} onClick={() => use(cues)}>{t.useSubs}</Button>
+          <Button color="inherit" onClick={() => setOpen(false)}>{t('cancel')}</Button>
+          <Button variant="contained" disabled={!cues.length || save.isPending} onClick={() => use(cues)}>{t('useSubs')}</Button>
         </DialogActions>
       </Dialog>
     </>

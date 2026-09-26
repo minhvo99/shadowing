@@ -7,11 +7,11 @@ import { keys } from './rootApi'
 type RemoteVideo = Pick<Video, 'id' | 'title' | 'author' | 'duration' | 'captions' | 'lines'>
 
 async function fetchRemoteVideo(id: string): Promise<RemoteVideo> {
-  const res = await fetch(`/api/video?id=${encodeURIComponent(id)}`).catch(() => null)
+  const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/video?id=${encodeURIComponent(id)}`).catch(() => null)
   if (res?.ok) return res.json()
   // YouTube bot-checks our server (datacenter IP). The browser can still get the title via oEmbed (CORS-enabled);
   // subtitles then come from the user (pasted transcript or .srt/.vtt).
-  const o = await fetch(`https://www.youtube.com/oembed?format=json&url=${encodeURIComponent(`https://www.youtube.com/watch?v=${id}`)}`)
+  const o = await fetch(`${import.meta.env.VITE_YOUTUBE_OEMBED_URL}?format=json&url=${encodeURIComponent(`https://www.youtube.com/watch?v=${id}`)}`)
   if (!o.ok) throw new Error(`YouTube oEmbed HTTP ${o.status}`)
   const meta: { title: string; author_name: string } = await o.json()
   return { id, title: meta.title, author: meta.author_name, duration: 0, captions: 'none', lines: [] }

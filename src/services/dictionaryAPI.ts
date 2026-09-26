@@ -33,9 +33,9 @@ const getJson = <T,>(url: string): Promise<T | null> =>
 async function lookup(word: string): Promise<DictEntry> {
   const w = encodeURIComponent(word)
   const [en, wiki, mm] = await Promise.all([
-    getJson<FreeDictResult>(`https://api.dictionaryapi.dev/api/v2/entries/en/${w}`),
-    getJson<WiktionaryResult>(`https://en.wiktionary.org/api/rest_v1/page/definition/${w}`),
-    getJson<{ responseData?: { translatedText?: string } }>(`https://api.mymemory.translated.net/get?q=${w}&langpair=en|vi`),
+    getJson<FreeDictResult>(`${import.meta.env.VITE_DICTIONARY_API_URL}/${w}`),
+    getJson<WiktionaryResult>(`${import.meta.env.VITE_WIKTIONARY_API_URL}/${w}`),
+    getJson<{ responseData?: { translatedText?: string } }>(`${import.meta.env.VITE_TRANSLATE_API_URL}?q=${w}&langpair=en|vi`),
   ])
   const first = en?.[0]
   const phonetics = en?.flatMap((e) => e.phonetics ?? []) ?? []

@@ -12,4 +12,5 @@ export const keys = {
   dict: (word: string) => ['dict', word] as const,
   recording: (videoId: string, idx: number) => ['recording', videoId, idx] as const,
   settings: ['settings'] as const,
+  lessons: (level: string) => ['lessons', level] as const,
 }

@@ -2,7 +2,7 @@ import LibraryGrid from '@components/Library/LibraryGrid'
 import PreviewCard from '@components/Library/PreviewCard'
 import StorageStrip from '@components/Library/StorageStrip'
 import PageTransition from '@components/PageTransition'
-import { useNavigateWithType, useT } from '@hooks'
+import { useNavigateWithType } from '@hooks'
 import { MONO } from '@libs/constants'
 import { parseYouTubeId } from '@libs/text'
 import Close from '@mui/icons-material/Close'
@@ -18,9 +18,10 @@ import Snackbar from '@mui/material/Snackbar'
 import Typography from '@mui/material/Typography'
 import { useLibrary } from '@services/videoAPI'
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 function Library() {
-  const t = useT()
+  const { t } = useTranslation()
   const [url, setUrl] = useState('')
   const [toast, setToast] = useState<string | null>(null)
   const id = parseYouTubeId(url)
@@ -41,7 +42,7 @@ function Library() {
     <PageTransition>
       <Box component="main" sx={{ px: { xs: 2, md: 10 }, pt: { xs: 4, md: 7 }, pb: 7, display: 'flex', flexDirection: 'column', gap: 5, maxWidth: 1440, mx: 'auto' }}>
         <Box component="section" sx={{ display: 'flex', flexDirection: 'column', gap: 2.5 }}>
-          <Typography variant="h1" sx={{ maxWidth: 860 }}>{t.headline}</Typography>
+          <Typography variant="h1" sx={{ maxWidth: 860 }}>{t('headline')}</Typography>
           <Box
             component="form"
             onSubmit={(e) => {
@@ -60,35 +61,35 @@ function Library() {
                 value={url}
                 onChange={(e) => setUrl(e.target.value)}
                 placeholder="https://www.youtube.com/watch?v=…"
-                inputProps={{ 'aria-label': t.urlLabel, inputMode: 'url' }}
+                inputProps={{ 'aria-label': t('urlLabel'), inputMode: 'url' }}
                 sx={{ flexGrow: 1, fontFamily: MONO, fontSize: 16 }}
               />
               {!empty ? (
-                <IconButton aria-label={t.clear} onClick={() => setUrl('')}>
+                <IconButton aria-label={t('clear')} onClick={() => setUrl('')}>
                   <Close fontSize="small" />
                 </IconButton>
               ) : null}
-              <Button onClick={paste} sx={{ bgcolor: 'background.default', color: 'text.primary', px: 2 }}>{t.paste}</Button>
+              <Button onClick={paste} sx={{ bgcolor: 'background.default', color: 'text.primary', px: 2 }}>{t('paste')}</Button>
             </Paper>
-            <Button type="submit" variant="contained" disabled={!id} sx={{ height: 62, px: 4.25, borderRadius: 3.5, fontSize: 16 }}>{t.open}</Button>
+            <Button type="submit" variant="contained" disabled={!id} sx={{ height: 62, px: 4.25, borderRadius: 3.5, fontSize: 16 }}>{t('open')}</Button>
           </Box>
           <Typography variant="body2" color="text.secondary" sx={{ display: 'flex', gap: 1.25, flexWrap: 'wrap', fontSize: 13 }}>
-            <b>{t.accepts}</b>
+            <b>{t('accepts')}</b>
             {['youtube.com/watch?v=…', 'youtu.be/…', 'youtube.com/shorts/…'].map((f) => (
               <Box key={f} component="span" sx={{ fontFamily: MONO }}>{f} ·</Box>
             ))}
-            <span>{t.orId}</span>
+            <span>{t('orId')}</span>
           </Typography>
 
           {id ? (
             <PreviewCard id={id} shared={!inLibrary} />
           ) : empty ? (
-            <Box sx={{ p: 2.5, border: '1.5px dashed', borderColor: 'divider', borderRadius: 4, color: 'text.secondary' }}>{t.emptyHint}</Box>
+            <Box sx={{ p: 2.5, border: '1.5px dashed', borderColor: 'divider', borderRadius: 4, color: 'text.secondary' }}>{t('emptyHint')}</Box>
           ) : (
             <Alert severity="error" variant="outlined" icon={<ErrorOutline />} sx={{ borderRadius: 4, bgcolor: 'background.paper' }}>
-              <b>{t.invalidTitle}</b>
+              <b>{t('invalidTitle')}</b>
               <br />
-              {t.invalidBody}
+              {t('invalidBody')}
             </Alert>
           )}
         </Box>

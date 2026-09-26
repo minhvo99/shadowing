@@ -4,7 +4,7 @@
 
 Practice English shadowing with YouTube videos: paste a link → practice sentence by sentence (loop, pause to speak, change speed, record and compare, karaoke-style subtitles) → look up words, take notes, keep a notebook. Vietnamese / English interface, light / dark theme.
 
-React 19 · React Router · TanStack Query · MUI · Vite. Deploys to Vercel; no server or database to run.
+React 19 · React Router · TanStack Query · MUI + Tailwind CSS · i18next · Vite. Deploys to Vercel; no server or database to run.
 
 ## Run locally
 
@@ -18,6 +18,15 @@ pnpm build
 ## Deploy
 
 Import the repo into Vercel (framework: Vite). `api/video.ts` becomes a serverless function; `vercel.json` rewrites every other route to the SPA.
+
+## Lessons by level
+
+`public/<level>-english-listening-practice/` holds the playlist's `download-report.json` and `.vtt` files (YouTube auto captions with word timings). `/lessons` reads the report and opens a lesson from its `.vtt` — no YouTube or server call. To add a level, copy its folder into `public/` and add a line to `LEVELS` in `src/libs/constants.ts`.
+
+## Environment variables
+
+- `.env` (committed): public client URLs, `VITE_` prefix required, read with `import.meta.env.VITE_…` (typed in `src/vite-env.d.ts`).
+- `.env.local` (not committed, see `.env.example`): server-side secrets such as `YT_PROXY_URL` — **no** `VITE_` prefix, since `VITE_*` values are bundled into the browser code.
 
 ## YouTube proxy (optional)
 

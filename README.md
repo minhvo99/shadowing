@@ -4,7 +4,7 @@
 
 Luyện shadowing tiếng Anh với video YouTube: dán link → luyện từng câu (lặp, nghỉ để nói, đổi tốc độ, ghi âm so sánh) → tra từ, ghi chú, lưu sổ tay. Giao diện tiếng Việt / tiếng Anh, sáng / tối.
 
-React 19 · React Router · TanStack Query · MUI · Vite. Deploy lên Vercel, không cần server hay database.
+React 19 · React Router · TanStack Query · MUI + Tailwind CSS · i18next · Vite. Deploy lên Vercel, không cần server hay database.
 
 ## Chạy local
 
@@ -18,6 +18,15 @@ pnpm build
 ## Deploy
 
 Import repo vào Vercel (framework: Vite). `api/video.ts` tự thành serverless function; `vercel.json` rewrite mọi route còn lại về SPA.
+
+## Bài học theo trình độ
+
+`public/<level>-english-listening-practice/` chứa `download-report.json` của playlist và các file `.vtt` (phụ đề tự động YouTube, có thời gian từng từ). Trang `/lessons` đọc report, mở bài bằng file `.vtt` — không gọi YouTube hay server. Thêm trình độ mới: chép thư mục vào `public/` và thêm một dòng vào `LEVELS` trong `src/libs/constants.ts`.
+
+## Biến môi trường
+
+- `.env` (commit): URL công khai cho client, bắt buộc tiền tố `VITE_`, đọc bằng `import.meta.env.VITE_…` (kiểu khai báo ở `src/vite-env.d.ts`).
+- `.env.local` (không commit, xem `.env.example`): bí mật phía server như `YT_PROXY_URL` — **không** dùng tiền tố `VITE_`, vì biến `VITE_*` bị nhúng vào code trình duyệt.
 
 ## Proxy cho YouTube (tuỳ chọn)
 

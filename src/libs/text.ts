@@ -58,8 +58,37 @@ function toSeconds(ts: string): number {
   return parts.reduce((acc, n) => acc * 60 + n, 0)
 }
 
-// Handles both .srt and .vtt.
+const INLINE_TIME = /<(\d{2}:\d{2}:\d{2}\.\d{3})>/
+
+// YouTube auto-caption VTT rolls: each cue repeats the previous line and adds a new one whose words
+// carry their own start time ("hey<00:00:00.480><c> everybody</c>…"). Returns one cue per word.
+function parseRollingVtt(src: string): Cue[] {
+  const words: { at: number; text: string }[] = []
+  for (const block of src.replace(/\r/g, '').split(/\n{2,}/)) {
+    const lines = block.split('\n')
+    const i = lines.findIndex((l) => l.includes('-->'))
+    if (i === -1) continue
+    const [a, b] = lines[i].split('-->')
+    const start = toSeconds(a)
+    if (toSeconds(b.trim().split(/\s/)[0]) - start < 0.05) continue // 10ms "freeze" cue: the finished line again
+    const line = lines.slice(i + 1).filter((l) => l.trim()).at(-1) // earlier lines were carried over
+    if (!line) continue
+    const parts = line.split(INLINE_TIME) // [first words, time, words, time, words, …]
+    for (let k = 0; k < parts.length; k += 2) {
+      let at = k ? toSeconds(parts[k - 1]) : start
+      const text = clean(parts[k])
+      // The line's first word has no time of its own; the cue starts when the previous line ended, often well
+      // before the word is said. Place it just before the next word (~60ms per letter) instead.
+      if (!k && parts[1]) at = Math.max(start, toSeconds(parts[1]) - 0.06 * text.length - 0.05)
+      for (const word of text.split(' ').filter(Boolean)) words.push({ at, text: word })
+    }
+  }
+  return words.map((x, k) => ({ start: x.at, end: words[k + 1]?.at ?? x.at + 1, text: x.text, w: [x.at] }))
+}
+
+// Handles .srt, .vtt and YouTube's rolling auto-caption .vtt.
 export function parseSubtitleFile(src: string): Cue[] {
+  if (INLINE_TIME.test(src)) return parseRollingVtt(src)
   const cues: Cue[] = []
   for (const block of src.replace(/\r/g, '').split(/\n{2,}/)) {
     const lines = block.split('\n')
@@ -115,17 +144,21 @@ export function withWordTimes(c: Cue): Cue {
 export function toSentences(cues: Cue[], maxSeconds = 7): Cue[] {
   const out: Cue[] = []
   let cur: Cue | null = null
-  for (const c of clampEnds(cues).map(withWordTimes)) {
+  const all = clampEnds(cues).map(withWordTimes)
+  all.forEach((c, i) => {
     if (cur && c.start - cur.end > 1.5) {
       out.push(cur)
       cur = null
     }
     cur = cur ? { start: cur.start, end: c.end, text: `${cur.text} ${c.text}`, w: [...cur.w!, ...c.w!] } : { ...c }
-    if (SENTENCE_END.test(cur.text) || cur.end - cur.start >= maxSeconds) {
+    // No punctuation (auto captions)? Cut at a pause: silence ≈ next start − (last word start + ~60ms per letter).
+    const last = cur.text.slice(cur.text.lastIndexOf(' ') + 1)
+    const pause = all[i + 1] ? all[i + 1].start - (cur.w!.at(-1)! + 0.06 * last.length) : 0
+    if (SENTENCE_END.test(cur.text) || cur.end - cur.start >= maxSeconds || (cur.end - cur.start >= 2.5 && pause >= 0.45)) {
       out.push(cur)
       cur = null
     }
-  }
+  })
   if (cur) out.push(cur)
   return out
 }

@@ -2,12 +2,10 @@ import { useQuery, useQueryClient } from '@tanstack/react-query'
 import { SETTINGS_STORAGE_KEY as STORAGE_KEY } from '@libs/constants'
 import { keys } from './rootApi'
 
-export type Lang = 'vi' | 'en'
 export type View = 'text' | 'karaoke' | 'blind'
 
 export type Settings = {
   v: 2
-  lang: Lang
   speed: number
   /** Replay the current sentence until turned off. */
   loop: boolean
@@ -22,7 +20,6 @@ export type Settings = {
 
 const DEFAULTS: Settings = {
   v: 2,
-  lang: navigator.language.startsWith('vi') ? 'vi' : 'en',
   speed: 1,
   loop: false,
   autoPause: false,
@@ -31,13 +28,12 @@ const DEFAULTS: Settings = {
   overlay: true,
 }
 
-// localStorage (sync) so the first paint already has the right language.
+// localStorage (sync) so the first paint already has the saved preferences. Language lives in i18next.
 function read(): Settings {
   try {
     const s = JSON.parse(localStorage.getItem(STORAGE_KEY) ?? 'null')
-    if (s?.v === 2) return { ...DEFAULTS, ...s }
-    // v1 (repeat ×3 + gap by default) is gone; keep only the language.
-    return { ...DEFAULTS, ...(s?.lang && { lang: s.lang }) }
+    // v1 (repeat ×3 + gap by default) is dropped.
+    return s?.v === 2 ? { ...DEFAULTS, ...s } : DEFAULTS
   } catch {
     return DEFAULTS
   }

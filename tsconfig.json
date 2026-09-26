@@ -40,8 +40,12 @@
       ],
       "@hooks": [
         "./src/hooks/index.ts"
+      ],
+      "@/*": [
+        "./src/*"
       ]
-    }
+    },
+    "resolveJsonModule": true
   },
   "include": [
     "src",

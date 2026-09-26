@@ -1,5 +1,4 @@
 import TypedLink from '@components/TypedLink'
-import { useT } from '@hooks'
 import { MONO } from '@libs/constants'
 import type { Video } from '@libs/db'
 import { formatTime, thumb } from '@libs/text'
@@ -9,13 +8,12 @@ import IconButton from '@mui/material/IconButton'
 import LinearProgress from '@mui/material/LinearProgress'
 import Typography from '@mui/material/Typography'
 import { useNotes, useWords } from '@services/notebookAPI'
-import { useSettings } from '@services/settingAPI'
 import { useDeleteVideo } from '@services/videoAPI'
 import { startTransition, useMemo, ViewTransition } from 'react'
+import { useTranslation } from 'react-i18next'
 
 function LibraryGrid({ videos }: { videos: Video[] }) {
-  const t = useT()
-  const { lang } = useSettings()
+  const { t, i18n } = useTranslation()
   const notes = useNotes().data
   const words = useWords().data
   const del = useDeleteVideo()
@@ -24,10 +22,10 @@ function LibraryGrid({ videos }: { videos: Video[] }) {
   const notesBy = useMemo(() => Map.groupBy(notes ?? [], (n) => n.videoId), [notes])
   const wordsBy = useMemo(() => Map.groupBy(words ?? [], (w) => w.videoId), [words])
 
-  const rtf = useMemo(() => new Intl.RelativeTimeFormat(lang, { numeric: 'auto' }), [lang])
+  const rtf = useMemo(() => new Intl.RelativeTimeFormat(i18n.resolvedLanguage, { numeric: 'auto' }), [i18n.resolvedLanguage])
   const when = (v: Video) => {
-    if (v.lines.length && v.done.length >= v.lines.length) return t.completed
-    if (!v.done.length) return t.notStarted
+    if (v.lines.length && v.done.length >= v.lines.length) return t('completed')
+    if (!v.done.length) return t('notStarted')
     const days = Math.round((v.openedAt - Date.now()) / 86_400_000)
     return rtf.format(days, 'day')
   }
@@ -35,8 +33,8 @@ function LibraryGrid({ videos }: { videos: Video[] }) {
   return (
     <Box component="section" sx={{ display: 'flex', flexDirection: 'column', gap: 2.5 }}>
       <Box sx={{ display: 'flex', alignItems: 'baseline', gap: 1.5 }}>
-        <Typography variant="h2">{t.yourLib}</Typography>
-        <Typography sx={{ fontFamily: MONO, fontSize: 13, color: 'text.secondary' }}>{videos.length} {t.videos}</Typography>
+        <Typography variant="h2">{t('yourLib')}</Typography>
+        <Typography sx={{ fontFamily: MONO, fontSize: 13, color: 'text.secondary' }}>{videos.length} {t('videos')}</Typography>
       </Box>
       {videos.length ? (
         <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: 3 }}>
@@ -61,14 +59,14 @@ function LibraryGrid({ videos }: { videos: Video[] }) {
                   <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 1 }}>
                     <Box sx={{ flexGrow: 1 }}>
                       <Typography variant="body2" color="text.secondary">
-                        {v.done.length}/{v.lines.length} {t.sentences} · {c.notes} {t.notes} · {c.words} {t.words}
+                        {v.done.length}/{v.lines.length} {t('sentences')} · {c.notes} {t('notes')} · {c.words} {t('words')}
                       </Typography>
                       <Typography sx={{ fontSize: 12, fontWeight: 600, color: pct >= 100 ? 'primary.main' : 'text.secondary' }}>{when(v)}</Typography>
                     </Box>
                     <IconButton
-                      aria-label={`${t.deleteVideo}: ${v.title}`}
+                      aria-label={`${t('deleteVideo')}: ${v.title}`}
                       onClick={() => {
-                        if (confirm(t.deleteConfirm)) startTransition(() => del.mutate(v.id))
+                        if (confirm(t('deleteConfirm'))) startTransition(() => del.mutate(v.id))
                       }}
                       sx={{ color: 'text.secondary', mt: -1 }}
                     >
@@ -81,7 +79,7 @@ function LibraryGrid({ videos }: { videos: Video[] }) {
           })}
         </Box>
       ) : (
-        <Box sx={{ p: 4, border: '1.5px dashed', borderColor: 'divider', borderRadius: 4, color: 'text.secondary' }}>{t.libEmpty}</Box>
+        <Box sx={{ p: 4, border: '1.5px dashed', borderColor: 'divider', borderRadius: 4, color: 'text.secondary' }}>{t('libEmpty')}</Box>
       )}
     </Box>
   )

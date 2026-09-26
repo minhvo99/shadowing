@@ -7,9 +7,9 @@ import ToggleButton from '@mui/material/ToggleButton'
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup'
 import Tooltip from '@mui/material/Tooltip'
 import { NavLink } from 'react-router'
-import { useT } from '@hooks'
 import { MONO } from '@libs/constants'
-import { useSettings, useUpdateSettings, type Lang } from '@services/settingAPI'
+import { LANGUAGES, type Lang } from '@configs/i18n'
+import { useTranslation } from 'react-i18next'
 
 function Logo() {
   return (
@@ -33,33 +33,32 @@ const linkSx = {
 } as const
 
 function Header() {
-  const t = useT()
-  const { lang } = useSettings()
-  const update = useUpdateSettings()
+  const { t, i18n } = useTranslation()
   const { mode, systemMode, setMode } = useColorScheme()
   const dark = (mode === 'system' ? systemMode : mode) === 'dark'
 
   return (
     <Box component="header" sx={{ height: 72, px: { xs: 2, md: 10 }, display: 'flex', alignItems: 'center', gap: { xs: 2, md: 6 }, borderBottom: 1, borderColor: 'divider' }}>
       <Logo />
-      <Box component="nav" aria-label={t.navLabel} sx={{ display: 'flex', gap: { xs: 2, md: 4 }, alignSelf: 'stretch', fontSize: 15, fontWeight: 500 }}>
-        <Box component={NavLink} to="/" end sx={linkSx}>{t.library}</Box>
-        <Box component={NavLink} to="/notebook" sx={linkSx}>{t.notebook}</Box>
+      <Box component="nav" aria-label={t('navLabel')} sx={{ display: 'flex', gap: { xs: 2, md: 4 }, alignSelf: 'stretch', fontSize: 15, fontWeight: 500 }}>
+        <Box component={NavLink} to="/" end sx={linkSx}>{t('library')}</Box>
+        <Box component={NavLink} to="/lessons" sx={linkSx}>{t('lessons')}</Box>
+        <Box component={NavLink} to="/notebook" sx={linkSx}>{t('notebook')}</Box>
       </Box>
       <Box sx={{ flexGrow: 1 }} />
       <ToggleButtonGroup
         exclusive
         size="small"
-        value={lang}
-        aria-label={t.langLabel}
-        onChange={(_, v: Lang | null) => v && update({ lang: v })}
+        value={i18n.resolvedLanguage}
+        aria-label={t('langLabel')}
+        onChange={(_, v: Lang | null) => v && i18n.changeLanguage(v)}
       >
-        {(['vi', 'en'] as const).map((l) => (
+        {LANGUAGES.map((l) => (
           <ToggleButton key={l} value={l} sx={{ fontFamily: MONO, fontSize: 13, minWidth: 46 }}>{l.toUpperCase()}</ToggleButton>
         ))}
       </ToggleButtonGroup>
-      <Tooltip title={t.themeLabel}>
-        <IconButton aria-label={t.themeLabel} aria-pressed={dark} onClick={() => setMode(dark ? 'light' : 'dark')} sx={{ border: 1.5, borderColor: 'divider', borderRadius: 3 }}>
+      <Tooltip title={t('themeLabel')}>
+        <IconButton aria-label={t('themeLabel')} aria-pressed={dark} onClick={() => setMode(dark ? 'light' : 'dark')} sx={{ border: 1.5, borderColor: 'divider', borderRadius: 3 }}>
           {dark ? <LightModeOutlined /> : <DarkModeOutlined />}
         </IconButton>
       </Tooltip>

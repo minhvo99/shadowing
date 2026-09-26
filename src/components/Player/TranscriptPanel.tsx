@@ -1,4 +1,4 @@
-import { useT, type Karaoke } from '@hooks'
+import { type Karaoke } from '@hooks'
 import { MONO } from '@libs/constants'
 import type { Video } from '@libs/db'
 import { formatTime, maskText } from '@libs/text'
@@ -10,9 +10,10 @@ import Typography from '@mui/material/Typography'
 import { useSettings, useUpdateSettings, type View } from '@services/settingAPI'
 import { useEffect, useRef } from 'react'
 import Words from './Words'
+import { useTranslation } from 'react-i18next'
 
 function TranscriptPanel({ lines, idx, done, word, karaoke, onPick, onWord }: { lines: Video['lines']; idx: number; done: number[]; word: string | null; karaoke?: Karaoke; onPick: (i: number) => void; onWord: (w: string) => void }) {
-  const t = useT()
+  const { t } = useTranslation()
   const { view } = useSettings()
   const update = useUpdateSettings()
   const list = useRef<HTMLDivElement>(null)
@@ -30,12 +31,12 @@ function TranscriptPanel({ lines, idx, done, word, karaoke, onPick, onWord }: { 
   return (
     <>
       <Box sx={{ px: 2, pt: 1.75, pb: 1, display: 'flex', flexDirection: 'column', gap: 1.25 }}>
-        <ToggleButtonGroup exclusive fullWidth size="small" value={view} aria-label={t.modeLabel} onChange={(_, v: View | null) => v && update({ view: v })}>
-          <ToggleButton value="text">{t.mText}</ToggleButton>
-          <ToggleButton value="karaoke">{t.mKaraoke}</ToggleButton>
-          <ToggleButton value="blind">{t.mBlind}</ToggleButton>
+        <ToggleButtonGroup exclusive fullWidth size="small" value={view} aria-label={t('modeLabel')} onChange={(_, v: View | null) => v && update({ view: v })}>
+          <ToggleButton value="text">{t('mText')}</ToggleButton>
+          <ToggleButton value="karaoke">{t('mKaraoke')}</ToggleButton>
+          <ToggleButton value="blind">{t('mBlind')}</ToggleButton>
         </ToggleButtonGroup>
-        <Typography sx={{ fontSize: 12, color: 'text.secondary' }}>{t.tapHint}</Typography>
+        <Typography sx={{ fontSize: 12, color: 'text.secondary' }}>{t('tapHint')}</Typography>
       </Box>
       <Box ref={list} sx={{ flexGrow: 1, overflow: 'auto', px: 1, pb: 1, position: 'relative' }}>
         {lines.map((l, i) =>
@@ -44,7 +45,7 @@ function TranscriptPanel({ lines, idx, done, word, karaoke, onPick, onWord }: { 
               <Box sx={{ fontFamily: MONO, fontSize: 12, color: 'primary.main', pt: 0.5 }}>{formatTime(l.start)}</Box>
               <Box>
                 <Words text={l.text} selected={word} onPick={onWord} karaoke={karaoke} sx={{ fontSize: 15, fontWeight: 600, ml: '-4px' }} />
-                <Typography sx={{ fontSize: 12, color: 'text.secondary', mt: 0.75 }}>{doneSet.has(i) ? t.practiced : t.notYet}</Typography>
+                <Typography sx={{ fontSize: 12, color: 'text.secondary', mt: 0.75 }}>{doneSet.has(i) ? t('practiced') : t('notYet')}</Typography>
               </Box>
             </Box>
           ) : (
@@ -57,7 +58,7 @@ function TranscriptPanel({ lines, idx, done, word, karaoke, onPick, onWord }: { 
               <Box sx={{ fontFamily: MONO, fontSize: 12, color: 'text.secondary', pt: 0.375 }}>{formatTime(l.start)}</Box>
               <Box>
                 <Typography sx={{ fontSize: 15, lineHeight: 1.45, color: blind ? 'text.secondary' : 'text.primary' }}>{blind ? maskText(l.text) : l.text}</Typography>
-                <Typography sx={{ fontSize: 12, color: 'text.secondary', mt: 0.75 }}>{doneSet.has(i) ? t.practiced : t.notYet}</Typography>
+                <Typography sx={{ fontSize: 12, color: 'text.secondary', mt: 0.75 }}>{doneSet.has(i) ? t('practiced') : t('notYet')}</Typography>
               </Box>
             </ButtonBase>
           ),

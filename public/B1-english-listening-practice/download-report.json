@@ -1,0 +1,810 @@
+{
+  "playlistId": "PLhNRdHEdUQeyIjNRrwWnMU_iph8amkaJg",
+  "playlistUrl": "https://www.youtube.com/watch?v=Qwv2TnDZVzQ&list=PLhNRdHEdUQeyIjNRrwWnMU_iph8amkaJg",
+  "total": 47,
+  "downloaded": 0,
+  "existing": 45,
+  "skipped": 2,
+  "failed": 0,
+  "results": [
+    {
+      "status": "existing",
+      "item": {
+        "id": "Qwv2TnDZVzQ",
+        "title": "B1 English Listening Practice - The Beach",
+        "episode": "",
+        "thumbnail": "https://i.ytimg.com/vi/Qwv2TnDZVzQ/default.jpg",
+        "duration": "",
+        "url": "https://www.youtube.com/watch?v=Qwv2TnDZVzQ",
+        "description": "Get my Listening Training and Advanced Podcast: https://www.patreon.com/listeningtime\nDownload my FREE 'Listening Time' Podcast: https://open.spotify.com/show/3GRJb6bwpKEbOOG7QFjRqS \nFacebook: https://www.facebook.com/listeningtimepodcast\nInstagram: https://www.instagram.com/listeningtime.english/\n\nApple Podcasts: https://podcasts.apple.com/us/podcast/listening-time/id1556878879\nSimplecast: https://listening-time.simplecast.com",
+        "position": 0,
+        "publishedAt": "2019-11-30T02:49:33Z",
+        "urlEncrypt": "eyJjdCI6InEwUEFTa1VCeFZHZ2hRVXF0ZkRLVU9oeDBQZWJsekY5Zk9TUU1CbTlWeUJISXI5cjVFdFcwUlB2emFENUVUbTl6d1Z1Nkd2Um1hU3h5eXc5TExcL0dnZz09IiwiaXYiOiI2YzQwYjAxMzYyNjQ2OTI0NTQ2NDEyNWE1MDdhNmZhYyIsInMiOiIzOTA4MTg1Mjg5M2YxYmQyIn0"
+      },
+      "filename": "01-B1 English Listening Practice - The Beach [Qwv2TnDZVzQ].vtt",
+      "youtubeUrl": "https://www.youtube.com/watch?v=Qwv2TnDZVzQ"
+    },
+    {
+      "status": "existing",
+      "item": {
+        "id": "tnvj7e1n5xk",
+        "title": "B1 English Listening Practice - American Universities",
+        "episode": "",
+        "thumbnail": "https://i.ytimg.com/vi/tnvj7e1n5xk/default.jpg",
+        "duration": "",
+        "url": "https://www.youtube.com/watch?v=tnvj7e1n5xk",
+        "description": "Get my Listening Training and Advanced Podcast: https://www.patreon.com/listeningtime\nDownload my FREE 'Listening Time' Podcast: https://open.spotify.com/show/3GRJb6bwpKEbOOG7QFjRqS \nFacebook: https://www.facebook.com/listeningtimepodcast\nInstagram: https://www.instagram.com/listeningtime.english/\n\nApple Podcasts: https://podcasts.apple.com/us/podcast/listening-time/id1556878879\nSimplecast: https://listening-time.simplecast.com",
+        "position": 1,
+        "publishedAt": "2019-12-06T23:35:02Z",
+        "urlEncrypt": "eyJjdCI6IkpvQXhZd0NyNHNJUlhCeDczSEx2NHJaUjl5V1UxeTArVTBIc1VaRW9wXC9vZ0JVTnlaTjVJRzR5NVJlY2pENU1QbWJnZlltbmpLcG9Ib0lRekRNMmZJZz09IiwiaXYiOiJjNmFhMjA3YTY0MmRlYjFmM2I0NzUyMzdjOTA0ZGY1YSIsInMiOiJhMWVkNmUxMmRjMDg3ODkzIn0"
+      },
+      "filename": "02-B1 English Listening Practice - American Universities [tnvj7e1n5xk].vtt",
+      "youtubeUrl": "https://www.youtube.com/watch?v=tnvj7e1n5xk"
+    },
+    {
+      "status": "skipped",
+      "item": {
+        "id": "pWn_yaTVbSg",
+        "title": "B1 English Listening Practice - Christmas",
+        "episode": "",
+        "thumbnail": "https://i.ytimg.com/vi/pWn_yaTVbSg/default.jpg",
+        "duration": "",
+        "url": "https://www.youtube.com/watch?v=pWn_yaTVbSg",
+        "description": "Download my FREE 'Listening Time' Podcast: \nSpotify: https://open.spotify.com/show/3GRJb6bwpKEbOOG7QFjRqS\nReceive my Listening Practice Seminars: https://www.patreon.com/listeningtime\nFacebook: https://www.facebook.com/listeningtimepodcast\nInstagram: https://www.instagram.com/listeningtime.english/\n\nApple Podcasts: https://podcasts.apple.com/us/podcast/listening-time/id1556878879\nSimplecast: https://listening-time.simplecast.com",
+        "position": 2,
+        "publishedAt": "2019-12-12T18:03:40Z",
+        "urlEncrypt": "eyJjdCI6Ik1hSFBvM3JHUG10eXRcL2ltbFZwWnY3TGlYajNwMFR2U3JVQVlLVk1BMjNTNU1CWEFhUTZoMlpSa2hteWZDdCt0Z0tKWllFR3FpQUZaZkNrXC90RkNSeFE9PSIsIml2IjoiMzVhYjA2NTI4OWI3ZWQwMGM1Y2M5OTQzOGY1M2FlNzgiLCJzIjoiMDQ0ODlkNzljNmVlODMyNyJ9"
+      },
+      "filename": "03-b1-english-listening-practice-christmas.vtt",
+      "youtubeUrl": "https://www.youtube.com/watch?v=pWn_yaTVbSg"
+    },
+    {
+      "status": "skipped",
+      "item": {
+        "id": "RCW-DCr580s",
+        "title": "B1 English Listening Practice - The Gym",
+        "episode": "",
+        "thumbnail": "https://i.ytimg.com/vi/RCW-DCr580s/default.jpg",
+        "duration": "",
+        "url": "https://www.youtube.com/watch?v=RCW-DCr580s",
+        "description": "Download my FREE 'Listening Time' Podcast: \nSpotify: https://open.spotify.com/show/3GRJb6bwpKEbOOG7QFjRqS\nReceive my Listening Practice Seminars: https://www.patreon.com/listeningtime\nFacebook: https://www.facebook.com/listeningtimepodcast\nInstagram: https://www.instagram.com/listeningtime.english/\n\nApple Podcasts: https://podcasts.apple.com/us/podcast/listening-time/id1556878879\nSimplecast: https://listening-time.simplecast.com",
+        "position": 3,
+        "publishedAt": "2019-12-31T00:46:31Z",
+        "urlEncrypt": "eyJjdCI6IlN0QkFyZU04WFRhUzJlNmpUOWplSXlVN091UlkrK1phTzFHV2dcL1B6OE5FVTNQNUFYaTlQT3ZzNVBPbmE4SUxCSWx3TERRSEtaTldYUGVzMWNWRUNpUT09IiwiaXYiOiIzODI0NmQyOGNjYmZhZGY3MGE4OTBjMzEzNmIwNzBkMyIsInMiOiJkOTk2MGZlYmE5MzQ2NDQ1In0"
+      },
+      "filename": "04-b1-english-listening-practice-the-gym.vtt",
+      "youtubeUrl": "https://www.youtube.com/watch?v=RCW-DCr580s"
+    },
+    {
+      "status": "existing",
+      "item": {
+        "id": "sh6LRcPVpI0",
+        "title": "B1 English Listening Practice - Restaurants",
+        "episode": "",
+        "thumbnail": "https://i.ytimg.com/vi/sh6LRcPVpI0/default.jpg",
+        "duration": "",
+        "url": "https://www.youtube.com/watch?v=sh6LRcPVpI0",
+        "description": "Download my FREE 'Listening Time' Podcast: \nSpotify: https://open.spotify.com/show/3GRJb6bwpKEbOOG7QFjRqS\nReceive my Listening Practice Seminars: https://www.patreon.com/listeningtime\nFacebook: https://www.facebook.com/listeningtimepodcast\nInstagram: https://www.instagram.com/listeningtime.english/\n\nApple Podcasts: https://podcasts.apple.com/us/podcast/listening-time/id1556878879\nSimplecast: https://listening-time.simplecast.com",
+        "position": 4,
+        "publishedAt": "2020-01-14T01:13:00Z",
+        "urlEncrypt": "eyJjdCI6IjRcL0Rta2JNRDFkTlpoVkNEWmZETkQ5bU82TFNYVGhSZm1NN0lEc0M0XC9YM1wvY1wvSmhOVUpiMVBNYjRmQXUzXC9oQTZyY2NkK0Fodk5XVlVaeFhiN1FvRnc9PSIsIml2IjoiYmE4MmU4ZWZlNTc2OGYxMTQyYTNmZDFiMTc4MGRiNzMiLCJzIjoiM2IzYTRkODJlNWViNzMxZCJ9"
+      },
+      "filename": "05-B1 English Listening Practice - Restaurants [sh6LRcPVpI0].vtt",
+      "youtubeUrl": "https://www.youtube.com/watch?v=sh6LRcPVpI0"
+    },
+    {
+      "status": "existing",
+      "item": {
+        "id": "fQgnwZ04aoU",
+        "title": "B1 English Listening Practice - Doctors",
+        "episode": "",
+        "thumbnail": "https://i.ytimg.com/vi/fQgnwZ04aoU/default.jpg",
+        "duration": "",
+        "url": "https://www.youtube.com/watch?v=fQgnwZ04aoU",
+        "description": "Download my FREE 'Listening Time' Podcast: \nSpotify: https://open.spotify.com/show/3GRJb6bwpKEbOOG7QFjRqS\nReceive my Listening Practice Seminars: https://www.patreon.com/listeningtime\nFacebook: https://www.facebook.com/listeningtimepodcast\nInstagram: https://www.instagram.com/listeningtime.english/\n\nApple Podcasts: https://podcasts.apple.com/us/podcast/listening-time/id1556878879\nSimplecast: https://listening-time.simplecast.com",
+        "position": 5,
+        "publishedAt": "2020-02-27T21:47:37Z",
+        "urlEncrypt": "eyJjdCI6IjJ4Q0tSMmxEeWdnc2pwaDdHZHl1bkQ0RWdzVzlDcGFDV05jK0ZcL1dCdHBONURpakVnMFZvOVN3U3lLSm1MTUc1REtoOFVTRkd3R2xvNGtpM0FVcmNjQT09IiwiaXYiOiJiMjhlMDMyZjQxZWU3MWM0MzkyNmNhYmZmMzQxZTM2ZSIsInMiOiJlMzI0ZTMxYWNjMzcyMzM5In0"
+      },
+      "filename": "06-b1-english-listening-practice-doctors.vtt",
+      "youtubeUrl": "https://www.youtube.com/watch?v=fQgnwZ04aoU"
+    },
+    {
+      "status": "existing",
+      "item": {
+        "id": "MK9VJmu2ehc",
+        "title": "B1 English Listening Practice - Natural Disasters",
+        "episode": "",
+        "thumbnail": "https://i.ytimg.com/vi/MK9VJmu2ehc/default.jpg",
+        "duration": "",
+        "url": "https://www.youtube.com/watch?v=MK9VJmu2ehc",
+        "description": "Download my FREE 'Listening Time' Podcast: https://open.spotify.com/show/3GRJb6bwpKEbOOG7QFjRqS\nReceive my Listening Practice Seminars: https://www.patreon.com/listeningtime\nFacebook: https://www.facebook.com/listeningtimepodcast\nApple Podcasts: https://podcasts.apple.com/us/podcast/listening-time/id1556878879\nSimplecast: https://listening-time.simplecast.com",
+        "position": 6,
+        "publishedAt": "2020-09-30T23:26:25Z",
+        "urlEncrypt": "eyJjdCI6IkNTSHh4YW1DejM2SnVMbDFzUnFIbFZLUEpONTI4VXA5elBxODNnXC9HQWU0U3V5ZHVGMFlydktERlJBTmJSZ1wvWXpLRGx4SjdCZHUyR01SQjY4Y2hZWlE9PSIsIml2IjoiMzI1NGNlOTE0NWMwMDcwYjQzZWJkOWU4MTMzZDRhNTMiLCJzIjoiNDI5YTc0MzExZDQ5NTc4YSJ9"
+      },
+      "filename": "07-B1 English Listening Practice - Natural Disasters [MK9VJmu2ehc].vtt",
+      "youtubeUrl": "https://www.youtube.com/watch?v=MK9VJmu2ehc"
+    },
+    {
+      "status": "existing",
+      "item": {
+        "id": "7daFlIIKjkE",
+        "title": "B1 English Listening Practice - Immigration",
+        "episode": "",
+        "thumbnail": "https://i.ytimg.com/vi/7daFlIIKjkE/default.jpg",
+        "duration": "",
+        "url": "https://www.youtube.com/watch?v=7daFlIIKjkE",
+        "description": "Download my FREE 'Listening Time' Podcast: https://open.spotify.com/show/3GRJb6bwpKEbOOG7QFjRqS\nReceive my Listening Practice Seminars: https://www.patreon.com/listeningtime\nFacebook: https://www.facebook.com/listeningtimepodcast\nApple Podcasts: https://podcasts.apple.com/us/podcast/listening-time/id1556878879\nSimplecast: https://listening-time.simplecast.com\n\nMusic: www.bensound.com",
+        "position": 7,
+        "publishedAt": "2020-10-30T19:54:51Z",
+        "urlEncrypt": "eyJjdCI6InNubTBqSGw0NUhsTURXQUdTVEh0VktQYytzcU5Nd2NZUzVrMkpJN3A2RWd0UnphNTVLU1QxbEp0eTkwQ3Jrb1Bpc1wvTHErTXExR3dqb3RNN1ZhUGhQUT09IiwiaXYiOiIxMzU5NzZiM2Q5ODc4ZWFjN2FkYmUxZjQ0ODYxZmNiOSIsInMiOiJlYzA3ZDkzNzYxY2M1NmI4In0"
+      },
+      "filename": "08-B1 English Listening Practice - Immigration [7daFlIIKjkE].vtt",
+      "youtubeUrl": "https://www.youtube.com/watch?v=7daFlIIKjkE"
+    },
+    {
+      "status": "existing",
+      "item": {
+        "id": "3-0wwhtVg-U",
+        "title": "B1 English Listening Practice - Adulthood",
+        "episode": "",
+        "thumbnail": "https://i.ytimg.com/vi/3-0wwhtVg-U/default.jpg",
+        "duration": "",
+        "url": "https://www.youtube.com/watch?v=3-0wwhtVg-U",
+        "description": "Download my FREE 'Listening Time' Podcast: https://open.spotify.com/show/3GRJb6bwpKEbOOG7QFjRqS\nReceive my Listening Practice Seminars: https://www.patreon.com/listeningtime\nFacebook: https://www.facebook.com/listeningtimepodcast\nApple Podcasts: https://podcasts.apple.com/us/podcast/listening-time/id1556878879\nSimplecast: https://listening-time.simplecast.com\n\nMusic: www.bensound.com",
+        "position": 8,
+        "publishedAt": "2020-12-10T14:13:41Z",
+        "urlEncrypt": "eyJjdCI6InZVbzRcL0FnNEowQnZnMVlnN0JxQUI5Umt3blgzVnVtSUE5d0hhUEd0UkJscisyYkN3d0xwUWFDcUluYXY3YkRFeGRhZnhKNGxwNGsyVU9ObnZBQ3poZz09IiwiaXYiOiI2YWZlODZkMWY2MTBlNWEzYmQ3MDAwNzlhMzhmYjAxNyIsInMiOiJkMjRiNWYxZTk4ODZkMDFkIn0"
+      },
+      "filename": "09-B1 English Listening Practice - Adulthood [3-0wwhtVg-U].vtt",
+      "youtubeUrl": "https://www.youtube.com/watch?v=3-0wwhtVg-U"
+    },
+    {
+      "status": "existing",
+      "item": {
+        "id": "dv1nJlSGj6o",
+        "title": "B1 English Listening Practice - Tipping",
+        "episode": "",
+        "thumbnail": "https://i.ytimg.com/vi/dv1nJlSGj6o/default.jpg",
+        "duration": "",
+        "url": "https://www.youtube.com/watch?v=dv1nJlSGj6o",
+        "description": "Download my FREE 'Listening Time' Podcast: https://open.spotify.com/show/3GRJb6bwpKEbOOG7QFjRqS\nReceive my Listening Practice Seminars: https://www.patreon.com/listeningtime\nFacebook: https://www.facebook.com/listeningtimepodcast\nApple Podcasts: https://podcasts.apple.com/us/podcast/listening-time/id1556878879\nSimplecast: https://listening-time.simplecast.com\n\nMusic: www.bensound.com",
+        "position": 9,
+        "publishedAt": "2021-02-03T21:58:46Z",
+        "urlEncrypt": "eyJjdCI6IklNR1R2UGJ3TG1xV2dHM3RGZG1FUlJSbnJXWFV5aHlEaGo0OGYwempoditpcnFJXC9UaTVwUHNSN1FoM3VzeE5vUVlCdGtJODhmYWppb1M3VStMQ3ZkUT09IiwiaXYiOiJmNTBkZjIyZTcwYmQzOGQ1YmYzNTEyNDgwMGIxN2YyNiIsInMiOiI2OWUyNDVhODEzMDJmYWRkIn0"
+      },
+      "filename": "10-b1-english-listening-practice-tipping.vtt",
+      "youtubeUrl": "https://www.youtube.com/watch?v=dv1nJlSGj6o"
+    },
+    {
+      "status": "existing",
+      "item": {
+        "id": "_bDmDIiXBGg",
+        "title": "B1 English Listening Practice - Teenagers",
+        "episode": "",
+        "thumbnail": "https://i.ytimg.com/vi/_bDmDIiXBGg/default.jpg",
+        "duration": "",
+        "url": "https://www.youtube.com/watch?v=_bDmDIiXBGg",
+        "description": "Download my FREE 'Listening Time' Podcast: https://open.spotify.com/show/3GRJb6bwpKEbOOG7QFjRqS\nReceive my Listening Practice Seminars: https://www.patreon.com/listeningtime\nFacebook: https://www.facebook.com/listeningtimepodcast\nApple Podcasts: https://podcasts.apple.com/us/podcast/listening-time/id1556878879\nSimplecast: https://listening-time.simplecast.com\n\nMusic: www.bensound.com",
+        "position": 10,
+        "publishedAt": "2021-03-03T20:33:34Z",
+        "urlEncrypt": "eyJjdCI6Iit5ME12a09kSEorQU16T1Q4UlwvcSsrQ3RVTXcrUk1iTWF0QkhhMjEzQVpZNDI0ZnF4U3l2Z1VHOXc0SUVLMVlNXC9wRk9WU0pxWUxMeXpzNFJBbEkwRGc9PSIsIml2IjoiYTE3NzdiNjYwZmJiZDYwMGNhOWRlYjZiOTMzNTg0ZTAiLCJzIjoiYmM1NzVjYTBkY2Y1MjAzOSJ9"
+      },
+      "filename": "11-B1 English Listening Practice - Teenagers [_bDmDIiXBGg].vtt",
+      "youtubeUrl": "https://www.youtube.com/watch?v=_bDmDIiXBGg"
+    },
+    {
+      "status": "existing",
+      "item": {
+        "id": "y1075RPJbow",
+        "title": "FREE English Listening Practice Seminar",
+        "episode": "",
+        "thumbnail": "https://i.ytimg.com/vi/y1075RPJbow/default.jpg",
+        "duration": "",
+        "url": "https://www.youtube.com/watch?v=y1075RPJbow",
+        "description": "Download my FREE 'Listening Time' Podcast: https://open.spotify.com/show/3GRJb6bwpKEbOOG7QFjRqS\nReceive my Listening Practice Seminars: https://www.patreon.com/listeningtime\nFacebook: https://www.facebook.com/listeningtimepodcast\nApple Podcasts: https://podcasts.apple.com/us/podcast/listening-time/id1556878879\nSimplecast: https://listening-time.simplecast.com\n\nMusic: www.bensound.com",
+        "position": 11,
+        "publishedAt": "2021-03-19T01:24:14Z",
+        "urlEncrypt": "eyJjdCI6ImhkOTV6VDZvYXlZQnQwbjlwMG9JcytWTFpTNUtpVEx0bnlub0pzYUJPUUg4eFhqcTk0b2ZlaTVIMjYyZWlHekQzSkpkTWpNbUhncXVQK0V6aFgrYnBRPT0iLCJpdiI6ImI0YzhkNmI2MzgwZjQ3NTIyYWQzN2I1ZWU2YWUyZTI5IiwicyI6ImI1MzQ4OTNhM2U5NTc5NDUifQ"
+      },
+      "filename": "12-FREE English Listening Practice Seminar [y1075RPJbow].vtt",
+      "youtubeUrl": "https://www.youtube.com/watch?v=y1075RPJbow"
+    },
+    {
+      "status": "existing",
+      "item": {
+        "id": "BXCQpEqu7L0",
+        "title": "'Listening Time' Podcast - Practice Your English Listening",
+        "episode": "",
+        "thumbnail": "https://i.ytimg.com/vi/BXCQpEqu7L0/default.jpg",
+        "duration": "",
+        "url": "https://www.youtube.com/watch?v=BXCQpEqu7L0",
+        "description": "Download my FREE 'Listening Time' Podcast: \nSpotify: https://open.spotify.com/show/3GRJb6bwpKEbOOG7QFjRqS\nReceive my Listening Practice Seminars: https://www.patreon.com/listeningtime\nFacebook: https://www.facebook.com/listeningtimepodcast\nApple Podcasts: https://podcasts.apple.com/us/podcast/listening-time/id1556878879\nSimplecast: https://listening-time.simplecast.com",
+        "position": 12,
+        "publishedAt": "2021-03-25T21:28:10Z",
+        "urlEncrypt": "eyJjdCI6IndBMmdNR3o0MDVIQ2ZDYTNNOVJrQlpNeTdMdzlVRVNcL1hMaXI0QmpoRUZrNVRCR0tSb2cza3dSMnJYaE5qWkxCQzNwcWNOeXhvWmJJTFdFdkJrT3lDZz09IiwiaXYiOiIxMjY3MjdhMGE2MDU5MmQ0N2NhZDk2ODVjMzFiY2M3YSIsInMiOiIyODZhNDRhN2EwMmZhMzExIn0"
+      },
+      "filename": "13-'Listening Time' Podcast - Practice Your English Listening [BXCQpEqu7L0].vtt",
+      "youtubeUrl": "https://www.youtube.com/watch?v=BXCQpEqu7L0"
+    },
+    {
+      "status": "existing",
+      "item": {
+        "id": "Bv7nMJCtGxI",
+        "title": "B1 English Listening Practice - Stereotypes",
+        "episode": "",
+        "thumbnail": "https://i.ytimg.com/vi/Bv7nMJCtGxI/default.jpg",
+        "duration": "",
+        "url": "https://www.youtube.com/watch?v=Bv7nMJCtGxI",
+        "description": "Download my FREE 'Listening Time' Podcast: https://open.spotify.com/show/3GRJb6bwpKEbOOG7QFjRqS\nReceive my Listening Practice Seminars: https://www.patreon.com/listeningtime\nFacebook: https://www.facebook.com/listeningtimepodcast\nApple Podcasts: https://podcasts.apple.com/us/podcast/listening-time/id1556878879\nSimplecast: https://listening-time.simplecast.com\n\nMusic: www.bensound.com",
+        "position": 13,
+        "publishedAt": "2021-04-11T12:58:30Z",
+        "urlEncrypt": "eyJjdCI6Ind0dytUVzN3ckgwUXNBUVJZQm5Sd1o0MVp2U0p1M0pvWW83NEJTK1JWRmQ1Y0x3SXR1eUdVRzdQQUxFRldSc0RNa1pZeFJTRjV5NGo1MndwZzRHR2pBPT0iLCJpdiI6Ijg4MWZhNjYwNzU1ZjcyNGUzZTY0ZmVmNzQ4Y2Q5Y2NlIiwicyI6IjcwMDhjYTQwZDg3Yjg5YTIifQ"
+      },
+      "filename": "14-B1 English Listening Practice - Stereotypes [Bv7nMJCtGxI].vtt",
+      "youtubeUrl": "https://www.youtube.com/watch?v=Bv7nMJCtGxI"
+    },
+    {
+      "status": "existing",
+      "item": {
+        "id": "3TP8aC7BP-k",
+        "title": "B1 English Listening Practice - Creativity",
+        "episode": "",
+        "thumbnail": "https://i.ytimg.com/vi/3TP8aC7BP-k/default.jpg",
+        "duration": "",
+        "url": "https://www.youtube.com/watch?v=3TP8aC7BP-k",
+        "description": "Download my FREE 'Listening Time' Podcast: https://open.spotify.com/show/3GRJb6bwpKEbOOG7QFjRqS\nReceive my Listening Practice Seminars: https://www.patreon.com/listeningtime\nFacebook: https://www.facebook.com/listeningtimepodcast\nApple Podcasts: https://podcasts.apple.com/us/podcast/listening-time/id1556878879\nSimplecast: https://listening-time.simplecast.com\n\nMusic: www.bensound.com",
+        "position": 14,
+        "publishedAt": "2021-05-13T23:45:57Z",
+        "urlEncrypt": "eyJjdCI6IjdtbHZTZ3lxYjhhZXBJcmxtQ3V0YmhzMXhVWFFkMEFmV0d4VFR4d0Y0b3Z4S09ncnJSOE5QYWcxdllMTm1iQllMS1ljNXlralF0cFR6aFd2bGxMUHB3PT0iLCJpdiI6ImQwYTAxOGU0YjM0MDhiY2Q5YTRhNGZmNGNiMDYxMGU5IiwicyI6IjQ5OWM5NjZkOThhMGRhMzMifQ"
+      },
+      "filename": "15-B1 English Listening Practice - Creativity [3TP8aC7BP-k].vtt",
+      "youtubeUrl": "https://www.youtube.com/watch?v=3TP8aC7BP-k"
+    },
+    {
+      "status": "existing",
+      "item": {
+        "id": "rr7eQAUCTv8",
+        "title": "B1 English Listening Practice - Procrastination",
+        "episode": "",
+        "thumbnail": "https://i.ytimg.com/vi/rr7eQAUCTv8/default.jpg",
+        "duration": "",
+        "url": "https://www.youtube.com/watch?v=rr7eQAUCTv8",
+        "description": "Download my FREE 'Listening Time' Podcast: https://open.spotify.com/show/3GRJb6bwpKEbOOG7QFjRqS\nReceive my Listening Practice Seminars: https://www.patreon.com/listeningtime\nFacebook: https://www.facebook.com/listeningtimepodcast\nApple Podcasts: https://podcasts.apple.com/us/podcast/listening-time/id1556878879\nSimplecast: https://listening-time.simplecast.com\n\nMusic: www.bensound.com",
+        "position": 15,
+        "publishedAt": "2021-06-23T18:45:38Z",
+        "urlEncrypt": "eyJjdCI6IjFCNUJDTVQ1QUgydnphdVJaU3RWQVJidU1TTGdJem9vQXJGK3Q0aXVGNlZ3Q240ZTlBZ2dRcitnblQ4cU1cLzlSNTR3NWNBVzdnSk4rREt3dE9ZYWJUUT09IiwiaXYiOiI2YWJiNDcxMmFmYzRiZGUzZjZhNWVmNjM0N2NiODViZCIsInMiOiI3MzRhOWJkMDZkNzQxYTNkIn0"
+      },
+      "filename": "16-B1 English Listening Practice - Procrastination [rr7eQAUCTv8].vtt",
+      "youtubeUrl": "https://www.youtube.com/watch?v=rr7eQAUCTv8"
+    },
+    {
+      "status": "existing",
+      "item": {
+        "id": "ME7CECwNks4",
+        "title": "B1 English Listening Practice - Phones",
+        "episode": "",
+        "thumbnail": "https://i.ytimg.com/vi/ME7CECwNks4/default.jpg",
+        "duration": "",
+        "url": "https://www.youtube.com/watch?v=ME7CECwNks4",
+        "description": "Download my FREE 'Listening Time' Podcast: https://open.spotify.com/show/3GRJb6bwpKEbOOG7QFjRqS\nReceive my Listening Practice Seminars: https://www.patreon.com/listeningtime\nFacebook: https://www.facebook.com/listeningtimepodcast\nApple Podcasts: https://podcasts.apple.com/us/podcast/listening-time/id1556878879\nSimplecast: https://listening-time.simplecast.com\n\nMusic: www.bensound.com",
+        "position": 16,
+        "publishedAt": "2021-07-21T20:56:16Z",
+        "urlEncrypt": "eyJjdCI6IjZ6a0VNOW03YkJSRE1hMXdQbHJRSUpmb1pScThqRXMzQnlvU1pXQktlQnM4RUlLYXp0cHR3ZWxRaDAwdTFTbXJYXC9idUp4NW9cL1hZMlVDYXZUSStvUFE9PSIsIml2IjoiMDA3N2FjMDdjMzllYzk2ZjIxODk1OWY0YTgxYTcyYWIiLCJzIjoiMjAzYTAyY2VkMzFkZGY0OSJ9"
+      },
+      "filename": "17-B1 English Listening Practice - Phones [ME7CECwNks4].vtt",
+      "youtubeUrl": "https://www.youtube.com/watch?v=ME7CECwNks4"
+    },
+    {
+      "status": "existing",
+      "item": {
+        "id": "hy4IGpMTKr8",
+        "title": "B1 English Listening Practice - Thanksgiving",
+        "episode": "",
+        "thumbnail": "https://i.ytimg.com/vi/hy4IGpMTKr8/default.jpg",
+        "duration": "",
+        "url": "https://www.youtube.com/watch?v=hy4IGpMTKr8",
+        "description": "Download my FREE 'Listening Time' Podcast: \nSpotify: https://open.spotify.com/show/3GRJb6bwpKEbOOG7QFjRqS\nReceive my Listening Practice Seminars: https://www.patreon.com/listeningtime\nFacebook: https://www.facebook.com/listeningtimepodcast\nApple Podcasts: https://podcasts.apple.com/us/podcast/listening-time/id1556878879\nSimplecast: https://listening-time.simplecast.com\n\nMusic: www.bensound.com",
+        "position": 17,
+        "publishedAt": "2021-11-28T22:00:45Z",
+        "urlEncrypt": "eyJjdCI6InhsMFVkdXVNQWdUSmlObW5BcmY3eHczU3RVdnV3STNBNlB5bURYVEYyb2Mxb1FCSUNDc2RFSGgxcnlFdVh6Q0NQYWI1cHdJZnFIMFNZQXJQMGJUWXZnPT0iLCJpdiI6IjkxYTI3NzE3NTI3OTQ4ZTQyY2U0Mjk0MjA4NDllY2IwIiwicyI6IjgwZmRmMGE4ODBmMTBkOWEifQ"
+      },
+      "filename": "18-B1 English Listening Practice - Thanksgiving [hy4IGpMTKr8].vtt",
+      "youtubeUrl": "https://www.youtube.com/watch?v=hy4IGpMTKr8"
+    },
+    {
+      "status": "existing",
+      "item": {
+        "id": "WodgkjbMH7Q",
+        "title": "FREE English Listening Practice Seminar",
+        "episode": "",
+        "thumbnail": "https://i.ytimg.com/vi/WodgkjbMH7Q/default.jpg",
+        "duration": "",
+        "url": "https://www.youtube.com/watch?v=WodgkjbMH7Q",
+        "description": "Sign up to receive my Listening Practice Seminars: https://www.patreon.com/listeningtime \nDownload my FREE 'Listening Time' Podcast: https://open.spotify.com/show/3GRJb6bwpKEbOOG7QFjRqS\nFacebook: https://www.facebook.com/listeningtimepodcast\nApple Podcasts: https://podcasts.apple.com/us/podcast/listening-time/id1556878879\nSimplecast: https://listening-time.simplecast.com",
+        "position": 18,
+        "publishedAt": "2021-12-07T14:34:29Z",
+        "urlEncrypt": "eyJjdCI6IkZWQVZuRlRQWnFyNlBjWGRHQ05nWDJ3Y1wvSlNIYmJ6OHBTQ1wvNG50YzdYQ0ZDazBFZ2k5SWRwXC9PQjJHSGpLXC93WCsrRHgxaVU5SWY5b2o4T1RreTUwdz09IiwiaXYiOiJiZDU4MzJjNzg5Zjg0ZjhlOWRkYWE5ODNmOGZlNDIxMSIsInMiOiJlNzUyYTUxY2Y4ZjQ2ZTNkIn0"
+      },
+      "filename": "19-FREE English Listening Practice Seminar [WodgkjbMH7Q].vtt",
+      "youtubeUrl": "https://www.youtube.com/watch?v=WodgkjbMH7Q"
+    },
+    {
+      "status": "existing",
+      "item": {
+        "id": "SGofYCFavFo",
+        "title": "B1 English Listening Practice - Favorite Memories",
+        "episode": "",
+        "thumbnail": "https://i.ytimg.com/vi/SGofYCFavFo/default.jpg",
+        "duration": "",
+        "url": "https://www.youtube.com/watch?v=SGofYCFavFo",
+        "description": "Receive my Listening Seminars and Training: https://www.patreon.com/listeningtime\nDownload my FREE 'Listening Time' Podcast: https://open.spotify.com/show/3GRJb6bwpKEbOOG7QFjRqS \nFacebook: https://www.facebook.com/listeningtimepodcast\nInstagram: https://www.instagram.com/listeningtime.english/\n\nApple Podcasts: https://podcasts.apple.com/us/podcast/listening-time/id1556878879\nSimplecast: https://listening-time.simplecast.com\n\nMusic: www.bensound.com",
+        "position": 19,
+        "publishedAt": "2022-01-26T02:54:33Z",
+        "urlEncrypt": "eyJjdCI6IkJEYzRyRE9sbVY4TEVwSSswMWttRlhQRFJ1cmlGV0JzNWV6aUlLN3EwRlFxWDlqTlwvb2p6b0xQTmE3bHpDN0hlb1dJUzVUcFwvR3Mrdkpud2o4N3RTQVE9PSIsIml2IjoiYWVhMTVmMWIwZDc4ZDBlZWE4OTBiZWQ4ODhmMzQ0ZTUiLCJzIjoiZGI2MTM1NmNlZjhjYjVkMiJ9"
+      },
+      "filename": "20-B1 English Listening Practice - Favorite Memories [SGofYCFavFo].vtt",
+      "youtubeUrl": "https://www.youtube.com/watch?v=SGofYCFavFo"
+    },
+    {
+      "status": "existing",
+      "item": {
+        "id": "QVmUdkWa6B4",
+        "title": "B1 English Listening Practice - Fads",
+        "episode": "",
+        "thumbnail": "https://i.ytimg.com/vi/QVmUdkWa6B4/default.jpg",
+        "duration": "",
+        "url": "https://www.youtube.com/watch?v=QVmUdkWa6B4",
+        "description": "Receive my Listening Seminars and Training: https://www.patreon.com/listeningtime\nDownload my FREE 'Listening Time' Podcast: https://open.spotify.com/show/3GRJb6bwpKEbOOG7QFjRqS \nFacebook: https://www.facebook.com/listeningtimepodcast\nInstagram: https://www.instagram.com/listeningtime.english/\n\nApple Podcasts: https://podcasts.apple.com/us/podcast/listening-time/id1556878879\nSimplecast: https://listening-time.simplecast.com\n\nMusic: www.bensound.com",
+        "position": 20,
+        "publishedAt": "2022-03-17T13:24:55Z",
+        "urlEncrypt": "eyJjdCI6InoyTnBNNlpjYndjMmk2bEg0bEo0dEZydmJ0KzM4Qm9zRTFwc3lrbGVIMnZ5Qm9Na2EwaTdcL2drV0VMbkNXYWF0ekVLTmY3N0g2cWp3YTk3SEFCRnlDZz09IiwiaXYiOiIwMDkyZTM3OWYyMGZlZDQyZWMxN2YwZGFiZDZjNGI0OSIsInMiOiJiNWYxZDk3NWEyOWZhM2Y4In0"
+      },
+      "filename": "21-B1 English Listening Practice - Fads [QVmUdkWa6B4].vtt",
+      "youtubeUrl": "https://www.youtube.com/watch?v=QVmUdkWa6B4"
+    },
+    {
+      "status": "existing",
+      "item": {
+        "id": "H8DyKBj5v3M",
+        "title": "Advanced English Listening Podcast",
+        "episode": "",
+        "thumbnail": "https://i.ytimg.com/vi/H8DyKBj5v3M/default.jpg",
+        "duration": "",
+        "url": "https://www.youtube.com/watch?v=H8DyKBj5v3M",
+        "description": "Receive my Advanced Podcast: https://www.patreon.com/listeningtime\nDownload my FREE Listening Time podcast: https://open.spotify.com/show/3GRJb6bwpKEbOOG7QFjRqS\nApple Podcasts: https://podcasts.apple.com/us/podcast/listening-time/id1556878879\nSimplecast: https://listening-time.simplecast.com",
+        "position": 21,
+        "publishedAt": "2022-03-28T20:20:21Z",
+        "urlEncrypt": "eyJjdCI6InNuVnVzZFhpWHFcL0RvYk5jMDZDUXlMQnFSclJJRVZGaVF0dlFqc09YQmFZRHZZYmJabFhISVNMR0pnakMzYnZiOUgzbjAxSXNYcldTWStmQ1hESTVpQT09IiwiaXYiOiJhMGI1Y2Y1ZTRhMjQ1ZTIzN2IyZDAyOGFhM2Q4ODQzMSIsInMiOiI5NDMxNDU1ZjZmM2ExMTQ3In0"
+      },
+      "filename": "22-Advanced English Listening Podcast [H8DyKBj5v3M].vtt",
+      "youtubeUrl": "https://www.youtube.com/watch?v=H8DyKBj5v3M"
+    },
+    {
+      "status": "existing",
+      "item": {
+        "id": "mFTUcdx091k",
+        "title": "B1 English Listening Practice - American Culture",
+        "episode": "",
+        "thumbnail": "https://i.ytimg.com/vi/mFTUcdx091k/default.jpg",
+        "duration": "",
+        "url": "https://www.youtube.com/watch?v=mFTUcdx091k",
+        "description": "Receive my Listening Seminars and Training: https://www.patreon.com/listeningtime\nDownload my FREE 'Listening Time' Podcast: https://open.spotify.com/show/3GRJb6bwpKEbOOG7QFjRqS \nFacebook: https://www.facebook.com/listeningtimepodcast\nInstagram: https://www.instagram.com/listeningtime.english/\n\nApple Podcasts: https://podcasts.apple.com/us/podcast/listening-time/id1556878879\nSimplecast: https://listening-time.simplecast.com\n\nMusic: www.bensound.com",
+        "position": 22,
+        "publishedAt": "2022-05-14T14:59:04Z",
+        "urlEncrypt": "eyJjdCI6IkZLZjQ3MXRESjJGS2xvbkpSS0FPbldobXA5RDErMXZxSFZRT0FQNW56czl4cjF1enpCeGF6c1VYVVBZbEZwcVkzdlU4NUwxTExzaGdPOUV6Z2ZOMSt3PT0iLCJpdiI6IjIyOGNlYWE0MDAyMGNmMmNlNDJjMzBiNDNjOWI4YjE0IiwicyI6IjgyNzk5YzM5MGY4ZWE2ZjYifQ"
+      },
+      "filename": "23-B1 English Listening Practice - American Culture [mFTUcdx091k].vtt",
+      "youtubeUrl": "https://www.youtube.com/watch?v=mFTUcdx091k"
+    },
+    {
+      "status": "existing",
+      "item": {
+        "id": "NzQlkiP0AAM",
+        "title": "English Listening Quiz - Test Your Skills",
+        "episode": "",
+        "thumbnail": "https://i.ytimg.com/vi/NzQlkiP0AAM/default.jpg",
+        "duration": "",
+        "url": "https://www.youtube.com/watch?v=NzQlkiP0AAM",
+        "description": "Receive my Listening Seminars and Training: https://www.patreon.com/listeningtime\nDownload my FREE 'Listening Time' Podcast: https://open.spotify.com/show/3GRJb6bwpKEbOOG7QFjRqS \n\nInstagram: https://www.instagram.com/listeningtime.english/\n\nApple Podcasts: https://podcasts.apple.com/us/podcast/listening-time/id1556878879\nSimplecast: https://listening-time.simplecast.com\n\nMusic: www.bensound.com",
+        "position": 23,
+        "publishedAt": "2022-06-03T12:12:00Z",
+        "urlEncrypt": "eyJjdCI6Ik1uNWhmUmpVZ3dkMVJVcUJuVjhkODRVclYxRG9saytlZjYzRWVySERpQ0JUQUlhSkd3V3JIK1ltemZ6U2hSN2tiTWxXaldvMmFmWll4a1c0MmxoT1dnPT0iLCJpdiI6IjM1ZDZhN2E5M2U5NThkMDlmN2IxZTg4OWNiMjFhNjlmIiwicyI6ImM2OTZhOWIwZTU0MmEyMmIifQ"
+      },
+      "filename": "24-English Listening Quiz - Test Your Skills [NzQlkiP0AAM].vtt",
+      "youtubeUrl": "https://www.youtube.com/watch?v=NzQlkiP0AAM"
+    },
+    {
+      "status": "existing",
+      "item": {
+        "id": "XUQ9o86ETdg",
+        "title": "English Listening Quiz - But, Bought, Boat?",
+        "episode": "",
+        "thumbnail": "https://i.ytimg.com/vi/XUQ9o86ETdg/default.jpg",
+        "duration": "",
+        "url": "https://www.youtube.com/watch?v=XUQ9o86ETdg",
+        "description": "Receive my Listening Seminars and Training: https://www.patreon.com/listeningtime\nDownload my FREE 'Listening Time' Podcast: https://open.spotify.com/show/3GRJb6bwpKEbOOG7QFjRqS \nFacebook: https://www.facebook.com/listeningtimepodcast\nInstagram: https://www.instagram.com/listeningtime.english/\n\nApple Podcasts: https://podcasts.apple.com/us/podcast/listening-time/id1556878879\nSimplecast: https://listening-time.simplecast.com",
+        "position": 24,
+        "publishedAt": "2022-06-14T15:23:29Z",
+        "urlEncrypt": "eyJjdCI6IjhpMHVTZ0VkRFNIc0xiam40czBBY2t6a1ZyS09OY2FRbjMrSFNsalwvNURwQm1LenJLUm81N0M4ZE5OWUhhWUFWcWpaN3pVSlhOMVRoSnVHNkYxbEJBUT09IiwiaXYiOiIwN2NiYTUzODY4MzAyNzM3Y2UxNmIxNGJjNzZiMGMxYyIsInMiOiIwOGRmZTg3YzNiNjAyOTNhIn0"
+      },
+      "filename": "25-English Listening Quiz - But, Bought, Boat？ [XUQ9o86ETdg].vtt",
+      "youtubeUrl": "https://www.youtube.com/watch?v=XUQ9o86ETdg"
+    },
+    {
+      "status": "existing",
+      "item": {
+        "id": "TSBm7pdQV0s",
+        "title": "B1 English Listening Practice - American Culture Pt  2",
+        "episode": "",
+        "thumbnail": "https://i.ytimg.com/vi/TSBm7pdQV0s/default.jpg",
+        "duration": "",
+        "url": "https://www.youtube.com/watch?v=TSBm7pdQV0s",
+        "description": "Receive my Listening Seminars and Training: https://www.patreon.com/listeningtime\nDownload my FREE 'Listening Time' Podcast: https://open.spotify.com/show/3GRJb6bwpKEbOOG7QFjRqS \nFacebook: https://www.facebook.com/listeningtimepodcast\nInstagram: https://www.instagram.com/listeningtime.english/\n\nApple Podcasts: https://podcasts.apple.com/us/podcast/listening-time/id1556878879\nSimplecast: https://listening-time.simplecast.com",
+        "position": 25,
+        "publishedAt": "2022-06-22T20:54:21Z",
+        "urlEncrypt": "eyJjdCI6ImRYbjMyZWhqZyt2T2tobE9HVW5LYU5yUzFQczFRUFpMb2RxMUJGbUpXc1JtR1FwTXZodjRpb01FMGg3cVJEVTdvSDlQd1ZkM1VybDRXZnRJVUFxTFNRPT0iLCJpdiI6IjJmYTMwZjU2NTM0ZGEyOTIyNDVjZTY3ZjE5OTZhYWE5IiwicyI6ImI5YWIzNmZjMzU2NTZiYzAifQ"
+      },
+      "filename": "26-B1 English Listening Practice - American Culture Pt  2 [TSBm7pdQV0s].vtt",
+      "youtubeUrl": "https://www.youtube.com/watch?v=TSBm7pdQV0s"
+    },
+    {
+      "status": "existing",
+      "item": {
+        "id": "M-kgH22l7lM",
+        "title": "English Listening Quiz - Chip, Cheap, Ship, Sheep",
+        "episode": "",
+        "thumbnail": "https://i.ytimg.com/vi/M-kgH22l7lM/default.jpg",
+        "duration": "",
+        "url": "https://www.youtube.com/watch?v=M-kgH22l7lM",
+        "description": "Receive my Listening Seminars and Training: https://www.patreon.com/listeningtime\nDownload my FREE 'Listening Time' Podcast: https://open.spotify.com/show/3GRJb6bwpKEbOOG7QFjRqS \nFacebook: https://www.facebook.com/listeningtimepodcast\nInstagram: https://www.instagram.com/listeningtime.english/\n\nApple Podcasts: https://podcasts.apple.com/us/podcast/listening-time/id1556878879\nSimplecast: https://listening-time.simplecast.com",
+        "position": 26,
+        "publishedAt": "2022-06-29T23:25:46Z",
+        "urlEncrypt": "eyJjdCI6IlBPRWhpT1MxdmswMUVrbTlGT25tRXhXZnBIODFleTdJS09wbjlFSzMwdmhNMTBtd2w2SWZwdEx4NUhpY2tHNURBQVo0OFRad3V1Ynd5MGVNRGNzUFJnPT0iLCJpdiI6IjM1MDNhZWVjNDQ1MDRlZDc4M2MwNzY4NDZjODg0ZDMyIiwicyI6IjJhZmQxNTQ4YmMwMjg2MzYifQ"
+      },
+      "filename": "27-English Listening Quiz - Chip, Cheap, Ship, Sheep [M-kgH22l7lM].vtt",
+      "youtubeUrl": "https://www.youtube.com/watch?v=M-kgH22l7lM"
+    },
+    {
+      "status": "existing",
+      "item": {
+        "id": "0RMHvgtXIBc",
+        "title": "My Listening Tips (Speaking 4 Languages)",
+        "episode": "",
+        "thumbnail": "https://i.ytimg.com/vi/0RMHvgtXIBc/default.jpg",
+        "duration": "",
+        "url": "https://www.youtube.com/watch?v=0RMHvgtXIBc",
+        "description": "Get my Advanced Podcast Episodes: https://www.patreon.com/listeningtime\nDownload my FREE 'Listening Time' Podcast: https://open.spotify.com/show/3GRJb6bwpKEbOOG7QFjRqS \nFacebook: https://www.facebook.com/listeningtimepodcast\nInstagram: https://www.instagram.com/listeningtime.english/\n\nApple Podcasts: https://podcasts.apple.com/us/podcast/listening-time/id1556878879\nSimplecast: https://listening-time.simplecast.com",
+        "position": 27,
+        "publishedAt": "2022-07-11T22:13:01Z",
+        "urlEncrypt": "eyJjdCI6ImF3VWJic1VLVjRZMjI5WUhWeTlsemJhRVdaWXBqYXg3RktsMnVKMzRobkpnVzZcL2lVeGdyT0RGczhiSVBOZk51ZkVyMGJ6cUplQldjWWhnTVwvNUQyNkE9PSIsIml2IjoiYzRjZTI2NTExOThiNjdhYjYwZDE2NmJkMjI2ZDA2MWEiLCJzIjoiNGI0YjZlNTE4ZThjYzRlMyJ9"
+      },
+      "filename": "28-My Listening Tips (Speaking 4 Languages) [0RMHvgtXIBc].vtt",
+      "youtubeUrl": "https://www.youtube.com/watch?v=0RMHvgtXIBc"
+    },
+    {
+      "status": "existing",
+      "item": {
+        "id": "uJLmtpkhwkE",
+        "title": "B1 English Listening Practice - Midlife Crisis",
+        "episode": "",
+        "thumbnail": "https://i.ytimg.com/vi/uJLmtpkhwkE/default.jpg",
+        "duration": "",
+        "url": "https://www.youtube.com/watch?v=uJLmtpkhwkE",
+        "description": "Receive my Listening Seminars and Training: https://www.patreon.com/listeningtime\nDownload my FREE 'Listening Time' Podcast: https://open.spotify.com/show/3GRJb6bwpKEbOOG7QFjRqS \nFacebook: https://www.facebook.com/listeningtimepodcast\nInstagram: https://www.instagram.com/listeningtime.english/\n\nApple Podcasts: https://podcasts.apple.com/us/podcast/listening-time/id1556878879\nSimplecast: https://listening-time.simplecast.com",
+        "position": 28,
+        "publishedAt": "2022-08-04T15:17:24Z",
+        "urlEncrypt": "eyJjdCI6IlRnNlgwNTVTanJ6dDBMWDAydGVEaGZlM1ZCVmJFUTE4VDhmbEpUZ1hMaEl2OUI1aW9aUVlBVHQ5S2hkV1wvbnR0RFNVUmQ5TkZOR1M5UzJvZTNYRHpyUT09IiwiaXYiOiIxNjRmNmQyNzI2OTZhMDAyMjJmNGMwZGFlOGYzODQyNCIsInMiOiJkZTQ0YjYxYjMwOGQ1NDcyIn0"
+      },
+      "filename": "29-B1 English Listening Practice - Midlife Crisis [uJLmtpkhwkE].vtt",
+      "youtubeUrl": "https://www.youtube.com/watch?v=uJLmtpkhwkE"
+    },
+    {
+      "status": "existing",
+      "item": {
+        "id": "2w3zjnkeIG0",
+        "title": "B1 English Listening Practice - College Dorms",
+        "episode": "",
+        "thumbnail": "https://i.ytimg.com/vi/2w3zjnkeIG0/default.jpg",
+        "duration": "",
+        "url": "https://www.youtube.com/watch?v=2w3zjnkeIG0",
+        "description": "Receive my Listening Seminars and Training: https://www.patreon.com/listeningtime\nDownload my FREE 'Listening Time' Podcast: https://open.spotify.com/show/3GRJb6bwpKEbOOG7QFjRqS \nFacebook: https://www.facebook.com/listeningtimepodcast\nInstagram: https://www.instagram.com/listeningtime.english/\n\nApple Podcasts: https://podcasts.apple.com/us/podcast/listening-time/id1556878879",
+        "position": 29,
+        "publishedAt": "2022-09-24T20:24:54Z",
+        "urlEncrypt": "eyJjdCI6IkdGc1A3V2Z2N1AzSHY0RUxjV0JWd0NZVHhXbmFPcmlDNDMxWXorSjVaSXhENTFwRlJSMmNcLzlmSjZVbGtCaTZqZFRRSFdOQVdxNDF0dUhxY0lWV2VmUT09IiwiaXYiOiJkNDQ0ODljNGMwOGJiMTY4YjJjYmMyODA5ZWIxNTQxOCIsInMiOiI1MjgxM2ZhNGVjOTgxYjc5In0"
+      },
+      "filename": "30-B1 English Listening Practice - College Dorms [2w3zjnkeIG0].vtt",
+      "youtubeUrl": "https://www.youtube.com/watch?v=2w3zjnkeIG0"
+    },
+    {
+      "status": "existing",
+      "item": {
+        "id": "HBWijSabtmQ",
+        "title": "My Last Video",
+        "episode": "",
+        "thumbnail": "https://i.ytimg.com/vi/HBWijSabtmQ/default.jpg",
+        "duration": "",
+        "url": "https://www.youtube.com/watch?v=HBWijSabtmQ",
+        "description": "Listening Time Podcast: https://open.spotify.com/show/3GRJb6bwpKEbOOG7QFjRqS\nAdvanced Podcast: https://www.patreon.com/listeningtime\nFacebook: https://www.facebook.com/listeningtimepodcast\nInstagram: https://www.instagram.com/listeningtime.english/",
+        "position": 30,
+        "publishedAt": "2022-10-16T19:06:55Z",
+        "urlEncrypt": "eyJjdCI6IlRLa25CSDA4MUc0WjVXc3VWd1B6ZFBXVEd3elNITWx4QlwvZHJaQjdvREpldlpHZ1wvUEhMN2pDMDUwWnJcL0QrVThIK2piNWkxN0d6MENwSnlYTzZ5KzJnPT0iLCJpdiI6Ijg3NTZmZDliNDg4NjNlYzJiNmI4MzYxZmJhZDUzNzFiIiwicyI6ImZkMjhmNTQwNzE5MzE4YTgifQ"
+      },
+      "filename": "31-My Last Video [HBWijSabtmQ].vtt",
+      "youtubeUrl": "https://www.youtube.com/watch?v=HBWijSabtmQ"
+    },
+    {
+      "status": "existing",
+      "item": {
+        "id": "FD-rEVsPfjg",
+        "title": "English Listening Practice - Patience",
+        "episode": "",
+        "thumbnail": "https://i.ytimg.com/vi/FD-rEVsPfjg/default.jpg",
+        "duration": "",
+        "url": "https://www.youtube.com/watch?v=FD-rEVsPfjg",
+        "description": "Get my training and advanced episodes: https://www.patreon.com/listeningtime\nUS Conversations Podcast: https://www.patreon.com/USConversations\nMy ebook (for Spanish speakers): https://www.amazon.com/dp/B0C2XJB4C2\nMy ebook (for Portuguese speakers): https://www.amazon.com/dp/B0C5QGH3W2",
+        "position": 31,
+        "publishedAt": "2023-11-13T17:15:23Z",
+        "urlEncrypt": "eyJjdCI6IlVEWVNrRXZNSlZpVVJUdVJjZnhEK0V0Z1wvYmVsUXduM0MxKzc2dnhXSDBSVitPcmduMktpeGMyV2I4ckpMMEh6ZkI4bEZRbGMzUHpJWGtVTkg3d3Uwdz09IiwiaXYiOiIzY2Y5OWIyNGUxYjQ1NzRhMjJhOTUyMWJiZjhlOTFiZSIsInMiOiJmZGZlYzM5ODExNTU0YzIzIn0"
+      },
+      "filename": "32-English Listening Practice - Patience [FD-rEVsPfjg].vtt",
+      "youtubeUrl": "https://www.youtube.com/watch?v=FD-rEVsPfjg"
+    },
+    {
+      "status": "existing",
+      "item": {
+        "id": "Ap0sBWo4vw8",
+        "title": "English Listening Podcast - Thanksgiving",
+        "episode": "",
+        "thumbnail": "https://i.ytimg.com/vi/Ap0sBWo4vw8/default.jpg",
+        "duration": "",
+        "url": "https://www.youtube.com/watch?v=Ap0sBWo4vw8",
+        "description": "Get my training and advanced episodes: https://www.patreon.com/listeningtime\nUS Conversations Podcast: https://www.patreon.com/USConversations\nMy ebook (for Spanish speakers): https://www.amazon.com/dp/B0C2XJB4C2\nMy ebook (for Portuguese speakers): https://www.amazon.com/dp/B0C5QGH3W2",
+        "position": 32,
+        "publishedAt": "2023-11-20T15:16:13Z",
+        "urlEncrypt": "eyJjdCI6IkdUUzJSbWF0MmxGSmw2dUZEMlU4blhaQWlTMWV5ZmtGQlcwZkl3K3JNSitsR3N3UDg2NGduXC84bGNsb2hlQWdnbDliSjRnOEJxZGhnOWNUWUlqQVptdz09IiwiaXYiOiIwMzI3ZDA3MGNiNjMyNDEzMWNmZTA2NjVhZDk3NzIyYyIsInMiOiIyMDEzZWMyZTAyYzVjMTRkIn0"
+      },
+      "filename": "33-English Listening Podcast - Thanksgiving [Ap0sBWo4vw8].vtt",
+      "youtubeUrl": "https://www.youtube.com/watch?v=Ap0sBWo4vw8"
+    },
+    {
+      "status": "existing",
+      "item": {
+        "id": "3DkLcOwpqgg",
+        "title": "English Listening Practice - Childhood Activities",
+        "episode": "",
+        "thumbnail": "https://i.ytimg.com/vi/3DkLcOwpqgg/default.jpg",
+        "duration": "",
+        "url": "https://www.youtube.com/watch?v=3DkLcOwpqgg",
+        "description": "Get my training and advanced episodes: https://www.patreon.com/listeningtime\nUS Conversations Podcast: https://www.patreon.com/USConversations\nMy ebook (for Spanish speakers): https://www.amazon.com/dp/B0C2XJB4C2\nMy ebook (for Portuguese speakers): https://www.amazon.com/dp/B0C5QGH3W2",
+        "position": 33,
+        "publishedAt": "2023-11-24T16:38:15Z",
+        "urlEncrypt": "eyJjdCI6IjJ4NHJtT3BaNDd4K0c3N1F5VUdUSGFBXC8wUTVLVVJWTVgrVnk1Q3laOW9DSnZZYUEwQXpSQjB2ZWlWMFQ3R0RaTlwvMFN5ZjhFT3F5WVwvWVFSdTcwcDhnPT0iLCJpdiI6IjcwMjBhNTAwZDA0Njc0ZDUzNjI0ZDRhZmFmZmVmZTg2IiwicyI6IjIyYzY1Y2EyYzcwZDA3ZmEifQ"
+      },
+      "filename": "34-English Listening Practice - Childhood Activities [3DkLcOwpqgg].vtt",
+      "youtubeUrl": "https://www.youtube.com/watch?v=3DkLcOwpqgg"
+    },
+    {
+      "status": "existing",
+      "item": {
+        "id": "d0nA3n5BLBk",
+        "title": "English Listening Practice - Inflation",
+        "episode": "",
+        "thumbnail": "https://i.ytimg.com/vi/d0nA3n5BLBk/default.jpg",
+        "duration": "",
+        "url": "https://www.youtube.com/watch?v=d0nA3n5BLBk",
+        "description": "Get my training and advanced episodes: https://www.patreon.com/listeningtime \nUS Conversations Podcast: https://www.patreon.com/USConversations \nMy ebook (for Spanish speakers): https://www.amazon.com/dp/B0C2XJB4C2\nMy ebook (for Portuguese speakers): https://www.amazon.com/dp/B0C5QGH3W2",
+        "position": 34,
+        "publishedAt": "2023-12-01T22:54:06Z",
+        "urlEncrypt": "eyJjdCI6IkRKWlBJaVJSMFpOYUlNUkhVMTRaUXg2QnBHWW4zNDFiSWhOVGwwWGJtUXdpWFJ6WERqdDBJWGpreFNVaWhMVFlKMkJ3N3B4cDJSbkFyOStKaTNjczBBPT0iLCJpdiI6IjEyM2E0ODE1YmVjZDdkYzlkN2IxYjFmZTZkN2EwMWJiIiwicyI6Ijg0NDVhMDczZjRkNmU2ZGYifQ"
+      },
+      "filename": "35-English Listening Practice - Inflation [d0nA3n5BLBk].vtt",
+      "youtubeUrl": "https://www.youtube.com/watch?v=d0nA3n5BLBk"
+    },
+    {
+      "status": "existing",
+      "item": {
+        "id": "G015RgppUPI",
+        "title": "English Listening Practice - Old Age",
+        "episode": "",
+        "thumbnail": "https://i.ytimg.com/vi/G015RgppUPI/default.jpg",
+        "duration": "",
+        "url": "https://www.youtube.com/watch?v=G015RgppUPI",
+        "description": "Get my training and advanced episodes: https://www.patreon.com/listeningtime\nUS Conversations Podcast: https://www.patreon.com/USConversations\nMy ebook (for Spanish speakers): https://www.amazon.com/dp/B0C2XJB4C2\nMy ebook (for Portuguese speakers): https://www.amazon.com/dp/B0C5QGH3W2",
+        "position": 35,
+        "publishedAt": "2023-12-08T00:28:57Z",
+        "urlEncrypt": "eyJjdCI6IjBrS2FHVlVQc3VnYkZBc1JpcUo0NEd3SWVFNUVHK2RqNjA3dkErdEI5ZkxlVENyZ1hPTTVWbzd3SEhPU09lU2FBY0hwalpTNFpcL2xhVGhkYzcyWDZpdz09IiwiaXYiOiJjZjA4YzM5ZGU5ZTU5YjAxOTkzMDUxZDQ4MjdiYzZkOSIsInMiOiI4MzM4NmMxYTc0ZTU0ODg5In0"
+      },
+      "filename": "36-English Listening Practice - Old Age [G015RgppUPI].vtt",
+      "youtubeUrl": "https://www.youtube.com/watch?v=G015RgppUPI"
+    },
+    {
+      "status": "existing",
+      "item": {
+        "id": "qWm1SinE5ok",
+        "title": "English Podcast - Pronunciation",
+        "episode": "",
+        "thumbnail": "https://i.ytimg.com/vi/qWm1SinE5ok/default.jpg",
+        "duration": "",
+        "url": "https://www.youtube.com/watch?v=qWm1SinE5ok",
+        "description": "Get my training and advanced episodes: https://www.patreon.com/listeningtime\nUS Conversations Podcast: https://www.patreon.com/USConversations\nMy ebook (for Spanish speakers): https://www.amazon.com/dp/B0C2XJB4C2\nMy ebook (for Portuguese speakers): https://www.amazon.com/dp/B0C5QGH3W2",
+        "position": 36,
+        "publishedAt": "2023-12-11T22:22:55Z",
+        "urlEncrypt": "eyJjdCI6IldyMXg1VXV0ZHB2TVRnOGRPWDBsNWx5TmI2N3dVM3I1NFhXRTR4b2ZcL0J4Q25aY3hXXC9HS25pWU4wRjRldnBhaUZCZTJzdEpPWWJienZ4aFVcL1N2VktBPT0iLCJpdiI6ImE4YjdlNWNhODU1OGEzOWYyY2FkYTQzODQwMWYxZmQ3IiwicyI6IjdjNmY3NGMyMTEwNWRhZmEifQ"
+      },
+      "filename": "37-English Podcast - Pronunciation [qWm1SinE5ok].vtt",
+      "youtubeUrl": "https://www.youtube.com/watch?v=qWm1SinE5ok"
+    },
+    {
+      "status": "existing",
+      "item": {
+        "id": "eFkAqeY0zaM",
+        "title": "English Listening Practice - Introverts and Extroverts",
+        "episode": "",
+        "thumbnail": "https://i.ytimg.com/vi/eFkAqeY0zaM/default.jpg",
+        "duration": "",
+        "url": "https://www.youtube.com/watch?v=eFkAqeY0zaM",
+        "description": "Get my training and advanced episodes: https://www.patreon.com/listeningtime\nUS Conversations Podcast: https://www.patreon.com/USConversations\nListen on Spotify: https://open.spotify.com/show/3GRJb6bwpKEbOOG7QFjRqS\nMy ebook (for Spanish speakers): https://www.amazon.com/dp/B0C2XJB4C2\nMy ebook (for Portuguese speakers): https://www.amazon.com/dp/B0C5QGH3W2",
+        "position": 37,
+        "publishedAt": "2023-12-21T17:47:29Z",
+        "urlEncrypt": "eyJjdCI6IkJURGdzcnJSb252dCt4TzlBVXhxOU1hYlBFb0ZBMkt0K1wvMFFIUkw3a3N3WE5kZUd3dURydHdZMVE5clY4czhUMCs3RUE0a1k1KzFnUE5scXI0T04xZz09IiwiaXYiOiI1ZTA3MDdlZmY2YzVlNjRmNWQxYmM0NTY5ODQ3ZTUwNyIsInMiOiJlNmJkMTVkYWJhNjk0YzE3In0"
+      },
+      "filename": "38-English Listening Practice - Introverts and Extroverts [eFkAqeY0zaM].vtt",
+      "youtubeUrl": "https://www.youtube.com/watch?v=eFkAqeY0zaM"
+    },
+    {
+      "status": "existing",
+      "item": {
+        "id": "W8oi7HRI6u0",
+        "title": "English Listening Podcast - Christmas",
+        "episode": "",
+        "thumbnail": "https://i.ytimg.com/vi/W8oi7HRI6u0/default.jpg",
+        "duration": "",
+        "url": "https://www.youtube.com/watch?v=W8oi7HRI6u0",
+        "description": "Get my training and advanced episodes: https://www.patreon.com/listeningtime\nUS Conversations Podcast: https://www.patreon.com/USConversations\nListen on Spotify: https://open.spotify.com/show/3GRJb6bwpKEbOOG7QFjRqS\nMy ebook (for Spanish speakers): https://www.amazon.com/dp/B0C2XJB4C2\nMy ebook (for Portuguese speakers): https://www.amazon.com/dp/B0C5QGH3W2",
+        "position": 38,
+        "publishedAt": "2023-12-29T17:13:31Z",
+        "urlEncrypt": "eyJjdCI6Im1EcHN0NUVoZmZ2REhWNFZ2bFwvSElPVWx0ejR1RWp4dWlMaEM1dnZnT1JCRTJwUDh1MlJXZW9XT3ZPTVFqVitRc1kxSWcwUkJjMURzVmltTE82cTA5UT09IiwiaXYiOiIzOTA3OTFhMDljMDY1YzM3NzMwZWFhODQyNGY1NmIwOCIsInMiOiJmMzI3NjgxNzcxMDU1ZTUzIn0"
+      },
+      "filename": "39-English Listening Podcast - Christmas [W8oi7HRI6u0].vtt",
+      "youtubeUrl": "https://www.youtube.com/watch?v=W8oi7HRI6u0"
+    },
+    {
+      "status": "existing",
+      "item": {
+        "id": "AHgDVFP6r28",
+        "title": "English Listening Podcast - New Year, New Mindset",
+        "episode": "",
+        "thumbnail": "https://i.ytimg.com/vi/AHgDVFP6r28/default.jpg",
+        "duration": "",
+        "url": "https://www.youtube.com/watch?v=AHgDVFP6r28",
+        "description": "Get my training and advanced episodes: https://www.patreon.com/listeningtime\nUS Conversations Podcast: https://www.patreon.com/USConversations\nListen on Spotify: https://open.spotify.com/show/3GRJb6bwpKEbOOG7QFjRqS\nMy ebook (for Spanish speakers): https://www.amazon.com/dp/B0C2XJB4C2\nMy ebook (for Portuguese speakers): https://www.amazon.com/dp/B0C5QGH3W2",
+        "position": 39,
+        "publishedAt": "2024-01-05T18:16:20Z",
+        "urlEncrypt": "eyJjdCI6IjhCU2xHXC85R29cL0tKNXI5K0ZHZHB2M29TeDJLRHFPMFBXWE1hVmRBK2ZMZ21OMnlNWklxTmV0TjNCVFBTZFlvM1JDSHZCdVNPNERoRnE0M1FcLzN1WTJ3PT0iLCJpdiI6ImU1ZDMxNGE1ODVhNGU4ZjQ0N2Y1ZDBmNTRlOGIwYmMyIiwicyI6IjhjNjcyMzI0NmE4ZmI3OTgifQ"
+      },
+      "filename": "40-English Listening Podcast - New Year, New Mindset [AHgDVFP6r28].vtt",
+      "youtubeUrl": "https://www.youtube.com/watch?v=AHgDVFP6r28"
+    },
+    {
+      "status": "existing",
+      "item": {
+        "id": "ROAXxUCnX8o",
+        "title": "English Listening Podcast - Why is it Hard to Become Advanced?",
+        "episode": "",
+        "thumbnail": "https://i.ytimg.com/vi/ROAXxUCnX8o/default.jpg",
+        "duration": "",
+        "url": "https://www.youtube.com/watch?v=ROAXxUCnX8o",
+        "description": "Get my training and advanced episodes: https://www.patreon.com/listeningtime\nUS Conversations Podcast: https://www.patreon.com/USConversations\nListen on Spotify: https://open.spotify.com/show/3GRJb6bwpKEbOOG7QFjRqS\nMy ebook (for Spanish speakers): https://www.amazon.com/dp/B0C2XJB4C2\nMy ebook (for Portuguese speakers): https://www.amazon.com/dp/B0C5QGH3W2",
+        "position": 40,
+        "publishedAt": "2024-02-14T21:35:50Z",
+        "urlEncrypt": "eyJjdCI6IjBYenBKcjdSWnd2VE11eCthXC95Qk9PMDMrQTJmY2VuNjVaNHdwN2NDVG5sZW9vaWhEVkMrREkyc3dBYU5cL01YZWtMQ3c2dnpzMUd4ZTBqbjJKcFhhc0E9PSIsIml2IjoiODgyOGY3NGIxNTE5MDdkNjJjNjRmYWQxZmU1ZjQ5NmIiLCJzIjoiYWRmMmE1MDAyNWFjMjg1MCJ9"
+      },
+      "filename": "41-English Listening Podcast - Why is it Hard to Become Advanced？ [ROAXxUCnX8o].vtt",
+      "youtubeUrl": "https://www.youtube.com/watch?v=ROAXxUCnX8o"
+    },
+    {
+      "status": "existing",
+      "item": {
+        "id": "JwtzJyD1dTk",
+        "title": "Can You Understand This Video In English?",
+        "episode": "",
+        "thumbnail": "https://i.ytimg.com/vi/JwtzJyD1dTk/default.jpg",
+        "duration": "",
+        "url": "https://www.youtube.com/watch?v=JwtzJyD1dTk",
+        "description": "Get my training and advanced episodes: https://www.patreon.com/listeningtime\nUS Conversations Podcast: https://www.patreon.com/USConversations\nListen on Spotify: https://open.spotify.com/show/3GRJb6bwpKEbOOG7QFjRqS\nMy ebook (for Spanish speakers): https://www.amazon.com/dp/B0C2XJB4C2\nMy ebook (for Portuguese speakers): https://www.amazon.com/dp/B0C5QGH3W2",
+        "position": 41,
+        "publishedAt": "2025-10-16T19:14:07Z",
+        "urlEncrypt": "eyJjdCI6Im5DSjk4clZ0ZmJVRStBVjJzUE90dEphS1h1RnhScm1Fb0JIUUd4eHpNXC82R1AzSE5neWVqbHhjU3VydnBXOWg5KytKRyt3WXoyZGticmZQZzRNb2dwZz09IiwiaXYiOiIwZGZmZTVhYWFiOTM4MjNiMzFiMDViN2M1YjlhYjgwNyIsInMiOiIxODc4Y2Q5MDAzZTRmMTUxIn0"
+      },
+      "filename": "42-Can You Understand This Video In English？ [JwtzJyD1dTk].vtt",
+      "youtubeUrl": "https://www.youtube.com/watch?v=JwtzJyD1dTk"
+    },
+    {
+      "status": "existing",
+      "item": {
+        "id": "zigbLFUKv48",
+        "title": "How To Improve Your English",
+        "episode": "",
+        "thumbnail": "https://i.ytimg.com/vi/zigbLFUKv48/default.jpg",
+        "duration": "",
+        "url": "https://www.youtube.com/watch?v=zigbLFUKv48",
+        "description": "Get my training and advanced episodes: https://www.patreon.com/listeningtime\nUS Conversations Podcast: https://www.patreon.com/USConversations\nListen on Spotify: https://open.spotify.com/show/3GRJb6bwpKEbOOG7QFjRqS\nMy ebook (for Spanish speakers): https://www.amazon.com/dp/B0C2XJB4C2\nMy ebook (for Portuguese speakers): https://www.amazon.com/dp/B0C5QGH3W2",
+        "position": 42,
+        "publishedAt": "2025-11-18T19:15:20Z",
+        "urlEncrypt": "eyJjdCI6IlA5VlFUbzcxWEh6Mit5a01HU29XSnNoeE1mV3pHVWdVZFdUNFdReWlhdXVHVHF2WG9aaW8xSmhUaWxtRGlRMHRcL2hjV1ZFRytTZ2NNeWl1UVBPRlErUT09IiwiaXYiOiI1ZjIyZGI4MGU5MTYzODZhMWJiYjVkZTQwOGVmNjQ5OSIsInMiOiIyMzUwZWIwYzY2Mjg5OWFiIn0"
+      },
+      "filename": "43-How To Improve Your English [zigbLFUKv48].vtt",
+      "youtubeUrl": "https://www.youtube.com/watch?v=zigbLFUKv48"
+    },
+    {
+      "status": "existing",
+      "item": {
+        "id": "0tDVMFr2_x8",
+        "title": "Learn English With These Resources",
+        "episode": "",
+        "thumbnail": "https://i.ytimg.com/vi/0tDVMFr2_x8/default.jpg",
+        "duration": "",
+        "url": "https://www.youtube.com/watch?v=0tDVMFr2_x8",
+        "description": "Get my training and advanced episodes: https://www.patreon.com/listeningtime\nUS Conversations Podcast: https://www.patreon.com/USConversations\nListen on Spotify: https://open.spotify.com/show/3GRJb6bwpKEbOOG7QFjRqS\nMy ebook (for Spanish speakers): https://www.amazon.com/dp/B0C2XJB4C2\nMy ebook (for Portuguese speakers): https://www.amazon.com/dp/B0C5QGH3W2",
+        "position": 43,
+        "publishedAt": "2025-12-31T18:07:17Z",
+        "urlEncrypt": "eyJjdCI6IkduK2R1dm04cmt6dHh4SGx6eitCVjVteU9TSDg0R3J5YnZ6bE5lRGJsV1U5QUluMnZqNEM0M0owWFhJT29DOEI3WEtwbWRsREgzTlV5RXpBNEwyaE5nPT0iLCJpdiI6IjQyOTk2MDg2NGQ1NTU1ZWU2Yzg5ZDhkY2RkMGY4NzBjIiwicyI6IjY5ZmJiMDJjY2NmNmEzYTcifQ"
+      },
+      "filename": "44-Learn English With These Resources [0tDVMFr2_x8].vtt",
+      "youtubeUrl": "https://www.youtube.com/watch?v=0tDVMFr2_x8"
+    },
+    {
+      "status": "existing",
+      "item": {
+        "id": "pfQoC8n4XxY",
+        "title": "How My Kids Learn English",
+        "episode": "",
+        "thumbnail": "https://i.ytimg.com/vi/pfQoC8n4XxY/default.jpg",
+        "duration": "",
+        "url": "https://www.youtube.com/watch?v=pfQoC8n4XxY",
+        "description": "Get my training and advanced episodes: https://www.patreon.com/listeningtime\nUS Conversations Podcast: https://www.patreon.com/USConversations\nListen on Spotify: https://open.spotify.com/show/3GRJb6bwpKEbOOG7QFjRqS\nMy ebook (for Spanish speakers): https://www.amazon.com/dp/B0C2XJB4C2\nMy ebook (for Portuguese speakers): https://www.amazon.com/dp/B0C5QGH3W2",
+        "position": 44,
+        "publishedAt": "2026-02-13T21:30:22Z",
+        "urlEncrypt": "eyJjdCI6InRXRWpWbEJOR1dIQWRIck4xQUxXeWZkTzJWejkyRGRrRTF6T2ZwKzNncklzMGdHTlRyR1h2SE9cL2QyV3VKVkJVcEJ0N2xFQ3AwYkFcL2tOQysySE5RWHc9PSIsIml2IjoiNTgzNzU2YjEyOGYwMmVhZGI2MzdhMGY0MGVmNWY3YzEiLCJzIjoiYWNjZTBkYTM2MzJkYTZlMCJ9"
+      },
+      "filename": "45-How My Kids Learn English [pfQoC8n4XxY].vtt",
+      "youtubeUrl": "https://www.youtube.com/watch?v=pfQoC8n4XxY"
+    },
+    {
+      "status": "existing",
+      "item": {
+        "id": "5NC_0HiReNE",
+        "title": "Becoming Fluent in English",
+        "episode": "",
+        "thumbnail": "https://i.ytimg.com/vi/5NC_0HiReNE/default.jpg",
+        "duration": "",
+        "url": "https://www.youtube.com/watch?v=5NC_0HiReNE",
+        "description": "Get my training and advanced episodes: https://www.patreon.com/listeningtime\nUS Conversations Podcast: https://www.patreon.com/USConversations\nListen on Spotify: https://open.spotify.com/show/3GRJb6bwpKEbOOG7QFjRqS\nMy ebook (for Spanish speakers): https://www.amazon.com/dp/B0C2XJB4C2\nMy ebook (for Portuguese speakers): https://www.amazon.com/dp/B0C5QGH3W2",
+        "position": 45,
+        "publishedAt": "2026-04-14T17:17:04Z",
+        "urlEncrypt": "eyJjdCI6ImowaFFYalZ2dUpqTzZYRnBJaStvYW1ubWxObEE5cUhvRDRDWFwvNjE5XC9UR0FDbzNXUXZnRXltTjRrVEdjVjdEdFR6dExHUWlzWEd0aGdyQUszTnFlYmc9PSIsIml2IjoiNjdjYmEzZjkwYjlkYTVjN2FiYjBmMTdmNTY3NWEyMzIiLCJzIjoiNTBkMDgxZGVjOWRmYzA4MyJ9"
+      },
+      "filename": "46-Becoming Fluent in English [5NC_0HiReNE].vtt",
+      "youtubeUrl": "https://www.youtube.com/watch?v=5NC_0HiReNE"
+    },
+    {
+      "status": "existing",
+      "item": {
+        "id": "RlA-Nhr8XVU",
+        "title": "Why You Didn't Learn English in School",
+        "episode": "",
+        "thumbnail": "https://i.ytimg.com/vi/RlA-Nhr8XVU/default.jpg",
+        "duration": "",
+        "url": "https://www.youtube.com/watch?v=RlA-Nhr8XVU",
+        "description": "Get my training and advanced episodes: https://www.patreon.com/listeningtime\nUS Conversations Podcast: https://www.patreon.com/USConversations\nListen on Spotify: https://open.spotify.com/show/3GRJb6bwpKEbOOG7QFjRqS\nMy ebook (for Spanish speakers): https://www.amazon.com/dp/B0C2XJB4C2\nMy ebook (for Portuguese speakers): https://www.amazon.com/dp/B0C5QGH3W2",
+        "position": 46,
+        "publishedAt": "2026-04-28T20:25:42Z",
+        "urlEncrypt": "eyJjdCI6IjFMYjdVQXlHVjVNMGY0clNHMmF0eDB2dkRacEFKcVVqazM3QWZmYk0rSDgwbzd2VFh3eVBPeU5XbUtYRjA1VWZ2Z0FjS3kzMHVWUXUxR1dSYXJUMUpRPT0iLCJpdiI6ImI3OWI5ZTgxMzdkOTcxMTliOGRmODQ3NzliZTRiYWQ0IiwicyI6ImJkNjc3MjIxNGU3MjQ4ZmYifQ"
+      },
+      "filename": "47-Why You Didn't Learn English in School [RlA-Nhr8XVU].vtt",
+      "youtubeUrl": "https://www.youtube.com/watch?v=RlA-Nhr8XVU"
+    }
+  ]
+}

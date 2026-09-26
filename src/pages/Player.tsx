@@ -8,7 +8,7 @@ import TranscriptPanel from '@components/Player/TranscriptPanel'
 import Words from '@components/Player/Words'
 import PageTransition from '@components/PageTransition'
 import TypedLink from '@components/TypedLink'
-import { useKaraoke, useRecorder, useShadowing, useT, useYouTubePlayer } from '@hooks'
+import { useKaraoke, useRecorder, useShadowing, useYouTubePlayer } from '@hooks'
 import { MONO } from '@libs/constants'
 import type { Video } from '@libs/db'
 import { formatTime, wordKey } from '@libs/text'
@@ -26,23 +26,24 @@ import { useSettings, useUpdateSettings } from '@services/settingAPI'
 import { usePatchVideo, useSaveRecording, useVideo } from '@services/videoAPI'
 import { useEffect, useRef, useState, ViewTransition } from 'react'
 import { useParams, useSearchParams } from 'react-router'
+import { useTranslation } from 'react-i18next'
 
 const PlayerPage = () => {
   const { id = '' } = useParams()
-  const t = useT()
+  const { t } = useTranslation()
   const { data: video, error } = useVideo(id)
 
   return (
     <PageTransition>
       <Box component="main" sx={{ px: { xs: 2, md: 10 }, py: 3.5, maxWidth: 1600, mx: 'auto' }}>
         <TypedLink to="/" type="nav-back" style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: 14, fontWeight: 600, textDecoration: 'none', color: 'var(--mui-palette-primary-main)', marginBottom: 16 }}>
-          <ArrowBack sx={{ fontSize: 16 }} /> {t.back}
+          <ArrowBack sx={{ fontSize: 16 }} /> {t('back')}
         </TypedLink>
         {error ? (
-          <Typography color="secondary.main">{t.loadFailed}: {error.message}</Typography>
+          <Typography color="secondary.main">{t('loadFailed')}: {error.message}</Typography>
         ) : !video ? (
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, py: 6 }}>
-            <CircularProgress size={24} /> {t.loadingVideo}
+            <CircularProgress size={24} /> {t('loadingVideo')}
           </Box>
         ) : (
           <Session key={`${video.id}:${video.lines.length}`} video={video} />
@@ -55,7 +56,7 @@ const PlayerPage = () => {
 type PanelTab = 'transcript' | 'notes' | 'dict'
 
 function Session({ video }: { video: Video }) {
-  const t = useT()
+  const { t } = useTranslation()
   const settings = useSettings()
   const update = useUpdateSettings()
   const patch = usePatchVideo(video.id)
@@ -92,7 +93,7 @@ function Session({ video }: { video: Video }) {
   const saveRec = useSaveRecording(video.id)
   const recorder = useRecorder(
     (blob) => saveRec.mutate({ idx, blob }),
-    () => setToast(t.micDenied),
+    () => setToast(t('micDenied')),
   )
 
   const lookUp = (w: string) => {
@@ -147,7 +148,7 @@ function Session({ video }: { video: Video }) {
               // Sized to the video (cqw) and kept above YouTube's control bar.
               <Box sx={{ position: 'absolute', left: '50%', bottom: '14%', transform: 'translateX(-50%)', width: 'max-content', maxWidth: '82%', px: 1.25, py: 0.5, borderRadius: 2, bgcolor: 'rgba(0,0,0,.72)', color: '#fff', textAlign: 'center', fontSize: 'clamp(12px, 2.3cqw, 19px)', lineHeight: 1.35 }}>
                 {blind ? (
-                  <Typography sx={{ color: '#BDB8AE', fontWeight: 500, fontSize: 'inherit' }}>{t.subHidden}</Typography>
+                  <Typography sx={{ color: '#BDB8AE', fontWeight: 500, fontSize: 'inherit' }}>{t('subHidden')}</Typography>
                 ) : (
                   <Words text={line.text} selected={word} onPick={lookUp} karaoke={karaoke} sx={{ fontSize: 'inherit', fontWeight: 500 }} overlay />
                 )}
@@ -155,7 +156,7 @@ function Session({ video }: { video: Video }) {
             ) : null}
             {waiting || atEnd ? (
               <Box role="status" sx={{ position: 'absolute', top: 16, right: 16, display: 'flex', alignItems: 'center', gap: 1, px: 1.5, py: 0.75, borderRadius: 999, bgcolor: 'secondary.main', color: 'secondary.contrastText', fontWeight: 600, fontSize: 14 }}>
-                <MicRounded fontSize="small" /> {waiting ? t.yourTurn : t.pausedAtEnd}
+                <MicRounded fontSize="small" /> {waiting ? t('yourTurn') : t('pausedAtEnd')}
               </Box>
             ) : null}
           </Box>
@@ -176,12 +177,12 @@ function Session({ video }: { video: Video }) {
         <Box sx={{ px: 2.5, pt: 2.5, borderBottom: 1, borderColor: 'divider' }}>
           <Typography sx={{ fontSize: 17, fontWeight: 700, lineHeight: 1.3 }}>{video.title}</Typography>
           <Typography variant="body2" color="text.secondary" sx={{ mt: 0.5 }}>
-            {[video.author, video.duration ? formatTime(video.duration) : '', `${video.done.length}/${lines.length} ${t.sentences}`].filter(Boolean).join(' · ')}
+            {[video.level, video.author, video.duration ? formatTime(video.duration) : '', `${video.done.length}/${lines.length} ${t('sentences')}`].filter(Boolean).join(' · ')}
           </Typography>
-          <Tabs value={tab} onChange={(_, v: PanelTab) => setTab(v)} variant="fullWidth" aria-label={t.panel} textColor="inherit" slotProps={{ indicator: { sx: { bgcolor: 'text.primary' } } }} sx={{ mt: 1 }}>
-            <Tab value="transcript" label={t.tTranscript} />
-            <Tab value="notes" label={noteCount ? `${t.tNotes} · ${noteCount}` : t.tNotes} />
-            <Tab value="dict" label={t.tDict} />
+          <Tabs value={tab} onChange={(_, v: PanelTab) => setTab(v)} variant="fullWidth" aria-label={t('panel')} textColor="inherit" slotProps={{ indicator: { sx: { bgcolor: 'text.primary' } } }} sx={{ mt: 1 }}>
+            <Tab value="transcript" label={t('tTranscript')} />
+            <Tab value="notes" label={noteCount ? `${t('tNotes')} · ${noteCount}` : t('tNotes')} />
+            <Tab value="dict" label={t('tDict')} />
           </Tabs>
         </Box>
         {tab === 'transcript' ? (
@@ -192,7 +193,7 @@ function Session({ video }: { video: Video }) {
           <DictionaryPanel word={word} recent={recent} onWord={lookUp} video={video} idx={idx} />
         )}
         <Box sx={{ px: 2.5, py: 1.5, borderTop: 1, borderColor: 'divider', display: 'flex', gap: 1.75, flexWrap: 'wrap', fontSize: 12, color: 'text.secondary' }}>
-          {([['Space', t.keys.play], ['← →', t.keys.nav], ['L', t.keys.loop], ['P', t.keys.pause], ['C', t.keys.overlay], ['R', t.keys.rec], ['N', t.keys.note]] as const).map(([k, label]) => (
+          {([['Space', t('keys.play')], ['← →', t('keys.nav')], ['L', t('keys.loop')], ['P', t('keys.pause')], ['C', t('keys.overlay')], ['R', t('keys.rec')], ['N', t('keys.note')]] as const).map(([k, label]) => (
             <span key={k}>
               <Box component="kbd" sx={{ fontFamily: MONO, border: 1, borderColor: 'divider', borderRadius: 1, px: 0.75, color: 'text.primary' }}>{k}</Box> {label}
             </span>

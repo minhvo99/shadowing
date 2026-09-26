@@ -1,3 +1,27 @@
+/* Tailwind + MUI: MUI's emotion styles go in the "mui" layer (StyledEngineProvider enableCssLayer),
+   so Tailwind utilities (later layer) always win over MUI defaults. */
+@layer theme, base, mui, components, utilities;
+@import 'tailwindcss';
+
+/* Dark mode follows MUI's color scheme class on <html>. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* MUI palette → Tailwind colors (bg-primary, text-muted, border-line, …). They switch with the theme. */
+@theme inline {
+  --color-primary: var(--mui-palette-primary-main);
+  --color-on-primary: var(--mui-palette-primary-contrastText);
+  --color-secondary: var(--mui-palette-secondary-main);
+  --color-canvas: var(--mui-palette-background-default);
+  --color-surface: var(--mui-palette-background-paper);
+  --color-ink: var(--mui-palette-text-primary);
+  --color-muted: var(--mui-palette-text-secondary);
+  --color-line: var(--mui-palette-divider);
+  --color-sunken: var(--mui-palette-sunken);
+  --color-accent-soft: var(--mui-palette-accentSoft);
+  --font-sans: 'Be Vietnam Pro', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+}
+
 /* View transition recipes (see vercel-react-view-transitions skill). */
 
 ::view-transition-old(.nav-forward) { animation: 180ms ease-in both vt-fade-out, 260ms cubic-bezier(.2,.8,.2,1) both vt-to-left; }

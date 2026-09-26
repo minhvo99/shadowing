@@ -16,6 +16,8 @@ export type Video = {
   lastIdx: number
   addedAt: number
   openedAt: number
+  /** Set for lessons opened from the catalog. */
+  level?: string
 }
 
 export type Note = { id: string; videoId: string; idx: number; start: number; sentence: string; text: string; createdAt: number }

@@ -50,8 +50,9 @@ test('estimates word times from length when captions have none', () => {
 })
 
 test('splits unpunctuated captions into bounded chunks and on long gaps', () => {
-  const cues = Array.from({ length: 6 }, (_, i) => ({ start: i * 2, end: i * 2 + 2, text: `w${i}` }))
-  expect(toSentences(cues, 7).map((c) => c.text)).toEqual(['w0 w1 w2 w3', 'w4 w5'])
+  // continuous speech (words fill each 2s cue, no pauses) → capped at 7s
+  const cues = Array.from({ length: 6 }, (_, i) => ({ start: i * 2, end: i * 2 + 2, text: `w${i} and so on and so on and so on` }))
+  expect(toSentences(cues, 7).map((c) => c.text.split(' ')[0])).toEqual(['w0', 'w4'])
   expect(toSentences([{ start: 0, end: 1, text: 'a' }, { start: 5, end: 6, text: 'b' }])).toHaveLength(2)
 })
 
@@ -115,4 +116,42 @@ test('sentenceAt follows the video; a silent gap belongs half to each side', () 
     { start: 8, end: 10, text: 'c' },
   ]
   expect([0, 3, 4.1, 6.9, 7.1, 20].map((t) => sentenceAt(lines, t))).toEqual([0, 0, 1, 1, 2, 2])
+})
+
+test('reads YouTube rolling auto-caption VTT once per word, with word timings', () => {
+  // Verbatim from public/A1-english-listening-practice/01-…Language_Learning.vtt
+  const vtt = `WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.030 --> 00:00:02.480 align:start position:0%
+ 
+hey<00:00:00.480><c> everybody</c><00:00:01.079><c> welcome</c><00:00:01.589><c> to</c><00:00:01.709><c> this</c><00:00:01.829><c> a</c><00:00:02.010><c> one</c>
+
+00:00:02.480 --> 00:00:02.490 align:start position:0%
+hey everybody welcome to this a one
+ 
+
+00:00:02.490 --> 00:00:05.480 align:start position:0%
+hey everybody welcome to this a one
+english<00:00:03.120><c> listening</c><00:00:03.449><c> practice</c><00:00:03.959><c> video</c><00:00:04.560><c> you</c><00:00:05.310><c> can</c>
+
+00:00:05.480 --> 00:00:05.490 align:start position:0%
+english listening practice video you can
+ `
+  const cues = parseSubtitleFile(vtt)
+  const words = cues.flatMap((c) => c.text.split(' '))
+  expect(words.join(' ')).toBe('hey everybody welcome to this a one english listening practice video you can')
+  const w = cues.flatMap((c) => c.w!)
+  expect(w).toHaveLength(words.length)
+  expect(w.slice(0, 3)).toEqual([0.25, 0.48, 1.079]) // "hey" placed just before "everybody"
+  expect(w[7]).toBeCloseTo(3.12 - 0.06 * 7 - 0.05) // "english" (no own time) placed just before "listening"
+  expect(toSentences(cues).every((s) => s.w!.length === s.text.split(' ').length)).toBe(true)
+})
+
+test('unpunctuated speech splits at real pauses (≥2.5s in), and never runs past 7s', () => {
+  // one word per cue, like rolling auto-captions: "so today" … 1.2s of silence … "we talk about food"
+  const at = (text: string, start: number) => ({ start, end: start + 0.3, text, w: [start] })
+  const cues = [at('so', 0), at('today', 0.4), at('i', 1), at('want', 1.3), at('to', 1.7), at('practice', 2), at('with', 2.6), at('you', 2.9), at('we', 4.4), at('talk', 4.7), at('about', 5), at('food', 5.4)]
+  expect(toSentences(cues).map((s) => s.text)).toEqual(['so today i want to practice with you', 'we talk about food'])
 })

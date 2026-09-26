@@ -50,3 +50,14 @@ Trên Vercel, YouTube chặn IP máy chủ ("Sign in to confirm you're not a bot
 | Phát video | YouTube IFrame Player API | |
 | Định nghĩa, IPA, audio | dictionaryapi.dev, dự phòng Wiktionary | Không có audio thì dùng giọng đọc của trình duyệt |
 | Nghĩa tiếng Việt | MyMemory (dịch máy) | Giới hạn miễn phí ~5000 ký tự/ngày/IP; người dùng sửa được trước khi lưu |
+
+## Agent Telegram (tuỳ chọn, chạy trên máy bạn)
+
+Nhắn yêu cầu cho bot Telegram → `claude -p` làm theo skill `.claude/skills/ship-request` (verify → plan → code → review → fix → push) → mở PR vào `dev` → gửi link PR về Telegram. Agent không merge; bạn review và merge.
+
+1. `brew install gh && gh auth login`
+2. Tạo bot với @BotFather, ghi `TELEGRAM_BOT_TOKEN` vào `.env.local`.
+3. `pnpm agent`, nhắn bất kỳ cho bot → bot trả `TELEGRAM_CHAT_ID=…` → ghi vào `.env.local`, chạy lại `pnpm agent`.
+4. Bật branch protection cho `main` và `dev` trên GitHub (hook `agent/guard.sh` chỉ chặn theo mẫu lệnh).
+
+Mỗi yêu cầu chạy trong git worktree riêng từ `origin/dev`, giới hạn `MAX_BUDGET_USD` (mặc định 5) và `MAX_TURNS` (80). Hook `agent/test-gate.sh` không cho agent kết thúc khi build/test đỏ.

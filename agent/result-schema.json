@@ -1,0 +1,10 @@
+{
+  "type": "object",
+  "properties": {
+    "action": { "type": "string", "enum": ["pr_opened", "needs_clarification", "rejected"] },
+    "summary": { "type": "string", "description": "2-3 câu tiếng Việt, đọc trên điện thoại" },
+    "pr_url": { "type": ["string", "null"] },
+    "question": { "type": ["string", "null"], "description": "Câu hỏi cho người dùng khi action = needs_clarification" }
+  },
+  "required": ["action", "summary"]
+}

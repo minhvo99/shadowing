@@ -2,6 +2,9 @@ node_modules
 dist
 .vercel
 .agents
-.claude
+.claude/*
+!.claude/skills/
+.claude/skills/*
+!.claude/skills/ship-request/
 .env.local
 .env.*.local

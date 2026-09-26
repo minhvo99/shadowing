@@ -137,5 +137,14 @@
   "noWords": "Chưa có từ nào. Tra từ trong lúc luyện rồi bấm \"Lưu vào sổ từ\".",
   "noNotesAll": "Chưa có ghi chú nào.",
   "noMatch": "Không có mục nào khớp.",
-  "notFoundPage": "Không tìm thấy trang"
+  "notFoundPage": "Không tìm thấy trang",
+  "viewLabel": "Kiểu hiển thị",
+  "viewGrid": "Biểu tượng",
+  "viewList": "Danh sách",
+  "viewColumns": "Cột",
+  "viewGallery": "Thư viện ảnh",
+  "colName": "Tên",
+  "colProgress": "Tiến độ",
+  "practiceLesson": "Luyện bài này",
+  "openHint": "Bấm đúp để mở"
 }

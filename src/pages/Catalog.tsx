@@ -1,4 +1,8 @@
 import LessonCard from '@components/Catalog/LessonCard'
+import LessonColumns from '@components/Catalog/LessonColumns'
+import LessonGallery from '@components/Catalog/LessonGallery'
+import LessonList from '@components/Catalog/LessonList'
+import ViewModeToggle from '@components/Catalog/ViewModeToggle'
 import PageTransition from '@components/PageTransition'
 import { useNavigateWithType } from '@hooks'
 import { LEVELS, type Level } from '@libs/constants'
@@ -11,6 +15,7 @@ import Snackbar from '@mui/material/Snackbar'
 import Tab from '@mui/material/Tab'
 import Tabs from '@mui/material/Tabs'
 import { useLessons, useOpenLesson, type Lesson } from '@services/catalogAPI'
+import { useSettings, useUpdateSettings } from '@services/settingAPI'
 import { useLibrary } from '@services/videoAPI'
 import { useDeferredValue, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
@@ -28,9 +33,17 @@ const Catalog = () => {
   const open = useOpenLesson()
   const go = useNavigateWithType()
   const [failed, setFailed] = useState(false)
+  const { lessonsView: view } = useSettings()
+  const update = useUpdateSettings()
+  const [selectedId, setSelectedId] = useState<string>()
 
   const shown = (lessons ?? []).filter((l) => !q || l.topic.toLowerCase().includes(q))
+  // Columns/gallery keep a selection (Finder-style); fall back to the first lesson shown.
+  const selected = shown.find((l) => l.id === selectedId) ?? shown[0]
+  const openingId = open.isPending ? open.variables?.id : undefined
   const openLesson = (l: Lesson) => open.mutate(l, { onSuccess: (v) => go(`/watch/${v.id}`, 'nav-forward'), onError: () => setFailed(true) })
+  const setLevel = (l: Level) => setParams({ level: l }, { replace: true })
+  const views = { lessons: shown, byId, openingId, onOpen: openLesson, selected, onSelect: (l: Lesson) => setSelectedId(l.id) }
 
   return (
     <PageTransition>
@@ -46,18 +59,22 @@ const Catalog = () => {
           </Paper>
         </header>
 
-        <Tabs
-          value={level}
-          onChange={(_, v: Level) => setParams({ level: v }, { replace: true })}
-          aria-label={t('levelLabel')}
-          textColor="inherit"
-          slotProps={{ indicator: { sx: { bgcolor: 'text.primary' } } }}
-          className="border-b border-line"
-        >
-          {LEVELS.map(({ level: l }) => (
-            <Tab key={l} value={l} label={<LevelLabel level={l} />} />
-          ))}
-        </Tabs>
+        <div className="flex items-center gap-4 border-b border-line">
+          {/* Columns view has its own level column on wide screens. */}
+          <Tabs
+            value={level}
+            onChange={(_, v: Level) => setLevel(v)}
+            aria-label={t('levelLabel')}
+            textColor="inherit"
+            slotProps={{ indicator: { sx: { bgcolor: 'text.primary' } } }}
+            className={`grow ${view === 'columns' ? 'md:invisible' : ''}`}
+          >
+            {LEVELS.map(({ level: l }) => (
+              <Tab key={l} value={l} label={<LevelLabel level={l} />} />
+            ))}
+          </Tabs>
+          <ViewModeToggle value={view} onChange={(v) => update({ lessonsView: v })} />
+        </div>
 
         {error ? (
           <Alert severity="error">{t('lessonsLoadFailed')}</Alert>
@@ -67,14 +84,20 @@ const Catalog = () => {
               <Skeleton key={i} variant="rounded" className="aspect-video h-auto! rounded-2xl!" />
             ))}
           </div>
-        ) : shown.length ? (
+        ) : !shown.length ? (
+          <div className="rounded-2xl border-[1.5px] border-dashed border-line p-8 text-muted">{t('noLessons')}</div>
+        ) : view === 'list' ? (
+          <LessonList {...views} />
+        ) : view === 'columns' ? (
+          <LessonColumns {...views} level={level} onLevel={setLevel} />
+        ) : view === 'gallery' ? (
+          <LessonGallery {...views} />
+        ) : (
           <div className="grid grid-cols-[repeat(auto-fill,minmax(240px,1fr))] gap-x-6 gap-y-8">
             {shown.map((l) => (
-              <LessonCard key={l.id} lesson={l} progress={byId.get(l.id)} opening={open.isPending && open.variables?.id === l.id} onOpen={() => openLesson(l)} />
+              <LessonCard key={l.id} lesson={l} progress={byId.get(l.id)} opening={openingId === l.id} onOpen={() => openLesson(l)} />
             ))}
           </div>
-        ) : (
-          <div className="rounded-2xl border-[1.5px] border-dashed border-line p-8 text-muted">{t('noLessons')}</div>
         )}
       </main>
       <Snackbar open={failed} autoHideDuration={4000} onClose={() => setFailed(false)} message={t('openFailed')} />

@@ -138,5 +138,14 @@
   "noWords": "No saved words yet. Look words up while practicing, then tap \"Save to notebook\".",
   "noNotesAll": "No notes yet.",
   "noMatch": "Nothing matches.",
-  "notFoundPage": "Page not found"
+  "notFoundPage": "Page not found",
+  "viewLabel": "View",
+  "viewGrid": "Icons",
+  "viewList": "List",
+  "viewColumns": "Columns",
+  "viewGallery": "Gallery",
+  "colName": "Name",
+  "colProgress": "Progress",
+  "practiceLesson": "Practice this lesson",
+  "openHint": "Double-click to open"
 }

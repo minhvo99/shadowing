@@ -32,6 +32,9 @@ async function fetchLessons(level: Level): Promise<Lesson[]> {
     }))
 }
 
+/** Percent of sentences practiced, or null when the lesson was never opened. */
+export const progressOf = (v?: Video): number | null => (v?.lines.length ? Math.round((v.done.length / v.lines.length) * 100) : null)
+
 export const useLessons = (level: Level) => useQuery({ queryKey: keys.lessons(level), queryFn: () => fetchLessons(level) })
 
 /** Opening a lesson builds the video from our own .vtt (no YouTube or server call) and saves it to the library. */

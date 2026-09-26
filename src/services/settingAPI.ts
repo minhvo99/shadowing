@@ -3,6 +3,7 @@ import { SETTINGS_STORAGE_KEY as STORAGE_KEY } from '@libs/constants'
 import { keys } from './rootApi'
 
 export type View = 'text' | 'karaoke' | 'blind'
+export type LessonsView = 'grid' | 'list' | 'columns' | 'gallery'
 
 export type Settings = {
   v: 2
@@ -16,6 +17,8 @@ export type Settings = {
   view: View
   /** Subtitles drawn over the video. */
   overlay: boolean
+  /** Lesson list layout, like Finder's view buttons. */
+  lessonsView: LessonsView
 }
 
 const DEFAULTS: Settings = {
@@ -26,6 +29,7 @@ const DEFAULTS: Settings = {
   delay: 0,
   view: 'karaoke',
   overlay: true,
+  lessonsView: 'grid',
 }
 
 // localStorage (sync) so the first paint already has the saved preferences. Language lives in i18next.
